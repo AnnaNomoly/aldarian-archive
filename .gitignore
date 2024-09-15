@@ -128,3 +128,13 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# All project files EXCEPT /docs
+public
+src
+babel.config.js
+jsconfig.json
+package.json
+package-lock.json
+README.md
+vue.config.js
