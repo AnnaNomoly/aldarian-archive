@@ -3,5 +3,6 @@ module.exports = defineConfig({
   transpileDependencies: [
     'vuetify'
   ],
-  outputDir: "docs"
+  outputDir: "docs",
+  publicPath: "/aldarian-archive/"
 })
