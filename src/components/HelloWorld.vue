@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="d-flex justify-space-around">
-      <v-img :src="require('@/assets/title_logo.png')" max-height="150" max-width="250" ></v-img>
+      <v-img src="title_logo.png" max-height="150" max-width="250"></v-img>
       <!--<h1 class="text-h2 font-weight-bold">Aldarian Archive</h1>-->
     </div>
     <br />
@@ -60,13 +60,13 @@
         "Artifacts",
         //"Blacksmithing",
         "Bugs",
-        "Cooking",
-        "Crafting",
-        "Crops",
-        "Forage",
+        //"Cooking",
+        //"Crafting",
+        //"Crops",
+        //"Forage",
         "Fish",
-        "NPCs",
-        "Quests"
+        //"NPCs",
+        //"Quests"
       ],
       fish_panels: [
         "Misc",
@@ -527,6 +527,7 @@
     },
 
     mounted() {
+      // Load Images
       // Load Localization Data
       var v0115_localization = require('@/assets/data/v0.11.5/localization.json');
       this.parse_localization(v0115_localization);
