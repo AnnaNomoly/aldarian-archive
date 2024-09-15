@@ -15,20 +15,20 @@
 
     <v-tabs-items v-model="selected_tab">
       <v-tab-item v-for="tab in tabs" :key="tab">
-        <div style="overflow-y: visible;">
-          <v-card v-if="tab == 'Artifacts'" dark style="opacity: 0.85; overflow-y: auto; max-height: 75vh">
+        <div style="overflow-y: auto;">
+          <v-card v-if="tab == 'Artifacts'" dark style="opacity: 0.85; overflow-y: auto; max-height: 100vh">
             <v-card-title>
               <v-text-field v-model="artifact_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
             </v-card-title>
             <v-data-table dense :headers="artifact_headers" :items="artifacts" :search="artifact_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
           </v-card>
-          <v-card v-if="tab == 'Bugs'" dark style="opacity: 0.85; overflow-y: auto; max-height: 75vh">
+          <v-card v-if="tab == 'Bugs'" dark style="opacity: 0.85; overflow-y: auto; max-height: 100vh">
             <v-card-title>
               <v-text-field v-model="bug_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
             </v-card-title>
             <v-data-table dense :headers="bug_headers" :items="bugs" :search="bug_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
           </v-card>
-          <v-card v-if="tab == 'Fish'" dark style="opacity: 0.85; overflow-y: auto; max-height: 75vh">
+          <v-card v-if="tab == 'Fish'" dark style="opacity: 0.85; overflow-y: auto; max-height: 100vh">
           <v-card-title>
             <v-text-field v-model="fish_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
           </v-card-title>
