@@ -1,0 +1,761 @@
+{
+  "back_gear_basic_backpack": {
+    "back_gear": "spr_player_back_gear_basic_backpack_back_gear"
+  },
+  "back_gear_basic_cape": {
+    "back_gear": "spr_player_back_gear_basic_cape_back_gear"
+  },
+  "back_gear_dragon_cleric_cape": {
+    "back_gear": "spr_player_back_gear_dragon_cleric_cape_back_gear"
+  },
+  "base": {
+    "base_arm_left": "spr_player_base_base_arm_left",
+    "base_arm_right": "spr_player_base_base_arm_right",
+    "base_chest": "spr_player_base_base_chest",
+    "base_head": "spr_player_base_base_head",
+    "base_legs": "spr_player_base_base_legs"
+  },
+  "beard_basic": {
+    "facial_hair": "spr_player_beard_basic_facial_hair"
+  },
+  "beard_thick": {
+    "facial_hair": "spr_player_beard_thick_facial_hair"
+  },
+  "dress_maid": {
+    "sleeve_right": "spr_player_dress_maid_sleeve_right",
+    "sleeve_left": "spr_player_dress_maid_sleeve_left",
+    "torso": "spr_player_dress_maid_torso",
+    "waist": "spr_player_dress_maid_waist"
+  },
+  "dress_modest": {
+    "sleeve_right": "spr_player_dress_modest_sleeve_right",
+    "sleeve_left": "spr_player_dress_modest_sleeve_left",
+    "torso": "spr_player_dress_modest_torso",
+    "waist": "spr_player_dress_modest_waist"
+  },
+  "dress_spring_festival": {
+    "sleeve_right": "spr_player_dress_spring_festival_sleeve_right",
+    "sleeve_left": "spr_player_dress_spring_festival_sleeve_left",
+    "torso": "spr_player_dress_spring_festival_torso",
+    "waist": "spr_player_dress_spring_festival_waist"
+  },
+  "eyes_closed": {
+    "eyes": "spr_player_eyes_closed_eyes"
+  },
+  "eyes_default": {
+    "eyes": "spr_player_eyes_default_eyes"
+  },
+  "eyes_droopy": {
+    "eyes": "spr_player_eyes_droopy_eyes"
+  },
+  "eyes_eyelashes": {
+    "eyes": "spr_player_eyes_eyelashes_eyes"
+  },
+  "eyes_serious": {
+    "eyes": "spr_player_eyes_serious_eyes"
+  },
+  "eyes_small": {
+    "eyes": "spr_player_eyes_small_eyes"
+  },
+  "face_default": {
+    "face": "spr_player_face_default_face"
+  },
+  "face_gear_blush": {
+    "face_gear": "spr_player_face_gear_blush_face_gear"
+  },
+  "face_gear_caldosian_moon_earrings": {
+    "face_gear": "spr_player_face_gear_caldosian_moon_earrings_face_gear"
+  },
+  "face_gear_dragon_cleric_earrings": {
+    "face_gear": "spr_player_face_gear_dragon_cleric_earrings_face_gear"
+  },
+  "face_gear_face_mask": {
+    "face_gear": "spr_player_face_gear_face_mask_face_gear"
+  },
+  "face_gear_flower_earrings": {
+    "face_gear": "spr_player_face_gear_flower_earrings_face_gear"
+  },
+  "face_gear_glasses": {
+    "face_gear": "spr_player_face_gear_glasses_face_gear"
+  },
+  "face_gear_hoop_earrings": {
+    "face_gear": "spr_player_face_gear_hoop_earrings_face_gear"
+  },
+  "face_gear_reading_glasses": {
+    "face_gear": "spr_player_face_gear_reading_glasses_face_gear"
+  },
+  "face_gear_reading_glasses_small": {
+    "face_gear": "spr_player_face_gear_reading_glasses_small_face_gear"
+  },
+  "face_gear_stud_earrings": {
+    "face_gear": "spr_player_face_gear_stud_earrings_face_gear"
+  },
+  "face_gear_sunglasses": {
+    "face_gear": "spr_player_face_gear_sunglasses_face_gear"
+  },
+  "hair_afro": {
+    "hair_mid": "spr_player_hair_afro_hair_mid",
+    "hair_back": "spr_player_hair_afro_hair_back"
+  },
+  "hair_afro_puffs": {
+    "hair_mid": "spr_player_hair_afro_puffs_hair_mid",
+    "hair_back": "spr_player_hair_afro_puffs_hair_back"
+  },
+  "hair_blown_out_twist": {
+    "hair_mid": "spr_player_hair_blown_out_twist_hair_mid",
+    "hair_back": "spr_player_hair_blown_out_twist_hair_back"
+  },
+  "hair_braided_pigtails": {
+    "hair_mid": "spr_player_hair_braided_pigtails_hair_mid",
+    "hair_back": "spr_player_hair_braided_pigtails_hair_back"
+  },
+  "hair_buzzcut": {
+    "hair_mid": "spr_player_hair_buzzcut_hair_mid",
+    "hair_back": "spr_player_hair_buzzcut_hair_back"
+  },
+  "hair_curly_high_top": {
+    "hair_mid": "spr_player_hair_curly_high_top_hair_mid",
+    "hair_back": "spr_player_hair_curly_high_top_hair_back"
+  },
+  "hair_curly_shaved_side": {
+    "hair_mid": "spr_player_hair_curly_shaved_side_hair_mid",
+    "hair_back": "spr_player_hair_curly_shaved_side_hair_back"
+  },
+  "hair_curly_updo": {
+    "hair_mid": "spr_player_hair_curly_updo_hair_mid",
+    "hair_back": "spr_player_hair_curly_updo_hair_back"
+  },
+  "hair_dreadlock_twin_buns": {
+    "hair_mid": "spr_player_hair_dreadlock_twin_buns_hair_mid",
+    "hair_back": "spr_player_hair_dreadlock_twin_buns_hair_back"
+  },
+  "hair_dreadlocks_bun": {
+    "hair_mid": "spr_player_hair_dreadlocks_bun_hair_mid",
+    "hair_back": "spr_player_hair_dreadlocks_bun_hair_back"
+  },
+  "hair_dreadlocks_long": {
+    "hair_mid": "spr_player_hair_dreadlocks_long_hair_mid",
+    "hair_back": "spr_player_hair_dreadlocks_long_hair_back"
+  },
+  "hair_fade": {
+    "hair_mid": "spr_player_hair_fade_hair_mid",
+    "hair_back": "spr_player_hair_fade_hair_back"
+  },
+  "hair_medium_boyish": {
+    "hair_mid": "spr_player_hair_medium_boyish_hair_mid",
+    "hair_back": "spr_player_hair_medium_boyish_hair_back"
+  },
+  "hair_medium_half_bun_fringe": {
+    "hair_mid": "spr_player_hair_medium_half_bun_fringe_hair_mid",
+    "hair_back": "spr_player_hair_medium_half_bun_fringe_hair_back"
+  },
+  "hair_medium_pigtails": {
+    "hair_mid": "spr_player_hair_medium_pigtails_hair_mid",
+    "hair_back": "spr_player_hair_medium_pigtails_hair_back"
+  },
+  "hair_mohawk": {
+    "hair_mid": "spr_player_hair_mohawk_hair_mid",
+    "hair_back": "spr_player_hair_mohawk_hair_back"
+  },
+  "hair_mushroom": {
+    "hair_mid": "spr_player_hair_mushroom_hair_mid",
+    "hair_back": "spr_player_hair_mushroom_hair_back"
+  },
+  "hair_rounded_afro": {
+    "hair_mid": "spr_player_hair_rounded_afro_hair_mid",
+    "hair_back": "spr_player_hair_rounded_afro_hair_back"
+  },
+  "hair_short_parted_curls": {
+    "hair_mid": "spr_player_hair_short_parted_curls_hair_mid",
+    "hair_back": "spr_player_hair_short_parted_curls_hair_back"
+  },
+  "hair_straight_buns_fringed": {
+    "hair_mid": "spr_player_hair_straight_buns_fringed_hair_mid",
+    "hair_back": "spr_player_hair_straight_buns_fringed_hair_back"
+  },
+  "hair_straight_long": {
+    "hair_mid": "spr_player_hair_straight_long_hair_mid",
+    "hair_back": "spr_player_hair_straight_long_hair_back"
+  },
+  "hair_straight_long_bun": {
+    "hair_mid": "spr_player_hair_straight_long_bun_hair_mid",
+    "hair_back": "spr_player_hair_straight_long_bun_hair_back"
+  },
+  "hair_straight_long_fringed": {
+    "hair_mid": "spr_player_hair_straight_long_fringed_hair_mid",
+    "hair_back": "spr_player_hair_straight_long_fringed_hair_back"
+  },
+  "hair_straight_long_tucked": {
+    "hair_mid": "spr_player_hair_straight_long_tucked_hair_mid",
+    "hair_back": "spr_player_hair_straight_long_tucked_hair_back"
+  },
+  "hair_straight_long_twin_buns": {
+    "hair_mid": "spr_player_hair_straight_long_twin_buns_hair_mid",
+    "hair_back": "spr_player_hair_straight_long_twin_buns_hair_back"
+  },
+  "hair_straight_medium": {
+    "hair_mid": "spr_player_hair_straight_medium_hair_mid",
+    "hair_back": "spr_player_hair_straight_medium_hair_back"
+  },
+  "hair_straight_medium_ponytail": {
+    "hair_mid": "spr_player_hair_straight_medium_ponytail_hair_mid",
+    "hair_back": "spr_player_hair_straight_medium_ponytail_hair_back"
+  },
+  "hair_straight_pompadour": {
+    "hair_mid": "spr_player_hair_straight_pompadour_hair_mid",
+    "hair_back": "spr_player_hair_straight_pompadour_hair_back"
+  },
+  "hair_straight_shaved_side": {
+    "hair_mid": "spr_player_hair_straight_shaved_side_hair_mid",
+    "hair_back": "spr_player_hair_straight_shaved_side_hair_back"
+  },
+  "hair_textured_buzzcut": {
+    "hair_mid": "spr_player_hair_textured_buzzcut_hair_mid",
+    "hair_back": "spr_player_hair_textured_buzzcut_hair_back"
+  },
+  "hair_wavy_long": {
+    "hair_mid": "spr_player_hair_wavy_long_hair_mid",
+    "hair_back": "spr_player_hair_wavy_long_hair_back"
+  },
+  "hair_wavy_long_fringed": {
+    "hair_mid": "spr_player_hair_wavy_long_fringed_hair_mid",
+    "hair_back": "spr_player_hair_wavy_long_fringed_hair_back"
+  },
+  "hair_wavy_long_ponytail": {
+    "hair_mid": "spr_player_hair_wavy_long_ponytail_hair_mid",
+    "hair_back": "spr_player_hair_wavy_long_ponytail_hair_back"
+  },
+  "hair_wavy_long_twin_buns": {
+    "hair_mid": "spr_player_hair_wavy_long_twin_buns_hair_mid",
+    "hair_back": "spr_player_hair_wavy_long_twin_buns_hair_back"
+  },
+  "hair_wavy_medium": {
+    "hair_mid": "spr_player_hair_wavy_medium_hair_mid",
+    "hair_back": "spr_player_hair_wavy_medium_hair_back"
+  },
+  "hair_wavy_medium_fringed": {
+    "hair_mid": "spr_player_hair_wavy_medium_fringed_hair_mid",
+    "hair_back": "spr_player_hair_wavy_medium_fringed_hair_back"
+  },
+  "hair_wavy_medium_twin_buns": {
+    "hair_mid": "spr_player_hair_wavy_medium_twin_buns_hair_mid",
+    "hair_back": "spr_player_hair_wavy_medium_twin_buns_hair_back"
+  },
+  "hair_wavy_rugged": {
+    "hair_mid": "spr_player_hair_wavy_rugged_hair_mid",
+    "hair_back": "spr_player_hair_wavy_rugged_hair_back"
+  },
+  "head_adventurer_hood": {
+    "head_gear": "spr_player_head_adventurer_hood_head_gear"
+  },
+  "head_aviator_goggles": {
+    "head_gear": "spr_player_head_aviator_goggles_head_gear"
+  },
+  "head_bandana": {
+    "head_gear": "spr_player_head_bandana_head_gear"
+  },
+  "head_barrel_roller_hat": {
+    "head_gear": "spr_player_head_barrel_roller_hat_head_gear"
+  },
+  "head_baseball_cap": {
+    "head_gear": "spr_player_head_baseball_cap_head_gear"
+  },
+  "head_beekeeper_hat": {
+    "head_gear": "spr_player_head_beekeeper_hat_head_gear"
+  },
+  "head_beret": {
+    "head_gear": "spr_player_head_beret_head_gear"
+  },
+  "head_caldosian_hat": {
+    "head_gear": "spr_player_head_caldosian_hat_head_gear"
+  },
+  "head_cap_basic": {
+    "head_gear": "spr_player_head_cap_basic_head_gear"
+  },
+  "head_cat_ears": {
+    "head_gear": "spr_player_head_cat_ears_head_gear",
+    "head_gear_back": "spr_player_head_cat_ears_head_gear_back"
+  },
+  "head_circlet_earth": {
+    "head_gear": "spr_player_head_circlet_earth_head_gear"
+  },
+  "head_clips_angel_wing": {
+    "head_gear": "spr_player_head_clips_angel_wing_head_gear",
+    "head_gear_back": "spr_player_head_clips_angel_wing_head_gear_back"
+  },
+  "head_clips_bat_wing": {
+    "head_gear": "spr_player_head_clips_bat_wing_head_gear",
+    "head_gear_back": "spr_player_head_clips_bat_wing_head_gear_back"
+  },
+  "head_clips_moon": {
+    "head_gear": "spr_player_head_clips_moon_head_gear",
+    "head_gear_back": "spr_player_head_clips_moon_head_gear_back"
+  },
+  "head_clips_star": {
+    "head_gear": "spr_player_head_clips_star_head_gear",
+    "head_gear_back": "spr_player_head_clips_star_head_gear_back"
+  },
+  "head_clips_strawberry": {
+    "head_gear": "spr_player_head_clips_strawberry_head_gear",
+    "head_gear_back": "spr_player_head_clips_strawberry_head_gear_back"
+  },
+  "head_cloth_helmet": {
+    "head_gear": "spr_player_head_cloth_helmet_head_gear"
+  },
+  "head_copper_helmet": {
+    "head_gear": "spr_player_head_copper_helmet_head_gear"
+  },
+  "head_cowboy_hat_basic": {
+    "head_gear": "spr_player_head_cowboy_hat_basic_head_gear"
+  },
+  "head_crown_tide": {
+    "head_gear": "spr_player_head_crown_tide_head_gear"
+  },
+  "head_crystal_helmet": {
+    "head_gear": "spr_player_head_crystal_helmet_head_gear"
+  },
+  "head_devil_horns": {
+    "head_gear": "spr_player_head_devil_horns_head_gear",
+    "head_gear_back": "spr_player_head_devil_horns_head_gear_back"
+  },
+  "head_dragon_cleric_diadem": {
+    "head_gear": "spr_player_head_dragon_cleric_diadem_head_gear",
+    "head_gear_back": "spr_player_head_dragon_cleric_diadem_head_gear_back"
+  },
+  "head_enchantern_hat": {
+    "head_gear": "spr_player_head_enchantern_hat_head_gear"
+  },
+  "head_essence_bat_hat": {
+    "head_gear": "spr_player_head_essence_bat_hat_head_gear"
+  },
+  "head_explorer_hat": {
+    "head_gear": "spr_player_head_explorer_hat_head_gear"
+  },
+  "head_farmer_cap": {
+    "head_gear": "spr_player_head_farmer_cap_head_gear"
+  },
+  "head_fighter_headband": {
+    "head_gear": "spr_player_head_fighter_headband_head_gear"
+  },
+  "head_fishing_hat": {
+    "head_gear": "spr_player_head_fishing_hat_head_gear"
+  },
+  "head_flower_crown": {
+    "head_gear": "spr_player_head_flower_crown_head_gear"
+  },
+  "head_flower_hat": {
+    "head_gear": "spr_player_head_flower_hat_head_gear"
+  },
+  "head_flower_top_hat": {
+    "head_gear": "spr_player_head_flower_top_hat_head_gear"
+  },
+  "head_halo": {
+    "head_gear": "spr_player_head_halo_head_gear"
+  },
+  "head_headband_basic": {
+    "head_gear": "spr_player_head_headband_basic_head_gear"
+  },
+  "head_hijab": {
+    "head_gear": "spr_player_head_hijab_head_gear"
+  },
+  "head_iron_helmet": {
+    "head_gear": "spr_player_head_iron_helmet_head_gear"
+  },
+  "head_lily_pad": {
+    "head_gear": "spr_player_head_lily_pad_head_gear"
+  },
+  "head_miners_helmet": {
+    "head_gear": "spr_player_head_miners_helmet_head_gear"
+  },
+  "head_mini_horns": {
+    "head_gear": "spr_player_head_mini_horns_head_gear"
+  },
+  "head_mushroom_hat": {
+    "head_gear": "spr_player_head_mushroom_hat_head_gear"
+  },
+  "head_oreclod_hat": {
+    "head_gear": "spr_player_head_oreclod_hat_head_gear"
+  },
+  "head_paisley_bandana": {
+    "head_gear": "spr_player_head_paisley_bandana_head_gear"
+  },
+  "head_rain_hat": {
+    "head_gear": "spr_player_head_rain_hat_head_gear"
+  },
+  "head_ranger_leaves": {
+    "head_gear": "spr_player_head_ranger_leaves_head_gear",
+    "head_gear_back": "spr_player_head_ranger_leaves_head_gear_back"
+  },
+  "head_ribbons_basic": {
+    "head_gear": "spr_player_head_ribbons_basic_head_gear",
+    "head_gear_back": "spr_player_head_ribbons_basic_head_gear_back"
+  },
+  "head_rockclod_hat": {
+    "head_gear": "spr_player_head_rockclod_hat_head_gear"
+  },
+  "head_sapling_hat": {
+    "head_gear": "spr_player_head_sapling_hat_head_gear"
+  },
+  "head_scrap_metal_helmet": {
+    "head_gear": "spr_player_head_scrap_metal_helmet_head_gear"
+  },
+  "head_short_bow": {
+    "head_gear": "spr_player_head_short_bow_head_gear"
+  },
+  "head_silver_helmet": {
+    "head_gear": "spr_player_head_silver_helmet_head_gear"
+  },
+  "head_soup_pot": {
+    "head_gear": "spr_player_head_soup_pot_head_gear"
+  },
+  "head_special_flower_crown": {
+    "head_gear": "spr_player_head_special_flower_crown_head_gear"
+  },
+  "head_sprout_hat": {
+    "head_gear": "spr_player_head_sprout_hat_head_gear"
+  },
+  "head_stalagmite_hat": {
+    "head_gear": "spr_player_head_stalagmite_hat_head_gear"
+  },
+  "head_striped_bow": {
+    "head_gear": "spr_player_head_striped_bow_head_gear"
+  },
+  "head_striped_bucket_hat": {
+    "head_gear": "spr_player_head_striped_bucket_hat_head_gear"
+  },
+  "head_sunhat_straw": {
+    "head_gear": "spr_player_head_sunhat_straw_head_gear"
+  },
+  "head_tangerine": {
+    "head_gear": "spr_player_head_tangerine_head_gear"
+  },
+  "head_teapot": {
+    "head_gear": "spr_player_head_teapot_head_gear"
+  },
+  "head_verdigris_helmet": {
+    "head_gear": "spr_player_head_verdigris_helmet_head_gear"
+  },
+  "head_witch_hat": {
+    "head_gear": "spr_player_head_witch_hat_head_gear"
+  },
+  "overalls_farmer": {
+    "sleeve_right": "spr_player_overalls_farmer_sleeve_right",
+    "sleeve_left": "spr_player_overalls_farmer_sleeve_left",
+    "legs": "spr_player_overalls_farmer_legs",
+    "torso": "spr_player_overalls_farmer_torso"
+  },
+  "overalls_skirt": {
+    "sleeve_right": "spr_player_overalls_skirt_sleeve_right",
+    "sleeve_left": "spr_player_overalls_skirt_sleeve_left",
+    "torso": "spr_player_overalls_skirt_torso",
+    "waist": "spr_player_overalls_skirt_waist"
+  },
+  "pants_adventurer": {
+    "legs": "spr_player_pants_adventurer_legs"
+  },
+  "pants_basic": {
+    "legs": "spr_player_pants_basic_legs"
+  },
+  "pants_beekeeper": {
+    "legs": "spr_player_pants_beekeeper_legs"
+  },
+  "pants_cloth_armor": {
+    "legs": "spr_player_pants_cloth_armor_legs"
+  },
+  "pants_copper_armor": {
+    "legs": "spr_player_pants_copper_armor_legs"
+  },
+  "pants_crystal_armor": {
+    "legs": "spr_player_pants_crystal_armor_legs"
+  },
+  "pants_explorer": {
+    "legs": "spr_player_pants_explorer_legs"
+  },
+  "pants_iron_armor": {
+    "legs": "spr_player_pants_iron_armor_legs"
+  },
+  "pants_scrap_metal": {
+    "legs": "spr_player_pants_scrap_metal_legs"
+  },
+  "pants_silver_armor": {
+    "legs": "spr_player_pants_silver_armor_legs"
+  },
+  "pants_verdigris_armor": {
+    "legs": "spr_player_pants_verdigris_armor_legs"
+  },
+  "robe_dragon_cleric": {
+    "sleeve_right": "spr_player_robe_dragon_cleric_sleeve_right",
+    "sleeve_left": "spr_player_robe_dragon_cleric_sleeve_left",
+    "torso": "spr_player_robe_dragon_cleric_torso",
+    "waist": "spr_player_robe_dragon_cleric_waist"
+  },
+  "robe_earth": {
+    "sleeve_right": "spr_player_robe_earth_sleeve_right",
+    "sleeve_left": "spr_player_robe_earth_sleeve_left",
+    "torso": "spr_player_robe_earth_torso",
+    "waist": "spr_player_robe_earth_waist"
+  },
+  "robe_tide": {
+    "sleeve_right": "spr_player_robe_tide_sleeve_right",
+    "sleeve_left": "spr_player_robe_tide_sleeve_left",
+    "torso": "spr_player_robe_tide_torso",
+    "waist": "spr_player_robe_tide_waist"
+  },
+  "shoes_boots": {
+    "feet": "spr_player_shoes_boots_basic_feet"
+  },
+  "shoes_boots_adventurer": {
+    "feet": "spr_player_shoes_boots_adventurer_feet"
+  },
+  "shoes_boots_beekeeper": {
+    "feet": "spr_player_shoes_boots_beekeeper_feet"
+  },
+  "shoes_boots_caldosian": {
+    "feet": "spr_player_shoes_boots_caldosian_feet"
+  },
+  "shoes_boots_cloth_armor": {
+    "feet": "spr_player_shoes_boots_cloth_armor_feet"
+  },
+  "shoes_boots_copper_armor": {
+    "feet": "spr_player_shoes_boots_copper_armor_feet"
+  },
+  "shoes_boots_crystal_armor": {
+    "feet": "spr_player_shoes_boots_crystal_armor_feet"
+  },
+  "shoes_boots_dragon_cleric": {
+    "feet": "spr_player_shoes_boots_dragon_cleric_feet"
+  },
+  "shoes_boots_explorer": {
+    "feet": "spr_player_shoes_boots_explorer_feet"
+  },
+  "shoes_boots_farmer": {
+    "feet": "spr_player_shoes_boots_farmer_feet"
+  },
+  "shoes_boots_fishing": {
+    "feet": "spr_player_shoes_boots_fishing_feet"
+  },
+  "shoes_boots_iron_armor": {
+    "feet": "spr_player_shoes_boots_iron_armor_feet"
+  },
+  "shoes_boots_miner": {
+    "feet": "spr_player_shoes_boots_miner_feet"
+  },
+  "shoes_boots_pirate": {
+    "feet": "spr_player_shoes_boots_pirate_feet"
+  },
+  "shoes_boots_ranger": {
+    "feet": "spr_player_shoes_boots_ranger_feet"
+  },
+  "shoes_boots_scrap_metal": {
+    "feet": "spr_player_shoes_boots_scrap_metal_feet"
+  },
+  "shoes_boots_short_basic": {
+    "feet": "spr_player_shoes_boots_short_basic_feet"
+  },
+  "shoes_boots_silver_armor": {
+    "feet": "spr_player_shoes_boots_silver_armor_feet"
+  },
+  "shoes_boots_verdigris_armor": {
+    "feet": "spr_player_shoes_boots_verdigris_armor_feet"
+  },
+  "shoes_boots_work": {
+    "feet": "spr_player_shoes_boots_work_feet"
+  },
+  "shoes_dressy_stockings": {
+    "feet": "spr_player_shoes_dressy_stockings_feet"
+  },
+  "shoes_sandals_earth": {
+    "feet": "spr_player_shoes_sandals_earth_feet"
+  },
+  "shoes_sandals_tide": {
+    "feet": "spr_player_shoes_sandals_tide_feet"
+  },
+  "shoes_sandals_worn": {
+    "feet": "spr_player_shoes_sandals_worn_feet"
+  },
+  "shoes_sneakers_basic": {
+    "feet": "spr_player_shoes_sneakers_basic_feet"
+  },
+  "shorts_basic": {
+    "legs": "spr_player_shorts_basic_legs"
+  },
+  "shorts_fishing": {
+    "legs": "spr_player_shorts_fishing_legs"
+  },
+  "skirt_long_basic": {
+    "waist": "spr_player_skirt_long_basic_waist"
+  },
+  "skirt_long_scalloped": {
+    "waist": "spr_player_skirt_long_scalloped_waist"
+  },
+  "skirt_pleated_medium": {
+    "waist": "spr_player_skirt_pleated_medium_waist"
+  },
+  "skirt_pleated_short": {
+    "waist": "spr_player_skirt_pleated_short_waist"
+  },
+  "skirt_short_basic": {
+    "waist": "spr_player_skirt_short_basic_waist"
+  },
+  "suit_miner": {
+    "sleeve_right": "spr_player_suit_miner_sleeve_right",
+    "sleeve_left": "spr_player_suit_miner_sleeve_left",
+    "legs": "spr_player_suit_miner_legs",
+    "torso": "spr_player_suit_miner_torso"
+  },
+  "suit_spring_festival": {
+    "sleeve_right": "spr_player_suit_spring_festival_sleeve_right",
+    "sleeve_left": "spr_player_suit_spring_festival_sleeve_left",
+    "legs": "spr_player_suit_spring_festival_legs",
+    "torso": "spr_player_suit_spring_festival_torso"
+  },
+  "top_adventurer": {
+    "sleeve_right": "spr_player_top_adventurer_sleeve_right",
+    "sleeve_left": "spr_player_top_adventurer_sleeve_left",
+    "torso": "spr_player_top_adventurer_torso"
+  },
+  "top_caldosian_overcoat": {
+    "sleeve_right": "spr_player_top_caldosian_overcoat_sleeve_right",
+    "sleeve_left": "spr_player_top_caldosian_overcoat_sleeve_left",
+    "torso": "spr_player_top_caldosian_overcoat_torso",
+    "waist": "spr_player_top_caldosian_overcoat_waist"
+  },
+  "top_cami": {
+    "torso": "spr_player_top_cami_torso"
+  },
+  "top_cloth_armor": {
+    "sleeve_right": "spr_player_top_cloth_armor_sleeve_right",
+    "sleeve_left": "spr_player_top_cloth_armor_sleeve_left",
+    "torso": "spr_player_top_cloth_armor_torso"
+  },
+  "top_copper_armor": {
+    "sleeve_right": "spr_player_top_copper_armor_sleeve_right",
+    "sleeve_left": "spr_player_top_copper_armor_sleeve_left",
+    "torso": "spr_player_top_copper_armor_torso"
+  },
+  "top_crystal_armor": {
+    "sleeve_right": "spr_player_top_crystal_armor_sleeve_right",
+    "sleeve_left": "spr_player_top_crystal_armor_sleeve_left",
+    "torso": "spr_player_top_crystal_armor_torso"
+  },
+  "top_explorer": {
+    "sleeve_right": "spr_player_top_explorer_sleeve_right",
+    "sleeve_left": "spr_player_top_explorer_sleeve_left",
+    "torso": "spr_player_top_explorer_torso"
+  },
+  "top_fishing_vest": {
+    "sleeve_right": "spr_player_top_fishing_vest_sleeve_right",
+    "sleeve_left": "spr_player_top_fishing_vest_sleeve_left",
+    "torso": "spr_player_top_fishing_vest_torso"
+  },
+  "top_iron_armor": {
+    "sleeve_right": "spr_player_top_iron_armor_sleeve_right",
+    "sleeve_left": "spr_player_top_iron_armor_sleeve_left",
+    "torso": "spr_player_top_iron_armor_torso"
+  },
+  "top_jacket_and_tee_basic": {
+    "sleeve_right": "spr_player_top_jacket_and_tee_basic_sleeve_right",
+    "sleeve_left": "spr_player_top_jacket_and_tee_basic_sleeve_left",
+    "torso": "spr_player_top_jacket_and_tee_basic_torso"
+  },
+  "top_long_sleeve_baseball": {
+    "sleeve_right": "spr_player_top_long_sleeve_baseball_sleeve_right",
+    "sleeve_left": "spr_player_top_long_sleeve_baseball_sleeve_left",
+    "torso": "spr_player_top_long_sleeve_baseball_torso"
+  },
+  "top_long_sleeve_basic": {
+    "sleeve_right": "spr_player_top_long_sleeve_basic_sleeve_right",
+    "sleeve_left": "spr_player_top_long_sleeve_basic_sleeve_left",
+    "torso": "spr_player_top_long_sleeve_basic_torso"
+  },
+  "top_long_sleeve_basic_cropped": {
+    "sleeve_right": "spr_player_top_long_sleeve_basic_cropped_sleeve_right",
+    "sleeve_left": "spr_player_top_long_sleeve_basic_cropped_sleeve_left",
+    "torso": "spr_player_top_long_sleeve_basic_cropped_torso"
+  },
+  "top_long_sleeve_beekeeper": {
+    "sleeve_right": "spr_player_top_long_sleeve_beekeeper_sleeve_right",
+    "sleeve_left": "spr_player_top_long_sleeve_beekeeper_sleeve_left",
+    "torso": "spr_player_top_long_sleeve_beekeeper_torso"
+  },
+  "top_long_sleeve_striped": {
+    "sleeve_right": "spr_player_top_long_sleeve_striped_sleeve_right",
+    "sleeve_left": "spr_player_top_long_sleeve_striped_sleeve_left",
+    "torso": "spr_player_top_long_sleeve_striped_torso"
+  },
+  "top_plaid_flannel": {
+    "sleeve_right": "spr_player_top_plaid_flannel_sleeve_right",
+    "sleeve_left": "spr_player_top_plaid_flannel_sleeve_left",
+    "torso": "spr_player_top_plaid_flannel_torso"
+  },
+  "top_ranger": {
+    "sleeve_right": "spr_player_top_ranger_sleeve_right",
+    "sleeve_left": "spr_player_top_ranger_sleeve_left",
+    "torso": "spr_player_top_ranger_torso"
+  },
+  "top_ranger_jacket": {
+    "sleeve_right": "spr_player_top_ranger_jacket_sleeve_right",
+    "sleeve_left": "spr_player_top_ranger_jacket_sleeve_left",
+    "legs": "spr_player_top_ranger_jacket_legs",
+    "torso": "spr_player_top_ranger_jacket_torso",
+    "waist": "spr_player_top_ranger_jacket_waist"
+  },
+  "top_scrap_metal": {
+    "sleeve_right": "spr_player_top_scrap_metal_sleeve_right",
+    "sleeve_left": "spr_player_top_scrap_metal_sleeve_left",
+    "torso": "spr_player_top_scrap_metal_torso"
+  },
+  "top_silver_armor": {
+    "sleeve_right": "spr_player_top_silver_armor_sleeve_right",
+    "sleeve_left": "spr_player_top_silver_armor_sleeve_left",
+    "torso": "spr_player_top_silver_armor_torso"
+  },
+  "top_tanktop": {
+    "torso": "spr_player_top_tanktop_torso"
+  },
+  "top_tanktop_buttons": {
+    "torso": "spr_player_top_tanktop_buttons_torso"
+  },
+  "top_tee_basic": {
+    "sleeve_right": "spr_player_top_tee_basic_sleeve_right",
+    "sleeve_left": "spr_player_top_tee_basic_sleeve_left",
+    "torso": "spr_player_top_tee_basic_torso"
+  },
+  "top_tee_oversized": {
+    "sleeve_right": "spr_player_top_tee_oversized_sleeve_right",
+    "sleeve_left": "spr_player_top_tee_oversized_sleeve_left",
+    "torso": "spr_player_top_tee_oversized_torso",
+    "waist": "spr_player_top_tee_oversized_waist"
+  },
+  "top_tee_ringer_basic": {
+    "sleeve_right": "spr_player_top_tee_ringer_basic_sleeve_right",
+    "sleeve_left": "spr_player_top_tee_ringer_basic_sleeve_left",
+    "torso": "spr_player_top_tee_ringer_basic_torso"
+  },
+  "top_verdigris_armor": {
+    "sleeve_right": "spr_player_top_verdigris_armor_sleeve_right",
+    "sleeve_left": "spr_player_top_verdigris_armor_sleeve_left",
+    "torso": "spr_player_top_verdigris_armor_torso"
+  },
+  "underwear_bottoms_polkadot": {
+    "legs": "spr_player_underwear_shorts_polkadot_legs"
+  },
+  "underwear_bra": {
+    "torso": "spr_player_underwear_bra_torso"
+  },
+  "underwear_bra_small": {
+    "torso": "spr_player_underwear_bra_small_torso"
+  },
+  "underwear_briefs": {
+    "legs": "spr_player_underwear_briefs_legs"
+  },
+  "underwear_shorts": {
+    "legs": "spr_player_underwear_shorts_legs"
+  },
+  "underwear_tank": {
+    "torso": "spr_player_underwear_tank_torso"
+  },
+  "water_effect": {
+    "base_effect": "spr_player_water_effect_base_effect"
+  }
+}
