@@ -65,7 +65,7 @@
             </v-tab>
           </v-tabs>
 
-          <v-tabs-items v-model="selected_tab">
+          <v-tabs-items theme--dark v-model="selected_tab">
             <v-tab-item v-for="tab in tabs" :key="tab">
               <div style="overflow-y: auto;">
                 <v-card v-if="tab == 'Artifacts'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
@@ -79,6 +79,12 @@
                     <v-text-field v-model="bug_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
                   </v-card-title>
                   <v-data-table dense :headers="bug_headers" :items="bugs" :search="bug_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                </v-card>
+                <v-card v-if="tab == 'Cooking'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
+                  <v-card-title>
+                    <v-text-field v-model="cooking_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
+                  </v-card-title>
+                  <v-data-table dense class="text-pre-wrap" :headers="cooking_headers" :items="cooking" :search="cooking_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
                 </v-card>
                 <v-card v-if="tab == 'Fish'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
                 <v-card-title>
@@ -106,7 +112,7 @@ export default {
         "Artifacts",
         //"Blacksmithing",
         "Bugs",
-        //"Cooking",
+        "Cooking",
         //"Crafting",
         //"Crops",
         //"Forage",
@@ -114,12 +120,13 @@ export default {
         //"NPCs",
         //"Quests"
       ],
-      fish_panels: [
-        "Misc",
-        "Ocean",
-        "Pond",
-        "River"
-      ],
+
+      // fish_panels: [
+      //   "Misc",
+      //   "Ocean",
+      //   "Pond",
+      //   "River"
+      // ],
 
       // Artifacts
       artifact_search: "",
@@ -149,6 +156,21 @@ export default {
         { text: "Sell Price", value: "value" },
       ],
       bugs: [],
+
+      // Cooking
+      cooking_search: "",
+      cooking_headers: [
+        { text: "Name", value: "name" },
+        { text: "Stars", value: "stars" },
+        { text: "Cooking Lv", value: "crafting_level_requirement" },
+        { text: "Kitchen Lv", value: "kitchen_tier_requirement" },
+        { text: "Obtained By", value: "obtained_by" },
+        { text: "Obtained From", value: "obtained_from" },
+        { text: "Price", value: "recipe_price" },
+        { text: "Recipe", value: "recipe" },
+        { text: "Time", value: "time" },
+      ],
+      cooking: [],
 
       // Fish
       fish_search: "",
@@ -227,6 +249,15 @@ export default {
         this.localizations_eng = json["eng"];
       },
 
+      find_localization_string: function(pattern) {
+        for(let l in this.localizations_eng) {
+          if(l.match(pattern)) {
+            return l;
+          }
+        }
+        return false;
+      },
+
       parse_fiddle: function(json) {
         // Artifact Data
         var data_artifacts = json["artifacts"];
@@ -235,7 +266,7 @@ export default {
         var data_bugs = json["bugs"];
 
         // Dungeons Data
-        var data_dungeons = json["dungeons"]["dungeons"];
+        var data_dungeons = json["dungeons"]
 
         // Fish Data
         var data_fish = json["fish"];
@@ -248,6 +279,9 @@ export default {
         var items_mines = json["items"]["mines"];
         var items_other_cooked_dishes = json["items"]["other"]["cooked_dishes"];
 
+        // Letters Data
+        var data_letters = json["letters"];
+
         // Misc Data
         var data_misc = json["misc"];
 
@@ -257,11 +291,17 @@ export default {
         // Object Prototypes Data
         var object_prototypes = json["object_prototypes"];
 
+        // Quests Data
+        var data_quests = json["quests"];
+
         // Stores Data
         var data_stores = json["stores"];
 
         // Wishing Well Data
         var data_wishing_well = json["wishing_well"];
+
+        // Chicken Statue Data
+        var data_chicken_statue = json["chicken_statue"];
 
         // PARSE FISH
         this.fish = [];
@@ -475,14 +515,14 @@ export default {
 
         // Extract additional data from the dungeons/dungeond/biomes dictionary.
         var object_to_biome_dict = {};
-        for(let biome in data_dungeons["biomes"]) {
-          let biome_name = data_dungeons["biomes"][biome]["artifact_set"];
+        for(let biome in data_dungeons["dungeons"]["biomes"]) {
+          let biome_name = data_dungeons["dungeons"]["biomes"][biome]["artifact_set"];
           if(biome_name === "upper_mines_artifacts") {
             biome_name = "upper_mines";
           }
 
-          for(let i in data_dungeons["biomes"][biome]["votes"]["ore_rock"]) {
-            let ore = data_dungeons["biomes"][biome]["votes"]["ore_rock"][i]["object"];
+          for(let i in data_dungeons["dungeons"]["biomes"][biome]["votes"]["ore_rock"]) {
+            let ore = data_dungeons["dungeons"]["biomes"][biome]["votes"]["ore_rock"][i]["object"];
             object_to_biome_dict[ore] = biome_name;
           }          
         }
@@ -731,21 +771,143 @@ export default {
           }
         }
 
-        // Extract recipe locations from chicken statue.
-
-        // console.log(this.cooked_dishes_dict);
-        // for(let x in this.cooked_dishes_dict) {
-        //   if(this.cooked_dishes_dict[x]["obtained_by"] === undefined) {
-        //     console.log(x);
-        //   }
-        // }
-        
-
-
-
-        // Extract recipe locations from quests.
+        // Extract recipe locations from chicken_statue dict.
+        // TODO: Refactor this and wishing_well common code to a method
+        for(let rarity in data_chicken_statue) {
+          for(let i in data_chicken_statue[rarity]["small_roll"]) {
+            if(data_chicken_statue[rarity]["small_roll"][i]["recipe_scroll"] !== undefined) {
+              let recipe_name = data_chicken_statue[rarity]["small_roll"][i]["recipe_scroll"];
+              this.cooked_dishes_dict[recipe_name]["obtained_by"] = "gacha (random)";
+              this.cooked_dishes_dict[recipe_name]["obtained_from"] = "chicken_statue";
+              delete this.cooked_dishes_dict[recipe_name]["recipe_price"];
+            }
+          }
+          for(let i in data_chicken_statue[rarity]["large_roll"]) {
+            if(data_chicken_statue[rarity]["large_roll"][i]["recipe_scroll"] !== undefined) {
+              let recipe_name = data_chicken_statue[rarity]["large_roll"][i]["recipe_scroll"];
+              this.cooked_dishes_dict[recipe_name]["obtained_by"] = "gacha (random)";
+              this.cooked_dishes_dict[recipe_name]["obtained_from"] = "chicken_statue";
+              delete this.cooked_dishes_dict[recipe_name]["recipe_price"];
+            }
+          }
+        }
 
         // Extract recipe locations from letters. 
+        for(let l in data_letters) {
+          if(data_letters[l]["items"] !== undefined) {
+            for(let i in data_letters[l]["items"]) {
+              if(data_letters[l]["items"][i]["recipe_scroll"] !== undefined) {
+                let recipe_name = data_letters[l]["items"][i]["recipe_scroll"];
+                if(data_letters[l]["ari_has_sold"] !== undefined) {
+                  let localization_string = "items/other/crops_and_forage/" + data_letters[l]["ari_has_sold"] + "/name";
+                  let item_name = this.localizations_eng[localization_string];
+                  this.cooked_dishes_dict[recipe_name]["obtained_by"] = "shipping (" + item_name + ")";
+                  this.cooked_dishes_dict[recipe_name]["obtained_from"] = "letter/mail";
+                  delete this.cooked_dishes_dict[recipe_name]["recipe_price"];
+                }
+                if(data_letters[l]["ari_has_donated"] !== undefined) {
+                  let localization_string_regex = "^[a-z_/]+(" + data_letters[l]["ari_has_donated"] + ")[/](name)$";
+                  let item_name = this.find_localization_string(localization_string_regex)
+                  if(item_name !== false) {
+                    item_name = this.localizations_eng[item_name];
+                    this.cooked_dishes_dict[recipe_name]["obtained_by"] = "museum_donation (" + item_name + ")";
+                    this.cooked_dishes_dict[recipe_name]["obtained_from"] = "letter/mail";
+                    delete this.cooked_dishes_dict[recipe_name]["recipe_price"];
+                  }
+                }
+              }
+            }
+
+          }
+        }
+
+        // Extract recipe locations from quests/story_quests dictionary.
+        for(let q in data_quests["story_quests"]) {
+          for(let i in data_quests["story_quests"][q]["rewards"]) {
+            if(data_quests["story_quests"][q]["rewards"][i]["recipe_scroll"] !== undefined) {
+              let recipe_name = data_quests["story_quests"][q]["rewards"][i]["recipe_scroll"];
+              let quest_name = this.localizations_eng[data_quests["story_quests"][q]["name"]];
+              if(this.cooked_dishes_dict[recipe_name] !== undefined) {
+                this.cooked_dishes_dict[recipe_name]["obtained_by"] = "quest";
+                this.cooked_dishes_dict[recipe_name]["obtained_from"] = quest_name;
+              }
+            }
+          }
+        }
+
+        // Extract recipe locations from quests/fetch_quests dictionary.
+        for(let q in data_quests["fetch_quests"]) {
+          for(let i in data_quests["fetch_quests"][q]["rewards"]) {
+            if(data_quests["fetch_quests"][q]["rewards"][i]["recipe_scroll"] !== undefined) {
+              let recipe_name = data_quests["fetch_quests"][q]["rewards"][i]["recipe_scroll"];
+              let quest_name = this.localizations_eng[data_quests["fetch_quests"][q]["name"]];
+              if(this.cooked_dishes_dict[recipe_name] !== undefined) {
+                this.cooked_dishes_dict[recipe_name]["obtained_by"] = "quest";
+                this.cooked_dishes_dict[recipe_name]["obtained_from"] = quest_name;
+              }
+            }
+          }
+        }
+
+        // Extract recipe locations from mines treasure chests
+        for(let b in data_dungeons["dungeons"]["biomes"]) {
+          let biome_name = data_dungeons["dungeons"]["biomes"][b]["artifact_set"];
+          if(biome_name === "upper_mines_artifacts") {
+            biome_name = "upper_mines";
+          }
+          for(let i in data_dungeons["dungeons"]["biomes"][b]["taste_maker"]) {
+            let recipe_name = data_dungeons["dungeons"]["biomes"][b]["taste_maker"][i];
+            if(this.cooked_dishes_dict[recipe_name] !== undefined) {
+              this.cooked_dishes_dict[recipe_name]["obtained_by"] = "mines (treasure chest)";
+              this.cooked_dishes_dict[recipe_name]["obtained_from"] = biome_name;
+            }
+          }
+        }
+
+        // Cleanup and build the list.
+        for(let x in this.cooked_dishes_dict) {
+          // Remove the price for any recipe not marked purchaseable.
+          if(this.cooked_dishes_dict[x]["obtained_by"] === undefined || this.cooked_dishes_dict[x]["obtained_by"] !== "purchase") {
+            delete this.cooked_dishes_dict[x]["recipe_price"];
+          }
+
+          // Remove anything without a recipe.
+          if(this.cooked_dishes_dict[x]["recipe"] === undefined) {
+            console.log("Missing recipe for: " + x);
+            delete this.cooked_dishes_dict[x];
+          }
+          else {
+            // Mark unobtainable recipes.
+            if(this.cooked_dishes_dict[x]["obtained_by"] === undefined) {
+              this.cooked_dishes_dict[x]["obtained_by"] = "unobtainable";
+              this.cooked_dishes_dict[x]["obtained_from"] = "unobtainable";
+            }
+            // Format the recipe string.
+            let recipe = "";
+            for(let i in this.cooked_dishes_dict[x]["recipe"]) {
+              if(this.cooked_dishes_dict[x]["recipe"][i]["item"] !== undefined) {
+                let localization_string_regex = "^(items)[/](?!furniture)[a-z_/]+(\\b" + this.cooked_dishes_dict[x]["recipe"][i]["item"] + ")[/](name)$";
+                let item_name = this.find_localization_string(localization_string_regex)
+                if(item_name !== false) {
+                  item_name = this.localizations_eng[item_name];
+                }
+                else {
+                  item_name = this.cooked_dishes_dict[x]["recipe"][i]["item"];
+                }
+                recipe += item_name + ": " + this.cooked_dishes_dict[x]["recipe"][i]["count"] + "\n";
+              }
+              // Extract the time.
+              if(this.cooked_dishes_dict[x]["recipe"][i]["hours"] !== undefined || this.cooked_dishes_dict[x]["recipe"][i]["minutes"] !== undefined) {
+                this.cooked_dishes_dict[x]["time"] = "Hours: " + this.cooked_dishes_dict[x]["recipe"][i]["hours"] + "\nMinutes: " + this.cooked_dishes_dict[x]["recipe"][i]["minutes"];
+              }
+            }
+            this.cooked_dishes_dict[x]["recipe"] = recipe;
+            this.cooking.push(this.cooked_dishes_dict[x]);
+          }
+        }
+
+        console.log("------------------------------");
+        console.log(this.cooked_dishes_dict);
       }
     },
 
