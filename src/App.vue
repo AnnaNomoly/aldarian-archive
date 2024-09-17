@@ -30,21 +30,21 @@
         </template>
 
         <v-list>
-          <v-list-item @click="load_data('v.0.11.7')">
-            <v-list-item-title>v.0.11.7</v-list-item-title>
+          <v-list-item @click="load_data('v0.11.7')">
+            <v-list-item-title>v0.11.7</v-list-item-title>
           </v-list-item>
 
-          <v-list-item @click="load_data('v.0.11.6')">
+          <!-- <v-list-item @click="load_data('v.0.11.6')">
             <v-list-item-title>v.0.11.6</v-list-item-title>
+          </v-list-item> -->
+
+          <v-list-item @click="load_data('v0.11.5')">
+            <v-list-item-title>v0.11.5</v-list-item-title>
           </v-list-item>
 
-          <v-list-item @click="load_data('v.0.11.5')">
-            <v-list-item-title>v.0.11.5</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item @click="load_data('alpha')">
+          <!-- <v-list-item @click="load_data('alpha')">
             <v-list-item-title>Alpha</v-list-item-title>
-          </v-list-item>
+          </v-list-item> -->
         </v-list>
       </v-menu>
 
@@ -59,6 +59,7 @@
         <br />
 
         <v-card style="opacity: 0.90" >
+          <v-progress-linear v-if="loading" indeterminate color="yellow darken-2"></v-progress-linear>
           <v-tabs v-model="selected_tab" background-color="blue-grey darken-4" center-active dark>
             <v-tab v-for="tab in tabs" :key="tab">
               {{ tab }}
@@ -106,6 +107,8 @@ export default {
   name: 'App',
 
   data: () => ({
+      lastLoadingPause: Date.now(),
+      loading: true,
       version_loaded: "v0.11.7", // The version to load on startup
       selected_tab: null,
       tabs: [
@@ -189,7 +192,19 @@ export default {
     }),
 
     methods: {
+      pauseLoading: function() {
+        return new Promise(r => setTimeout(r));
+      },
+
+      loadingPauseCheck: async function() {
+        if(Date.now() - 30 > this.lastLoadingPause) {
+          this.lastLoadingPause = Date.now();
+          await this.pauseLoading();
+        }
+      },
+
       load_data: function(version) {
+        this.loading = true;
         this.version_loaded = version;
         console.log("Loaded Data: " + version);
         if(version === 'v0.11.7') {
@@ -258,7 +273,7 @@ export default {
         return false;
       },
 
-      parse_fiddle: function(json) {
+      parse_fiddle: async function(json) {
         // Artifact Data
         var data_artifacts = json["artifacts"];
 
@@ -308,7 +323,9 @@ export default {
 
         // Extract all fish from the items/mines dictionary.
         for(let mines_location in items_mines) {
+          await this.loadingPauseCheck();
           for(let m in items_mines[mines_location]) {
+            // await this.loadingPauseCheck();
             if(items_mines[mines_location][m]["tags"] !== undefined) {
               if(items_mines[mines_location][m]["tags"].includes("fishable")) { 
                 if(items_mines[mines_location][m]["value"] !== undefined) {
@@ -335,7 +352,9 @@ export default {
 
         // Extract all fish from the items/fish dictionary.
         for(let fish_location in items_fish) {
+          await this.loadingPauseCheck();
           for(let f in items_fish[fish_location]) {
+            // await this.loadingPauseCheck();
             if(items_fish[fish_location][f]["tags"] !== undefined) {
               if(items_fish[fish_location][f]["tags"].includes("fishable")) {
                 if(items_fish[fish_location][f]["value"] !== undefined) {
@@ -359,6 +378,7 @@ export default {
 
         // Extract additional fish data from the fish dictionary.
         for(let i = 0; i < this.fish.length; i++) {
+          await this.loadingPauseCheck();
           if(this.fish[i]["key"] in data_fish) {
             if(data_fish[this.fish[i]["key"]]["seasons"] !== undefined) {
               this.fish[i]["seasons"] = data_fish[this.fish[i]["key"]]["seasons"].join(", ");
@@ -445,7 +465,9 @@ export default {
 
         // Extract all artifacts from the items/mines dictionary.
         for(let mines_location in items_mines) {
+          await this.loadingPauseCheck();
           for(let m in items_mines[mines_location]) {
+            // await this.loadingPauseCheck();
             if(items_mines[mines_location][m]["tags"] !== undefined) {
               if(items_mines[mines_location][m]["tags"].includes("archaeology")) {
                 this.artifacts_dict[m] = {
@@ -462,6 +484,7 @@ export default {
 
         // Extract all artifacts from the items/other/artifacts dictionary.
         for(let artifact in items_other_artifacts) {
+          await this.loadingPauseCheck();
           if(items_other_artifacts[artifact]["tags"] !== undefined) {
             if(items_other_artifacts[artifact]["tags"].includes("archaeology")) {
               this.artifacts_dict[artifact] = {
@@ -476,8 +499,10 @@ export default {
 
         // Extract additional data from the object_prototypes/rock dictionary.
         for(let node in object_prototypes["rock"]) {
+          await this.loadingPauseCheck();
           if(object_prototypes["rock"][node]["drops"] !== undefined) {
             for(let drop in object_prototypes["rock"][node]["drops"]) {
+              // await this.loadingPauseCheck();
               if(this.artifacts_dict[object_prototypes["rock"][node]["drops"][drop]["item"]] !== undefined) {
                 if(this.artifacts_dict[object_prototypes["rock"][node]["drops"][drop]["item"]]["sources"] !== undefined) {
                   this.artifacts_dict[object_prototypes["rock"][node]["drops"][drop]["item"]]["sources"].push(node);
@@ -492,6 +517,7 @@ export default {
 
         // Extract additional data from the artifacts/loot dictionary.
         for(let artifact in data_artifacts["loot"]) {
+          await this.loadingPauseCheck();
           if(this.artifacts_dict[artifact] !== undefined) {
             this.artifacts_dict[artifact]["rarity"] = data_artifacts["loot"][artifact];
           }
@@ -499,7 +525,9 @@ export default {
 
         // Extract additional data from the museum_wings/archaeology dictionary.
         for(let set in data_museum_wings["archaeology"]["sets"]) {
+          await this.loadingPauseCheck();
           for(let item in data_museum_wings["archaeology"]["sets"][set]["items"]) {
+            // await this.loadingPauseCheck();
             let item_name = data_museum_wings["archaeology"]["sets"][set]["items"][item];
             if(this.artifacts_dict[item_name] !== undefined) {
               this.artifacts_dict[item_name]["location"] = artifact_location_lookup_dict[set];
@@ -516,12 +544,14 @@ export default {
         // Extract additional data from the dungeons/dungeond/biomes dictionary.
         var object_to_biome_dict = {};
         for(let biome in data_dungeons["dungeons"]["biomes"]) {
+          await this.loadingPauseCheck();
           let biome_name = data_dungeons["dungeons"]["biomes"][biome]["artifact_set"];
           if(biome_name === "upper_mines_artifacts") {
             biome_name = "upper_mines";
           }
 
           for(let i in data_dungeons["dungeons"]["biomes"][biome]["votes"]["ore_rock"]) {
+            // await this.loadingPauseCheck();
             let ore = data_dungeons["dungeons"]["biomes"][biome]["votes"]["ore_rock"][i]["object"];
             object_to_biome_dict[ore] = biome_name;
           }          
@@ -529,6 +559,7 @@ export default {
 
         // Note: Anything mapping to "mine" isn't obtaineable yet. Make that clear!
         for(let o in object_to_biome_dict) {
+          await this.loadingPauseCheck();
           if(object_to_biome_dict[o] === "mine") {
             object_to_biome_dict[o] = "unobtainable";
           }
@@ -536,7 +567,9 @@ export default {
 
         // Set location based on sources (for nodes and rocks).
         for(let a in this.artifacts_dict) {
+          await this.loadingPauseCheck();
           for(let s in this.artifacts_dict[a]["sources"]) {
+            // await this.loadingPauseCheck();
             let source = this.artifacts_dict[a]["sources"][s];
             if(object_to_biome_dict[source] !== undefined) {
               this.artifacts_dict[a]["location"] = object_to_biome_dict[source];
@@ -546,6 +579,7 @@ export default {
 
         // Anything still without a source is unobtainable.
         for(let a in this.artifacts_dict) {
+          await this.loadingPauseCheck();
           if(this.artifacts_dict[a]["sources"] === undefined) {
             this.artifacts_dict[a]["sources"] = ['none'];
           }
@@ -553,6 +587,7 @@ export default {
 
         // Anything still without a location is unobtainable.
         for(let a in this.artifacts_dict) {
+          await this.loadingPauseCheck();
           if(this.artifacts_dict[a]["location"] === undefined) {
             this.artifacts_dict[a]["location"] = "unobtainable";
           }
@@ -560,6 +595,7 @@ export default {
 
         // Convert the artifacts dict to an array for the table.
         for(let a in this.artifacts_dict) {
+          await this.loadingPauseCheck();
           this.artifacts_dict[a]["sources"] = this.artifacts_dict[a]["sources"].join(", ");
           this.artifacts.push(this.artifacts_dict[a]);
         }
@@ -571,6 +607,7 @@ export default {
 
         // Extract data from bugs dictionary
         for(let b in data_bugs) {
+          await this.loadingPauseCheck();
           if(b !== "default") {
             this.bugs_dict[b] = {
               "key": b, // string
@@ -591,6 +628,7 @@ export default {
 
         // Extract data from items/other/bugs dictionary.
         for(let b in items_other_bugs) {
+          await this.loadingPauseCheck();
           if(this.bugs_dict[b] === undefined) {
             this.bugs_dict[b] = {
               "name": this.localizations_eng[items_other_bugs[b]["name"]],
@@ -613,7 +651,9 @@ export default {
 
         // Extract data from items/mines
         for(let l in items_mines) {
+          await this.loadingPauseCheck();
           for(let x in items_mines[l]) {
+            // await this.loadingPauseCheck();
             if(this.bugs_dict[x] !== undefined) {
               this.bugs_dict[x]["name"] = this.localizations_eng[items_mines[l][x]["name"]];
               this.bugs_dict[x]["value"] = items_mines[l][x]["value"]["bin"];
@@ -623,6 +663,7 @@ export default {
 
         // Convert the bugs dict to an array for the table.
         for(let b in this.bugs_dict) {
+          await this.loadingPauseCheck();
           if(this.bugs_dict[b]["locations"] === undefined) {
             this.bugs_dict[b]["locations"] = "overworld";
           }
@@ -666,11 +707,12 @@ export default {
         }
 
         // COOKED DISHES
-        this.cooked_dishes = [];
+        this.cooking = [];
         this.cooked_dishes_dict = {};
 
         // Extract data from the items/other/cooked_dishes dict.
         for(let c in items_other_cooked_dishes) {
+          await this.loadingPauseCheck();
           this.cooked_dishes_dict[c] = {
             "key": c,
             "name": this.localizations_eng[items_other_cooked_dishes[c]["name"]],
@@ -695,11 +737,14 @@ export default {
 
         // Extract recipe purchase location from stores dict.
         for(let s in data_stores) {
+          await this.loadingPauseCheck();
           let store_name = this.localizations_eng[data_stores[s]["name"]];
           for(let c in data_stores[s]["categories"]) {
+            // await this.loadingPauseCheck();
             // Constant Stock (so far only Terithia's shop sells constant recipes)
             if(data_stores[s]["categories"][c]["constant_stock"] !== undefined) {
               for(let i in data_stores[s]["categories"][c]["constant_stock"]) {
+                // await this.loadingPauseCheck();
                 let stock_item = data_stores[s]["categories"][c]["constant_stock"][i];
                 if(typeof stock_item === 'object' && stock_item["recipe_scroll"] !== undefined) {
                   let recipe_name = data_stores[s]["categories"][c]["constant_stock"][i]["recipe_scroll"]
@@ -713,6 +758,7 @@ export default {
             // Random Stock (inn and darcey)
             if(data_stores[s]["categories"][c]["random_stock"] !== undefined) {
               for(let i in data_stores[s]["categories"][c]["random_stock"]) {
+                // await this.loadingPauseCheck();
                 let stock_item = data_stores[s]["categories"][c]["random_stock"][i];
                 if(typeof stock_item === 'object' && stock_item["item"] !== undefined && stock_item["include_recipe"] === true) { // darcy's shop
                   let recipe_name = data_stores[s]["categories"][c]["random_stock"][i]["item"];
@@ -739,7 +785,9 @@ export default {
 
         // Extract recipe locations from fishing/chest_tables dict.
         for(let c in data_fishing["chest_tables"]) {
+          await this.loadingPauseCheck();
           for(let i in data_fishing["chest_tables"][c]["items"]) {
+            // await this.loadingPauseCheck();
             if(data_fishing["chest_tables"][c]["items"][i]["kind"] === "recipe") {
               let recipe_name = data_fishing["chest_tables"][c]["items"][i]["value"];
               if(this.cooked_dishes_dict[recipe_name] !== undefined) {
@@ -753,7 +801,9 @@ export default {
         
         // Extract recipe locations from wishing_well dict.
         for(let rarity in data_wishing_well) {
+          await this.loadingPauseCheck();
           for(let i in data_wishing_well[rarity]["small_roll"]) {
+            // await this.loadingPauseCheck();
             if(data_wishing_well[rarity]["small_roll"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_wishing_well[rarity]["small_roll"][i]["recipe_scroll"];
               this.cooked_dishes_dict[recipe_name]["obtained_by"] = "gacha (random)";
@@ -762,6 +812,7 @@ export default {
             }
           }
           for(let i in data_wishing_well[rarity]["large_roll"]) {
+            // await this.loadingPauseCheck();
             if(data_wishing_well[rarity]["large_roll"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_wishing_well[rarity]["large_roll"][i]["recipe_scroll"];
               this.cooked_dishes_dict[recipe_name]["obtained_by"] = "gacha (random)";
@@ -774,7 +825,9 @@ export default {
         // Extract recipe locations from chicken_statue dict.
         // TODO: Refactor this and wishing_well common code to a method
         for(let rarity in data_chicken_statue) {
+          await this.loadingPauseCheck();
           for(let i in data_chicken_statue[rarity]["small_roll"]) {
+            // await this.loadingPauseCheck();
             if(data_chicken_statue[rarity]["small_roll"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_chicken_statue[rarity]["small_roll"][i]["recipe_scroll"];
               this.cooked_dishes_dict[recipe_name]["obtained_by"] = "gacha (random)";
@@ -783,6 +836,7 @@ export default {
             }
           }
           for(let i in data_chicken_statue[rarity]["large_roll"]) {
+            // await this.loadingPauseCheck();
             if(data_chicken_statue[rarity]["large_roll"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_chicken_statue[rarity]["large_roll"][i]["recipe_scroll"];
               this.cooked_dishes_dict[recipe_name]["obtained_by"] = "gacha (random)";
@@ -794,8 +848,10 @@ export default {
 
         // Extract recipe locations from letters. 
         for(let l in data_letters) {
+          await this.loadingPauseCheck();
           if(data_letters[l]["items"] !== undefined) {
             for(let i in data_letters[l]["items"]) {
+              // await this.loadingPauseCheck();
               if(data_letters[l]["items"][i]["recipe_scroll"] !== undefined) {
                 let recipe_name = data_letters[l]["items"][i]["recipe_scroll"];
                 if(data_letters[l]["ari_has_sold"] !== undefined) {
@@ -823,7 +879,9 @@ export default {
 
         // Extract recipe locations from quests/story_quests dictionary.
         for(let q in data_quests["story_quests"]) {
+          await this.loadingPauseCheck();
           for(let i in data_quests["story_quests"][q]["rewards"]) {
+            // await this.loadingPauseCheck();
             if(data_quests["story_quests"][q]["rewards"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_quests["story_quests"][q]["rewards"][i]["recipe_scroll"];
               let quest_name = this.localizations_eng[data_quests["story_quests"][q]["name"]];
@@ -837,7 +895,9 @@ export default {
 
         // Extract recipe locations from quests/fetch_quests dictionary.
         for(let q in data_quests["fetch_quests"]) {
+          await this.loadingPauseCheck();
           for(let i in data_quests["fetch_quests"][q]["rewards"]) {
+            // await this.loadingPauseCheck();
             if(data_quests["fetch_quests"][q]["rewards"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_quests["fetch_quests"][q]["rewards"][i]["recipe_scroll"];
               let quest_name = this.localizations_eng[data_quests["fetch_quests"][q]["name"]];
@@ -851,11 +911,13 @@ export default {
 
         // Extract recipe locations from mines treasure chests
         for(let b in data_dungeons["dungeons"]["biomes"]) {
+          await this.loadingPauseCheck();
           let biome_name = data_dungeons["dungeons"]["biomes"][b]["artifact_set"];
           if(biome_name === "upper_mines_artifacts") {
             biome_name = "upper_mines";
           }
           for(let i in data_dungeons["dungeons"]["biomes"][b]["taste_maker"]) {
+            // await this.loadingPauseCheck();
             let recipe_name = data_dungeons["dungeons"]["biomes"][b]["taste_maker"][i];
             if(this.cooked_dishes_dict[recipe_name] !== undefined) {
               this.cooked_dishes_dict[recipe_name]["obtained_by"] = "mines (treasure chest)";
@@ -866,6 +928,7 @@ export default {
 
         // Cleanup and build the list.
         for(let x in this.cooked_dishes_dict) {
+          await this.loadingPauseCheck();
           // Remove the price for any recipe not marked purchaseable.
           if(this.cooked_dishes_dict[x]["obtained_by"] === undefined || this.cooked_dishes_dict[x]["obtained_by"] !== "purchase") {
             delete this.cooked_dishes_dict[x]["recipe_price"];
@@ -885,6 +948,7 @@ export default {
             // Format the recipe string.
             let recipe = "";
             for(let i in this.cooked_dishes_dict[x]["recipe"]) {
+              // await this.loadingPauseCheck();
               if(this.cooked_dishes_dict[x]["recipe"][i]["item"] !== undefined) {
                 let localization_string_regex = "^(items)[/](?!furniture)[a-z_/]+(\\b" + this.cooked_dishes_dict[x]["recipe"][i]["item"] + ")[/](name)$";
                 let item_name = this.find_localization_string(localization_string_regex)
@@ -908,6 +972,8 @@ export default {
 
         console.log("------------------------------");
         console.log(this.cooked_dishes_dict);
+
+        this.loading = false;
       }
     },
 
