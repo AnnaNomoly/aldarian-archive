@@ -69,30 +69,48 @@
           <v-tabs-items theme--dark v-model="selected_tab">
             <v-tab-item v-for="tab in tabs" :key="tab">
               <div style="overflow-y: auto;">
+                <!-- Artifacts -->
                 <v-card v-if="tab == 'Artifacts'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
                   <v-card-title>
                     <v-text-field v-model="artifact_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
                   </v-card-title>
                   <v-data-table dense :headers="artifact_headers" :items="artifacts" :search="artifact_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
                 </v-card>
+                <!-- Bugs -->
                 <v-card v-if="tab == 'Bugs'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
                   <v-card-title>
                     <v-text-field v-model="bug_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
                   </v-card-title>
                   <v-data-table dense :headers="bug_headers" :items="bugs" :search="bug_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
                 </v-card>
+                <!-- Cooking -->
                 <v-card v-if="tab == 'Cooking'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
                   <v-card-title>
                     <v-text-field v-model="cooking_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
                   </v-card-title>
                   <v-data-table dense class="text-pre-wrap" :headers="cooking_headers" :items="cooking" :search="cooking_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
                 </v-card>
+                <!-- Fish -->
                 <v-card v-if="tab == 'Fish'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
-                <v-card-title>
-                  <v-text-field v-model="fish_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
-                </v-card-title>
+                  <v-card-title>
+                    <v-text-field v-model="fish_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
+                  </v-card-title>
                 <v-data-table dense :headers="fish_headers" :items="fish" :search="fish_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
-              </v-card>
+                </v-card>
+                <!-- Forage -->
+                <v-card v-if="tab == 'Forage'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
+                  <v-card-title>
+                    <v-text-field v-model="forage_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
+                  </v-card-title>
+                <v-data-table dense :headers="forage_headers" :items="forage" :search="forage_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                </v-card>
+                <!-- Harvest -->
+                <v-card v-if="tab == 'Harvest'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
+                  <v-card-title>
+                    <v-text-field v-model="crops_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
+                  </v-card-title>
+                  <v-data-table dense class="text-pre-wrap" :headers="crops_headers" :items="crops" :search="crops_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                </v-card>
               </div>
             </v-tab-item>
           </v-tabs-items>
@@ -117,11 +135,13 @@ export default {
         "Bugs",
         "Cooking",
         //"Crafting",
-        //"Crops",
-        //"Forage",
         "Fish",
+        "Forage",
+        "Harvest",
+        //"Locations",
         //"NPCs",
-        //"Quests"
+        //"Quests",
+        // Schedules
       ],
 
       // fish_panels: [
@@ -175,6 +195,21 @@ export default {
       ],
       cooking: [],
 
+      // Crops
+      crops_search: "",
+      crops_headers: [
+        { text: "Name", value: "name" },
+        { text: "Season", value: "seasons" },
+        { text: "Growth Time", value: "growth_time" },
+        { text: "Regrowth Time", value: "growth_time" },
+        { text: "Restoration", value: "restore" },
+        { text: "Sell Price", value: "sell_price" },
+        { text: "Purchase Price", value: "purchase_price" },
+        { text: "Seed", value: "seed_name" },
+        { text: "Seed Price", value: "seed_price" },
+      ],
+      crops: [],
+
       // Fish
       fish_search: "",
       fish_headers: [
@@ -189,6 +224,18 @@ export default {
       ],
       fish: [],
 
+      // Forage
+      forage_search: "",
+      forage_headers: [
+        { text: "Name", value: "name" },
+        { text: "Seasons", value: "seasons" },
+        { text: "Rarity", value: "rarity" },
+        { text: "Source (Bush/Tree)", value: "source" },
+        { text: "Restoration", value: "restore" },
+        { text: "Sell Price", value: "sell_price" },
+        { text: "Purchase Price", value: "purchase_price" },
+      ],
+      forage: [],
     }),
 
     methods: {
@@ -203,7 +250,22 @@ export default {
         }
       },
 
+      clear_data: function() {
+        this.artifacts = [];
+        this.artifacts_dict = {};
+        this.bugs = [];
+        this.bugs_dict = {};
+        this.cooking = [];
+        this.cooking_dict = {};
+        this.crops = [];
+        this.crops_dict = {};
+        this.fish = [];
+        this.forage = [];
+        this.forage_dict = {};
+      },
+
       load_data: function(version) {
+        this.clear_data();
         this.loading = true;
         this.version_loaded = version;
         console.log("Loaded Data: " + version);
@@ -290,6 +352,7 @@ export default {
         // Items Data
         var items_other_artifacts = json["items"]["other"]["artifacts"];
         var items_other_bugs = json["items"]["other"]["bugs"];
+        var items_other_crops_and_forage = json["items"]["other"]["crops_and_forage"];
         var items_fish = json["items"]["fish"];
         var items_mines = json["items"]["mines"];
         var items_other_cooked_dishes = json["items"]["other"]["cooked_dishes"];
@@ -318,6 +381,12 @@ export default {
         // Chicken Statue Data
         var data_chicken_statue = json["chicken_statue"];
 
+        // Restoration Data
+        var data_restoration = json["restoration"];
+
+        // Forageables Data
+        var data_forageables = json["forageables"];
+
         // PARSE FISH
         this.fish = [];
 
@@ -325,7 +394,6 @@ export default {
         for(let mines_location in items_mines) {
           await this.loadingPauseCheck();
           for(let m in items_mines[mines_location]) {
-            // await this.loadingPauseCheck();
             if(items_mines[mines_location][m]["tags"] !== undefined) {
               if(items_mines[mines_location][m]["tags"].includes("fishable")) { 
                 if(items_mines[mines_location][m]["value"] !== undefined) {
@@ -354,7 +422,6 @@ export default {
         for(let fish_location in items_fish) {
           await this.loadingPauseCheck();
           for(let f in items_fish[fish_location]) {
-            // await this.loadingPauseCheck();
             if(items_fish[fish_location][f]["tags"] !== undefined) {
               if(items_fish[fish_location][f]["tags"].includes("fishable")) {
                 if(items_fish[fish_location][f]["value"] !== undefined) {
@@ -467,7 +534,6 @@ export default {
         for(let mines_location in items_mines) {
           await this.loadingPauseCheck();
           for(let m in items_mines[mines_location]) {
-            // await this.loadingPauseCheck();
             if(items_mines[mines_location][m]["tags"] !== undefined) {
               if(items_mines[mines_location][m]["tags"].includes("archaeology")) {
                 this.artifacts_dict[m] = {
@@ -502,7 +568,6 @@ export default {
           await this.loadingPauseCheck();
           if(object_prototypes["rock"][node]["drops"] !== undefined) {
             for(let drop in object_prototypes["rock"][node]["drops"]) {
-              // await this.loadingPauseCheck();
               if(this.artifacts_dict[object_prototypes["rock"][node]["drops"][drop]["item"]] !== undefined) {
                 if(this.artifacts_dict[object_prototypes["rock"][node]["drops"][drop]["item"]]["sources"] !== undefined) {
                   this.artifacts_dict[object_prototypes["rock"][node]["drops"][drop]["item"]]["sources"].push(node);
@@ -527,7 +592,6 @@ export default {
         for(let set in data_museum_wings["archaeology"]["sets"]) {
           await this.loadingPauseCheck();
           for(let item in data_museum_wings["archaeology"]["sets"][set]["items"]) {
-            // await this.loadingPauseCheck();
             let item_name = data_museum_wings["archaeology"]["sets"][set]["items"][item];
             if(this.artifacts_dict[item_name] !== undefined) {
               this.artifacts_dict[item_name]["location"] = artifact_location_lookup_dict[set];
@@ -551,7 +615,6 @@ export default {
           }
 
           for(let i in data_dungeons["dungeons"]["biomes"][biome]["votes"]["ore_rock"]) {
-            // await this.loadingPauseCheck();
             let ore = data_dungeons["dungeons"]["biomes"][biome]["votes"]["ore_rock"][i]["object"];
             object_to_biome_dict[ore] = biome_name;
           }          
@@ -569,7 +632,6 @@ export default {
         for(let a in this.artifacts_dict) {
           await this.loadingPauseCheck();
           for(let s in this.artifacts_dict[a]["sources"]) {
-            // await this.loadingPauseCheck();
             let source = this.artifacts_dict[a]["sources"][s];
             if(object_to_biome_dict[source] !== undefined) {
               this.artifacts_dict[a]["location"] = object_to_biome_dict[source];
@@ -653,7 +715,6 @@ export default {
         for(let l in items_mines) {
           await this.loadingPauseCheck();
           for(let x in items_mines[l]) {
-            // await this.loadingPauseCheck();
             if(this.bugs_dict[x] !== undefined) {
               this.bugs_dict[x]["name"] = this.localizations_eng[items_mines[l][x]["name"]];
               this.bugs_dict[x]["value"] = items_mines[l][x]["value"]["bin"];
@@ -708,12 +769,12 @@ export default {
 
         // COOKED DISHES
         this.cooking = [];
-        this.cooked_dishes_dict = {};
+        this.cooking_dict = {};
 
         // Extract data from the items/other/cooked_dishes dict.
         for(let c in items_other_cooked_dishes) {
           await this.loadingPauseCheck();
-          this.cooked_dishes_dict[c] = {
+          this.cooking_dict[c] = {
             "key": c,
             "name": this.localizations_eng[items_other_cooked_dishes[c]["name"]],
             "stars": items_other_cooked_dishes[c]["stars"],
@@ -724,13 +785,13 @@ export default {
           }
 
           if(items_other_cooked_dishes[c]["recipe_is_default"] !== undefined && items_other_cooked_dishes[c]["recipe_is_default"] === true) { // You start with this recipe.
-            this.cooked_dishes_dict[c]["obtained_by"] = "default";
-            this.cooked_dishes_dict[c]["obtained_from"] = "game start";
+            this.cooking_dict[c]["obtained_by"] = "default";
+            this.cooking_dict[c]["obtained_from"] = "game start";
           }
           else {
             // Extract recipe prices from misc/cooking_recipe_star_prices
-            if(this.cooked_dishes_dict[c]["stars"] !== undefined) { // If the cooking dish has no stars it can't be purchased.
-              this.cooked_dishes_dict[c]["recipe_price"] = data_misc["cooking_recipe_star_prices"][this.cooked_dishes_dict[c]["stars"]-1];
+            if(this.cooking_dict[c]["stars"] !== undefined) { // If the cooking dish has no stars it can't be purchased.
+              this.cooking_dict[c]["recipe_price"] = data_misc["cooking_recipe_star_prices"][this.cooking_dict[c]["stars"]-1];
             }
           }
         }
@@ -740,17 +801,15 @@ export default {
           await this.loadingPauseCheck();
           let store_name = this.localizations_eng[data_stores[s]["name"]];
           for(let c in data_stores[s]["categories"]) {
-            // await this.loadingPauseCheck();
             // Constant Stock (so far only Terithia's shop sells constant recipes)
             if(data_stores[s]["categories"][c]["constant_stock"] !== undefined) {
               for(let i in data_stores[s]["categories"][c]["constant_stock"]) {
-                // await this.loadingPauseCheck();
                 let stock_item = data_stores[s]["categories"][c]["constant_stock"][i];
                 if(typeof stock_item === 'object' && stock_item["recipe_scroll"] !== undefined) {
                   let recipe_name = data_stores[s]["categories"][c]["constant_stock"][i]["recipe_scroll"]
-                  if(this.cooked_dishes_dict[recipe_name] !== undefined) {
-                    this.cooked_dishes_dict[recipe_name]["obtained_by"] = "purchase";
-                    this.cooked_dishes_dict[recipe_name]["obtained_from"] = store_name;
+                  if(this.cooking_dict[recipe_name] !== undefined) {
+                    this.cooking_dict[recipe_name]["obtained_by"] = "purchase";
+                    this.cooking_dict[recipe_name]["obtained_from"] = store_name;
                   }
                 }
               }
@@ -758,24 +817,23 @@ export default {
             // Random Stock (inn and darcey)
             if(data_stores[s]["categories"][c]["random_stock"] !== undefined) {
               for(let i in data_stores[s]["categories"][c]["random_stock"]) {
-                // await this.loadingPauseCheck();
                 let stock_item = data_stores[s]["categories"][c]["random_stock"][i];
                 if(typeof stock_item === 'object' && stock_item["item"] !== undefined && stock_item["include_recipe"] === true) { // darcy's shop
                   let recipe_name = data_stores[s]["categories"][c]["random_stock"][i]["item"];
-                  if(this.cooked_dishes_dict[recipe_name] !== undefined) {
-                    this.cooked_dishes_dict[recipe_name]["obtained_by"] = "purchase";
-                    this.cooked_dishes_dict[recipe_name]["obtained_from"] = store_name;
+                  if(this.cooking_dict[recipe_name] !== undefined) {
+                    this.cooking_dict[recipe_name]["obtained_by"] = "purchase";
+                    this.cooking_dict[recipe_name]["obtained_from"] = store_name;
                   }
                 }
                 else if(typeof stock_item === 'object' && stock_item["recipe_scroll"] !== undefined) { // inn
                   let recipe_name = data_stores[s]["categories"][c]["random_stock"][i]["recipe_scroll"];
                   if(stock_item["building_fixed"] !== undefined) {
-                    this.cooked_dishes_dict[recipe_name]["obtained_by"] = "purchase";
-                    this.cooked_dishes_dict[recipe_name]["obtained_from"] = store_name;
+                    this.cooking_dict[recipe_name]["obtained_by"] = "purchase";
+                    this.cooking_dict[recipe_name]["obtained_from"] = store_name;
                   }
                   else {
-                    this.cooked_dishes_dict[recipe_name]["obtained_by"] = "purchase";
-                    this.cooked_dishes_dict[recipe_name]["obtained_from"] = store_name + " (upgraded)";
+                    this.cooking_dict[recipe_name]["obtained_by"] = "purchase";
+                    this.cooking_dict[recipe_name]["obtained_from"] = store_name + " (upgraded)";
                   }
                 }
               }
@@ -787,13 +845,12 @@ export default {
         for(let c in data_fishing["chest_tables"]) {
           await this.loadingPauseCheck();
           for(let i in data_fishing["chest_tables"][c]["items"]) {
-            // await this.loadingPauseCheck();
             if(data_fishing["chest_tables"][c]["items"][i]["kind"] === "recipe") {
               let recipe_name = data_fishing["chest_tables"][c]["items"][i]["value"];
-              if(this.cooked_dishes_dict[recipe_name] !== undefined) {
-                this.cooked_dishes_dict[recipe_name]["obtained_by"] = "fishing";
-                this.cooked_dishes_dict[recipe_name]["obtained_from"] = c + " treasure box";
-                delete this.cooked_dishes_dict[recipe_name]["recipe_price"];
+              if(this.cooking_dict[recipe_name] !== undefined) {
+                this.cooking_dict[recipe_name]["obtained_by"] = "fishing";
+                this.cooking_dict[recipe_name]["obtained_from"] = c + " treasure box";
+                delete this.cooking_dict[recipe_name]["recipe_price"];
               }
             }
           }
@@ -803,21 +860,19 @@ export default {
         for(let rarity in data_wishing_well) {
           await this.loadingPauseCheck();
           for(let i in data_wishing_well[rarity]["small_roll"]) {
-            // await this.loadingPauseCheck();
             if(data_wishing_well[rarity]["small_roll"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_wishing_well[rarity]["small_roll"][i]["recipe_scroll"];
-              this.cooked_dishes_dict[recipe_name]["obtained_by"] = "gacha (random)";
-              this.cooked_dishes_dict[recipe_name]["obtained_from"] = "wishing_well";
-              delete this.cooked_dishes_dict[recipe_name]["recipe_price"];
+              this.cooking_dict[recipe_name]["obtained_by"] = "gacha (random)";
+              this.cooking_dict[recipe_name]["obtained_from"] = "wishing_well";
+              delete this.cooking_dict[recipe_name]["recipe_price"];
             }
           }
           for(let i in data_wishing_well[rarity]["large_roll"]) {
-            // await this.loadingPauseCheck();
             if(data_wishing_well[rarity]["large_roll"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_wishing_well[rarity]["large_roll"][i]["recipe_scroll"];
-              this.cooked_dishes_dict[recipe_name]["obtained_by"] = "gacha (random)";
-              this.cooked_dishes_dict[recipe_name]["obtained_from"] = "wishing_well";
-              delete this.cooked_dishes_dict[recipe_name]["recipe_price"];
+              this.cooking_dict[recipe_name]["obtained_by"] = "gacha (random)";
+              this.cooking_dict[recipe_name]["obtained_from"] = "wishing_well";
+              delete this.cooking_dict[recipe_name]["recipe_price"];
             }
           }
         }
@@ -827,21 +882,19 @@ export default {
         for(let rarity in data_chicken_statue) {
           await this.loadingPauseCheck();
           for(let i in data_chicken_statue[rarity]["small_roll"]) {
-            // await this.loadingPauseCheck();
             if(data_chicken_statue[rarity]["small_roll"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_chicken_statue[rarity]["small_roll"][i]["recipe_scroll"];
-              this.cooked_dishes_dict[recipe_name]["obtained_by"] = "gacha (random)";
-              this.cooked_dishes_dict[recipe_name]["obtained_from"] = "chicken_statue";
-              delete this.cooked_dishes_dict[recipe_name]["recipe_price"];
+              this.cooking_dict[recipe_name]["obtained_by"] = "gacha (random)";
+              this.cooking_dict[recipe_name]["obtained_from"] = "chicken_statue";
+              delete this.cooking_dict[recipe_name]["recipe_price"];
             }
           }
           for(let i in data_chicken_statue[rarity]["large_roll"]) {
-            // await this.loadingPauseCheck();
             if(data_chicken_statue[rarity]["large_roll"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_chicken_statue[rarity]["large_roll"][i]["recipe_scroll"];
-              this.cooked_dishes_dict[recipe_name]["obtained_by"] = "gacha (random)";
-              this.cooked_dishes_dict[recipe_name]["obtained_from"] = "chicken_statue";
-              delete this.cooked_dishes_dict[recipe_name]["recipe_price"];
+              this.cooking_dict[recipe_name]["obtained_by"] = "gacha (random)";
+              this.cooking_dict[recipe_name]["obtained_from"] = "chicken_statue";
+              delete this.cooking_dict[recipe_name]["recipe_price"];
             }
           }
         }
@@ -851,24 +904,23 @@ export default {
           await this.loadingPauseCheck();
           if(data_letters[l]["items"] !== undefined) {
             for(let i in data_letters[l]["items"]) {
-              // await this.loadingPauseCheck();
               if(data_letters[l]["items"][i]["recipe_scroll"] !== undefined) {
                 let recipe_name = data_letters[l]["items"][i]["recipe_scroll"];
                 if(data_letters[l]["ari_has_sold"] !== undefined) {
                   let localization_string = "items/other/crops_and_forage/" + data_letters[l]["ari_has_sold"] + "/name";
                   let item_name = this.localizations_eng[localization_string];
-                  this.cooked_dishes_dict[recipe_name]["obtained_by"] = "shipping (" + item_name + ")";
-                  this.cooked_dishes_dict[recipe_name]["obtained_from"] = "letter/mail";
-                  delete this.cooked_dishes_dict[recipe_name]["recipe_price"];
+                  this.cooking_dict[recipe_name]["obtained_by"] = "shipping (" + item_name + ")";
+                  this.cooking_dict[recipe_name]["obtained_from"] = "letter/mail";
+                  delete this.cooking_dict[recipe_name]["recipe_price"];
                 }
                 if(data_letters[l]["ari_has_donated"] !== undefined) {
                   let localization_string_regex = "^[a-z_/]+(" + data_letters[l]["ari_has_donated"] + ")[/](name)$";
                   let item_name = this.find_localization_string(localization_string_regex)
                   if(item_name !== false) {
                     item_name = this.localizations_eng[item_name];
-                    this.cooked_dishes_dict[recipe_name]["obtained_by"] = "museum_donation (" + item_name + ")";
-                    this.cooked_dishes_dict[recipe_name]["obtained_from"] = "letter/mail";
-                    delete this.cooked_dishes_dict[recipe_name]["recipe_price"];
+                    this.cooking_dict[recipe_name]["obtained_by"] = "museum_donation (" + item_name + ")";
+                    this.cooking_dict[recipe_name]["obtained_from"] = "letter/mail";
+                    delete this.cooking_dict[recipe_name]["recipe_price"];
                   }
                 }
               }
@@ -881,13 +933,12 @@ export default {
         for(let q in data_quests["story_quests"]) {
           await this.loadingPauseCheck();
           for(let i in data_quests["story_quests"][q]["rewards"]) {
-            // await this.loadingPauseCheck();
             if(data_quests["story_quests"][q]["rewards"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_quests["story_quests"][q]["rewards"][i]["recipe_scroll"];
               let quest_name = this.localizations_eng[data_quests["story_quests"][q]["name"]];
-              if(this.cooked_dishes_dict[recipe_name] !== undefined) {
-                this.cooked_dishes_dict[recipe_name]["obtained_by"] = "quest";
-                this.cooked_dishes_dict[recipe_name]["obtained_from"] = quest_name;
+              if(this.cooking_dict[recipe_name] !== undefined) {
+                this.cooking_dict[recipe_name]["obtained_by"] = "quest";
+                this.cooking_dict[recipe_name]["obtained_from"] = quest_name;
               }
             }
           }
@@ -897,13 +948,12 @@ export default {
         for(let q in data_quests["fetch_quests"]) {
           await this.loadingPauseCheck();
           for(let i in data_quests["fetch_quests"][q]["rewards"]) {
-            // await this.loadingPauseCheck();
             if(data_quests["fetch_quests"][q]["rewards"][i]["recipe_scroll"] !== undefined) {
               let recipe_name = data_quests["fetch_quests"][q]["rewards"][i]["recipe_scroll"];
               let quest_name = this.localizations_eng[data_quests["fetch_quests"][q]["name"]];
-              if(this.cooked_dishes_dict[recipe_name] !== undefined) {
-                this.cooked_dishes_dict[recipe_name]["obtained_by"] = "quest";
-                this.cooked_dishes_dict[recipe_name]["obtained_from"] = quest_name;
+              if(this.cooking_dict[recipe_name] !== undefined) {
+                this.cooking_dict[recipe_name]["obtained_by"] = "quest";
+                this.cooking_dict[recipe_name]["obtained_from"] = quest_name;
               }
             }
           }
@@ -917,62 +967,294 @@ export default {
             biome_name = "upper_mines";
           }
           for(let i in data_dungeons["dungeons"]["biomes"][b]["taste_maker"]) {
-            // await this.loadingPauseCheck();
             let recipe_name = data_dungeons["dungeons"]["biomes"][b]["taste_maker"][i];
-            if(this.cooked_dishes_dict[recipe_name] !== undefined) {
-              this.cooked_dishes_dict[recipe_name]["obtained_by"] = "mines (treasure chest)";
-              this.cooked_dishes_dict[recipe_name]["obtained_from"] = biome_name;
+            if(this.cooking_dict[recipe_name] !== undefined) {
+              this.cooking_dict[recipe_name]["obtained_by"] = "mines (treasure chest)";
+              this.cooking_dict[recipe_name]["obtained_from"] = biome_name;
             }
           }
         }
 
         // Cleanup and build the list.
-        for(let x in this.cooked_dishes_dict) {
+        for(let x in this.cooking_dict) {
           await this.loadingPauseCheck();
           // Remove the price for any recipe not marked purchaseable.
-          if(this.cooked_dishes_dict[x]["obtained_by"] === undefined || this.cooked_dishes_dict[x]["obtained_by"] !== "purchase") {
-            delete this.cooked_dishes_dict[x]["recipe_price"];
+          if(this.cooking_dict[x]["obtained_by"] === undefined || this.cooking_dict[x]["obtained_by"] !== "purchase") {
+            delete this.cooking_dict[x]["recipe_price"];
           }
 
           // Remove anything without a recipe.
-          if(this.cooked_dishes_dict[x]["recipe"] === undefined) {
+          if(this.cooking_dict[x]["recipe"] === undefined) {
             console.log("Missing recipe for: " + x);
-            delete this.cooked_dishes_dict[x];
+            delete this.cooking_dict[x];
           }
           else {
             // Mark unobtainable recipes.
-            if(this.cooked_dishes_dict[x]["obtained_by"] === undefined) {
-              this.cooked_dishes_dict[x]["obtained_by"] = "unobtainable";
-              this.cooked_dishes_dict[x]["obtained_from"] = "unobtainable";
+            if(this.cooking_dict[x]["obtained_by"] === undefined) {
+              this.cooking_dict[x]["obtained_by"] = "unobtainable";
+              this.cooking_dict[x]["obtained_from"] = "unobtainable";
             }
             // Format the recipe string.
             let recipe = "";
-            for(let i in this.cooked_dishes_dict[x]["recipe"]) {
-              // await this.loadingPauseCheck();
-              if(this.cooked_dishes_dict[x]["recipe"][i]["item"] !== undefined) {
-                let localization_string_regex = "^(items)[/](?!furniture)[a-z_/]+(\\b" + this.cooked_dishes_dict[x]["recipe"][i]["item"] + ")[/](name)$";
+            for(let i in this.cooking_dict[x]["recipe"]) {
+              if(this.cooking_dict[x]["recipe"][i]["item"] !== undefined) {
+                let localization_string_regex = "^(items)[/](?!furniture)[a-z_/]+(\\b" + this.cooking_dict[x]["recipe"][i]["item"] + ")[/](name)$";
                 let item_name = this.find_localization_string(localization_string_regex)
                 if(item_name !== false) {
                   item_name = this.localizations_eng[item_name];
                 }
                 else {
-                  item_name = this.cooked_dishes_dict[x]["recipe"][i]["item"];
+                  item_name = this.cooking_dict[x]["recipe"][i]["item"];
                 }
-                recipe += item_name + ": " + this.cooked_dishes_dict[x]["recipe"][i]["count"] + "\n";
+                recipe += item_name + ": " + this.cooking_dict[x]["recipe"][i]["count"] + "\n";
               }
               // Extract the time.
-              if(this.cooked_dishes_dict[x]["recipe"][i]["hours"] !== undefined || this.cooked_dishes_dict[x]["recipe"][i]["minutes"] !== undefined) {
-                this.cooked_dishes_dict[x]["time"] = "Hours: " + this.cooked_dishes_dict[x]["recipe"][i]["hours"] + "\nMinutes: " + this.cooked_dishes_dict[x]["recipe"][i]["minutes"];
+              if(this.cooking_dict[x]["recipe"][i]["hours"] !== undefined || this.cooking_dict[x]["recipe"][i]["minutes"] !== undefined) {
+                this.cooking_dict[x]["time"] = "Hours: " + this.cooking_dict[x]["recipe"][i]["hours"] + "\nMinutes: " + this.cooking_dict[x]["recipe"][i]["minutes"];
               }
             }
-            this.cooked_dishes_dict[x]["recipe"] = recipe;
-            this.cooking.push(this.cooked_dishes_dict[x]);
+            this.cooking_dict[x]["recipe"] = recipe;
+            this.cooking.push(this.cooking_dict[x]);
           }
         }
 
-        console.log("------------------------------");
-        console.log(this.cooked_dishes_dict);
+        // PARSE HARVEST (GROWABLES)
+        this.crops = [];
+        this.crops_dict = {};
+        items_other_crops_and_forage;
 
+        // Extract data from object_prototypes/crop dictionary.
+        for(let c in object_prototypes["crop"]) {
+          await this.loadingPauseCheck();
+          if(object_prototypes["crop"][c]["day_to_stage"] !== undefined && c !== "default") {
+            this.crops_dict[c] = {
+              "key": c,
+              "growth_time": object_prototypes["crop"][c]["day_to_stage"].length - 1
+            }
+            if(object_prototypes["crop"][c]["seasons"] !== undefined) {
+              this.crops_dict[c]["seasons"] = object_prototypes["crop"][c]["seasons"];
+            }
+            if(object_prototypes["crop"][c]["regrow_days"] !== undefined) {
+              this.crops_dict[c]["regrow_days"] = object_prototypes["crop"][c]["regrow_days"];
+            }
+            if(object_prototypes["crop"][c]["currency"] !== undefined) {
+              this.crops_dict[c]["currency"] = object_prototypes["crop"][c]["currency"];
+            }
+          }
+        }
+
+        // Extract data from items/other/crops_and_forage dictionary.
+        for(let c in items_other_crops_and_forage) {
+          await this.loadingPauseCheck();
+          if(this.crops_dict[c] !== undefined) {
+            let name = items_other_crops_and_forage[c]["name"];
+            this.crops_dict[c]["name"] = this.localizations_eng[name];
+            this.crops_dict[c]["restore"] = items_other_crops_and_forage[c]["restore"];
+            if(items_other_crops_and_forage[c]["value"] !== undefined && items_other_crops_and_forage[c]["value"]["bin"] !== undefined) {
+              this.crops_dict[c]["sell_price"] = items_other_crops_and_forage[c]["value"]["bin"];
+            }
+            if(items_other_crops_and_forage[c]["value"] !== undefined && items_other_crops_and_forage[c]["value"]["store"] !== undefined) {
+              this.crops_dict[c]["purchase_price"] = items_other_crops_and_forage[c]["value"]["store"];
+            }          
+          }
+          else if(c === "rice_stalk") {
+            let name = items_other_crops_and_forage[c]["name"];
+            this.crops_dict["rice"]["name"] = this.localizations_eng[name];
+            this.crops_dict["rice"]["restore"] = items_other_crops_and_forage[c]["restore"];
+            if(items_other_crops_and_forage[c]["value"] !== undefined && items_other_crops_and_forage[c]["value"]["bin"] !== undefined) {
+              this.crops_dict["rice"]["sell_price"] = items_other_crops_and_forage[c]["value"]["bin"];
+            }
+            if(items_other_crops_and_forage[c]["value"] !== undefined && items_other_crops_and_forage[c]["value"]["store"] !== undefined) {
+              this.crops_dict["rice"]["purchase_price"] = items_other_crops_and_forage[c]["value"]["store"];
+            }    
+          }
+        }
+
+        // Extract data from items/other/crops_and_forage dictionary (again).
+        for(let c in items_other_crops_and_forage) {
+          await this.loadingPauseCheck();
+          if(items_other_crops_and_forage[c]["tags"] !== undefined) {
+            if(items_other_crops_and_forage[c]["tags"].includes("seed")) {
+              let crop_name = items_other_crops_and_forage[c]["crop_object"];
+              if(this.crops_dict[crop_name] !== undefined) {
+                this.crops_dict[crop_name]["seed"] = c;
+                this.crops_dict[crop_name]["seed_name"] = this.localizations_eng[items_other_crops_and_forage[c]["name"]];
+                if(items_other_crops_and_forage[c]["value"] !== undefined && items_other_crops_and_forage[c]["value"]["store"] !== undefined) {
+                  this.crops_dict[crop_name]["seed_price"] = items_other_crops_and_forage[c]["value"]["store"];
+                }
+              }
+            }
+          }
+        }
+
+        // Cleanup.
+        for(let c in this.crops_dict) {
+          await this.loadingPauseCheck();
+          // Remove regrow duration from plantable forage
+          if(this.crops_dict[c]["restore"] !== undefined && typeof this.crops_dict[c]["restore"] === "string") {
+            if(this.crops_dict[c]["restore"].includes("forage")) {
+              if(this.crops_dict[c]["regrow_days"] !== undefined) {
+                delete this.crops_dict[c]["regrow_days"];
+              }
+            }
+          }
+          if(this.crops_dict[c]["seed_price"] === undefined) {
+            this.crops_dict[c]["seed_price"] = "unpurchasable";
+          }
+          // Inedible
+          if(this.crops_dict[c]["restore"] === undefined) {
+            this.crops_dict[c]["restore"] = "inedible";
+          }
+          // Restoration lookup/conversion.
+          else if(this.crops_dict[c]["restore"] !== undefined) {
+            let restoration_name = this.crops_dict[c]["restore"];
+            if(data_restoration["vars"][restoration_name] !== undefined) {
+              this.crops_dict[c]["restore"] = data_restoration["vars"][restoration_name] + " HP/STA";
+            }
+          }
+          this.crops.push(this.crops_dict[c]);
+        }
+
+        // PARSE FORAGE
+        this.forage = [];
+        this.forage_dict = {};
+        // 1. Internal name, season, and rarity are specified in forageables dictionary.
+        for(let t in data_forageables["tables"]) { // key (normal, beach)
+          await this.loadingPauseCheck();
+          let seasons = ["spring", "summer", "fall", "winter"];
+          for(let s in seasons) {
+            for(let r in data_forageables["tables"][t][seasons[s]]) { // key (rarity)
+              for(let i in data_forageables["tables"][t][seasons[s]][r]) { // array index
+                let name = data_forageables["tables"][t][seasons[s]][r][i];
+                this.forage_dict[name] = {
+                "key": name,
+                "rarity": r,
+                "seasons": seasons[s]
+                }
+              }
+            }
+          }
+        }
+
+        // 2. Additional data is specified in object_prototypes/bush dictionary.
+        for(let b in object_prototypes["bush"]) {
+          await this.loadingPauseCheck();
+          if(b !== "default" && b !== "bush") {
+            console.log("Bush: " + b);
+            let name = object_prototypes["bush"][b]["harvest"];
+            console.log("Name: " + name);
+            this.forage_dict[name] = {
+              "key": name,
+              "source": b,
+              "seasons": object_prototypes["bush"][b]["seasons"],
+            }
+          }
+        }
+
+        // 3. Even more data is specified in object_prototypes/tree dictionary.
+        for(let t in object_prototypes["tree"]) {
+          await this.loadingPauseCheck();
+          if(object_prototypes["tree"][t]["fruit_data"] !== undefined) {
+            console.log("Tree: " + t);
+            let name = object_prototypes["tree"][t]["fruit_data"]["harvest"];
+            console.log("Name: " + name);
+            this.forage_dict[name] = {
+              "key": name,
+              "source": t,
+              "seasons": object_prototypes["tree"][t]["fruit_data"]["seasons"]
+            }
+          }
+        }
+
+        // 4. Actual name and Value (bin/store) are specified in items/other/crops_and_forage dictionary.
+        for(let f in items_other_crops_and_forage) {
+          await this.loadingPauseCheck();
+          if(this.forage_dict[f] !== undefined) {
+            this.forage_dict[f]["name"] = this.localizations_eng[items_other_crops_and_forage[f]["name"]];
+            if(items_other_crops_and_forage[f]["restore"] !== undefined) {
+              this.forage_dict[f]["restore"] = items_other_crops_and_forage[f]["restore"];
+            }
+            if(items_other_crops_and_forage[f]["value"] !== undefined) {
+              if(items_other_crops_and_forage[f]["value"]["bin"] !== undefined) {
+                this.forage_dict[f]["sell_price"] = items_other_crops_and_forage[f]["value"]["bin"]
+              }
+              if(items_other_crops_and_forage[f]["value"]["store"] !== undefined) {
+                this.forage_dict[f]["purchase_price"] = items_other_crops_and_forage[f]["value"]["store"]
+              }
+            }
+          }
+        }
+
+        // 5. Extract data from items/fish/misc dictionary.
+        for(let f in items_fish["misc"]) {
+          await this.loadingPauseCheck();
+          if(this.forage_dict[f] !== undefined) {
+            this.forage_dict[f]["name"] = this.localizations_eng[items_fish["misc"][f]["name"]];
+            if(items_fish["misc"][f]["value"] !== undefined) {
+              if(items_fish["misc"][f]["value"]["bin"] !== undefined) {
+                this.forage_dict[f]["sell_price"] = items_fish["misc"][f]["value"]["bin"];
+              }
+              if(items_fish["misc"][f]["value"]["store"] !== undefined) {
+                this.forage_dict[f]["purchase_price"] = items_fish["misc"][f]["value"]["store"];
+              }
+            }
+          }
+        }
+
+        // 6. Extract data from items/mines dictionary.
+        for(let m in items_mines) {
+          await this.loadingPauseCheck();
+          for(let item in items_mines[m]) {
+            if(this.forage_dict[item] !== undefined) {
+              this.forage_dict[item]["name"] = this.localizations_eng[items_mines[m][item]["name"]];
+              this.forage_dict[item]["restore"] = items_mines[m][item]["restore"];
+              if(items_mines[m][item]["value"] !== undefined) {
+                if(items_mines[m][item]["value"]["bin"] !== undefined) {
+                  this.forage_dict[item]["sell_price"] = items_mines[m][item]["value"]["bin"];
+                }
+                if(items_mines[m][item]["value"]["store"] !== undefined) {
+                  this.forage_dict[item]["purchase_price"] = items_mines[m][item]["value"]["store"];
+                }
+              }
+            }
+          }
+        }
+
+        // 7. Additional data is specified in object_prototypes/crop dictionary.
+        for(let c in object_prototypes["crop"]) {
+          await this.loadingPauseCheck();
+          if(this.forage_dict[c] !== undefined) {
+            this.forage_dict[c]["seasons"] = object_prototypes["crop"][c]["seasons"]
+          }
+        }
+
+        // 8. Cleanup
+        for(let f in this.forage_dict) {
+          await this.loadingPauseCheck();
+          // Seasons
+          if(typeof this.forage_dict[f]["seasons"] === 'object') {
+            this.forage_dict[f]["seasons"] = this.forage_dict[f]["seasons"].join(", ");
+          }
+          // Inedible
+          if(this.forage_dict[f]["restore"] === undefined) {
+            this.forage_dict[f]["restore"] = "inedible";
+            console.log(this.forage_dict[f]);
+          }
+          // Restoration lookup/conversion.
+          else if(this.forage_dict[f]["restore"] !== undefined) {
+            let restoration_name = this.forage_dict[f]["restore"];
+            if(data_restoration["vars"][restoration_name] !== undefined) {
+              this.forage_dict[f]["restore"] = data_restoration["vars"][restoration_name] + " HP/STA";
+            }
+            else {
+              this.forage_dict[f]["restore"] = this.forage_dict[f]["restore"] + " HP/STA";
+            }
+          }
+          this.forage.push(this.forage_dict[f]);
+        }
+
+        
+        // Done loading data.
         this.loading = false;
       }
     },
