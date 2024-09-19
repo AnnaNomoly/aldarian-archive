@@ -361,7 +361,7 @@ export default {
         console.log("Loading Data: " + version);
 
         this.parse_localization(this.load_file("data/" + version + "/localization.json"));
-        this.parse_fiddle(this.load_file("data/" + version + "/__fiddle__.json"));
+        this.parse_fiddle(this.load_file("data/" + version + "/fiddle.json"));
         this.parse_t2_output(this.load_file("data/" + version + "/t2_output.json"));
       },
 
