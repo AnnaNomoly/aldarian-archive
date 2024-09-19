@@ -1,0 +1,1249 @@
+{
+  "axe_copper": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_axe_copper_tool_axe_e",
+        "north": "spr_tool_axe_copper_tool_axe_n",
+        "south": "spr_tool_axe_copper_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_axe_copper_tool_effect_axe_e",
+        "north": "spr_tool_axe_copper_tool_effect_axe_n",
+        "south": "spr_tool_axe_copper_tool_effect_axe_s"
+      }
+    }
+  },
+  "axe_gold": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_axe_gold_tool_axe_e",
+        "north": "spr_tool_axe_gold_tool_axe_n",
+        "south": "spr_tool_axe_gold_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_axe_gold_tool_effect_axe_e",
+        "north": "spr_tool_axe_gold_tool_effect_axe_n",
+        "south": "spr_tool_axe_gold_tool_effect_axe_s"
+      }
+    }
+  },
+  "axe_iron": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_axe_iron_tool_axe_e",
+        "north": "spr_tool_axe_iron_tool_axe_n",
+        "south": "spr_tool_axe_iron_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_axe_iron_tool_effect_axe_e",
+        "north": "spr_tool_axe_iron_tool_effect_axe_n",
+        "south": "spr_tool_axe_iron_tool_effect_axe_s"
+      }
+    }
+  },
+  "axe_mistril": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_axe_mistril_tool_axe_e",
+        "north": "spr_tool_axe_mistril_tool_axe_n",
+        "south": "spr_tool_axe_mistril_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_axe_mistril_tool_effect_axe_e",
+        "north": "spr_tool_axe_mistril_tool_effect_axe_n",
+        "south": "spr_tool_axe_mistril_tool_effect_axe_s"
+      }
+    }
+  },
+  "axe_silver": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_axe_silver_tool_axe_e",
+        "north": "spr_tool_axe_silver_tool_axe_n",
+        "south": "spr_tool_axe_silver_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_axe_silver_tool_effect_axe_e",
+        "north": "spr_tool_axe_silver_tool_effect_axe_n",
+        "south": "spr_tool_axe_silver_tool_effect_axe_s"
+      }
+    }
+  },
+  "axe_worn": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_axe_worn_tool_axe_e",
+        "north": "spr_tool_axe_worn_tool_axe_n",
+        "south": "spr_tool_axe_worn_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_axe_worn_tool_effect_axe_e",
+        "north": "spr_tool_axe_worn_tool_effect_axe_n",
+        "south": "spr_tool_axe_worn_tool_effect_axe_s"
+      }
+    }
+  },
+  "craftinghammer": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_craftinghammer_tool_axe_e",
+        "north": "",
+        "south": "spr_tool_craftinghammer_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_craftinghammer_tool_effect_axe_e",
+        "north": "",
+        "south": "spr_tool_craftinghammer_tool_effect_axe_s"
+      }
+    }
+  },
+  "craftingsaw": {
+    "saw": {
+      "tool": {
+        "east": "spr_tool_craftingsaw_saw_e",
+        "north": "",
+        "south": ""
+      }
+    }
+  },
+  "fishing_rod_copper": {
+    "fish_bite": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_copper_fish_bite_e",
+        "north": "spr_tool_fishing_rod_copper_fish_bite_n",
+        "south": "spr_tool_fishing_rod_copper_fish_bite_s"
+      }
+    },
+    "fish_cast": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_copper_fish_cast_e",
+        "north": "spr_tool_fishing_rod_copper_fish_cast_n",
+        "south": "spr_tool_fishing_rod_copper_fish_cast_s"
+      }
+    },
+    "fish_reel": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_copper_fish_reel_e",
+        "north": "spr_tool_fishing_rod_copper_fish_reel_n",
+        "south": "spr_tool_fishing_rod_copper_fish_reel_s"
+      }
+    }
+  },
+  "fishing_rod_gold": {
+    "fish_bite": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_gold_fish_bite_e",
+        "north": "spr_tool_fishing_rod_gold_fish_bite_n",
+        "south": "spr_tool_fishing_rod_gold_fish_bite_s"
+      }
+    },
+    "fish_cast": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_gold_fish_cast_e",
+        "north": "spr_tool_fishing_rod_gold_fish_cast_n",
+        "south": "spr_tool_fishing_rod_gold_fish_cast_s"
+      }
+    },
+    "fish_reel": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_gold_fish_reel_e",
+        "north": "spr_tool_fishing_rod_gold_fish_reel_n",
+        "south": "spr_tool_fishing_rod_gold_fish_reel_s"
+      }
+    }
+  },
+  "fishing_rod_iron": {
+    "fish_bite": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_iron_fish_bite_e",
+        "north": "spr_tool_fishing_rod_iron_fish_bite_n",
+        "south": "spr_tool_fishing_rod_iron_fish_bite_s"
+      }
+    },
+    "fish_cast": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_iron_fish_cast_e",
+        "north": "spr_tool_fishing_rod_iron_fish_cast_n",
+        "south": "spr_tool_fishing_rod_iron_fish_cast_s"
+      }
+    },
+    "fish_reel": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_iron_fish_reel_e",
+        "north": "spr_tool_fishing_rod_iron_fish_reel_n",
+        "south": "spr_tool_fishing_rod_iron_fish_reel_s"
+      }
+    }
+  },
+  "fishing_rod_mistril": {
+    "fish_bite": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_mistril_fish_bite_e",
+        "north": "spr_tool_fishing_rod_mistril_fish_bite_n",
+        "south": "spr_tool_fishing_rod_mistril_fish_bite_s"
+      }
+    },
+    "fish_cast": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_mistril_fish_cast_e",
+        "north": "spr_tool_fishing_rod_mistril_fish_cast_n",
+        "south": "spr_tool_fishing_rod_mistril_fish_cast_s"
+      }
+    },
+    "fish_reel": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_mistril_fish_reel_e",
+        "north": "spr_tool_fishing_rod_mistril_fish_reel_n",
+        "south": "spr_tool_fishing_rod_mistril_fish_reel_s"
+      }
+    }
+  },
+  "fishing_rod_silver": {
+    "fish_bite": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_silver_fish_bite_e",
+        "north": "spr_tool_fishing_rod_silver_fish_bite_n",
+        "south": "spr_tool_fishing_rod_silver_fish_bite_s"
+      }
+    },
+    "fish_cast": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_silver_fish_cast_e",
+        "north": "spr_tool_fishing_rod_silver_fish_cast_n",
+        "south": "spr_tool_fishing_rod_silver_fish_cast_s"
+      }
+    },
+    "fish_reel": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_silver_fish_reel_e",
+        "north": "spr_tool_fishing_rod_silver_fish_reel_n",
+        "south": "spr_tool_fishing_rod_silver_fish_reel_s"
+      }
+    }
+  },
+  "fishing_rod_worn": {
+    "fish_bite": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_worn_fish_bite_e",
+        "north": "spr_tool_fishing_rod_worn_fish_bite_n",
+        "south": "spr_tool_fishing_rod_worn_fish_bite_s"
+      }
+    },
+    "fish_cast": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_worn_fish_cast_e",
+        "north": "spr_tool_fishing_rod_worn_fish_cast_n",
+        "south": "spr_tool_fishing_rod_worn_fish_cast_s"
+      }
+    },
+    "fish_reel": {
+      "tool": {
+        "east": "spr_tool_fishing_rod_worn_fish_reel_e",
+        "north": "spr_tool_fishing_rod_worn_fish_reel_n",
+        "south": "spr_tool_fishing_rod_worn_fish_reel_s"
+      }
+    }
+  },
+  "hoe_copper": {
+    "charge_hoe": {
+      "tool": {
+        "east": "spr_tool_hoe_copper_charge_hoe_e",
+        "north": "spr_tool_hoe_copper_charge_hoe_n",
+        "south": "spr_tool_hoe_copper_charge_hoe_s"
+      }
+    },
+    "till": {
+      "tool": {
+        "east": "spr_tool_hoe_copper_till_e",
+        "north": "spr_tool_hoe_copper_till_n",
+        "south": "spr_tool_hoe_copper_till_s"
+      }
+    }
+  },
+  "hoe_gold": {
+    "charge_hoe": {
+      "tool": {
+        "east": "spr_tool_hoe_gold_charge_hoe_e",
+        "north": "spr_tool_hoe_gold_charge_hoe_n",
+        "south": "spr_tool_hoe_gold_charge_hoe_s"
+      }
+    },
+    "till": {
+      "tool": {
+        "east": "spr_tool_hoe_gold_till_e",
+        "north": "spr_tool_hoe_gold_till_n",
+        "south": "spr_tool_hoe_gold_till_s"
+      }
+    }
+  },
+  "hoe_iron": {
+    "charge_hoe": {
+      "tool": {
+        "east": "spr_tool_hoe_iron_charge_hoe_e",
+        "north": "spr_tool_hoe_iron_charge_hoe_n",
+        "south": "spr_tool_hoe_iron_charge_hoe_s"
+      }
+    },
+    "till": {
+      "tool": {
+        "east": "spr_tool_hoe_iron_till_e",
+        "north": "spr_tool_hoe_iron_till_n",
+        "south": "spr_tool_hoe_iron_till_s"
+      }
+    }
+  },
+  "hoe_mistril": {
+    "charge_hoe": {
+      "tool": {
+        "east": "spr_tool_hoe_mistril_charge_hoe_e",
+        "north": "spr_tool_hoe_mistril_charge_hoe_n",
+        "south": "spr_tool_hoe_mistril_charge_hoe_s"
+      }
+    },
+    "till": {
+      "tool": {
+        "east": "spr_tool_hoe_mistril_till_e",
+        "north": "spr_tool_hoe_mistril_till_n",
+        "south": "spr_tool_hoe_mistril_till_s"
+      }
+    }
+  },
+  "hoe_silver": {
+    "charge_hoe": {
+      "tool": {
+        "east": "spr_tool_hoe_silver_charge_hoe_e",
+        "north": "spr_tool_hoe_silver_charge_hoe_n",
+        "south": "spr_tool_hoe_silver_charge_hoe_s"
+      }
+    },
+    "till": {
+      "tool": {
+        "east": "spr_tool_hoe_silver_till_e",
+        "north": "spr_tool_hoe_silver_till_n",
+        "south": "spr_tool_hoe_silver_till_s"
+      }
+    }
+  },
+  "hoe_worn": {
+    "charge_hoe": {
+      "tool": {
+        "east": "spr_tool_hoe_worn_charge_hoe_e",
+        "north": "spr_tool_hoe_worn_charge_hoe_n",
+        "south": "spr_tool_hoe_worn_charge_hoe_s"
+      }
+    },
+    "till": {
+      "tool": {
+        "east": "spr_tool_hoe_worn_till_e",
+        "north": "spr_tool_hoe_worn_till_n",
+        "south": "spr_tool_hoe_worn_till_s"
+      }
+    }
+  },
+  "net_copper": {
+    "net": {
+      "tool": {
+        "east": "spr_tool_net_copper_tool_net_e",
+        "north": "spr_tool_net_copper_tool_net_n",
+        "south": "spr_tool_net_copper_tool_net_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_net_copper_tool_effect_net_e",
+        "north": "spr_tool_net_copper_tool_effect_net_n",
+        "south": "spr_tool_net_copper_tool_effect_net_s"
+      }
+    }
+  },
+  "net_gold": {
+    "net": {
+      "tool": {
+        "east": "spr_tool_net_gold_tool_net_e",
+        "north": "spr_tool_net_gold_tool_net_n",
+        "south": "spr_tool_net_gold_tool_net_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_net_gold_tool_effect_net_e",
+        "north": "spr_tool_net_gold_tool_effect_net_n",
+        "south": "spr_tool_net_gold_tool_effect_net_s"
+      }
+    }
+  },
+  "net_iron": {
+    "net": {
+      "tool": {
+        "east": "spr_tool_net_iron_tool_net_e",
+        "north": "spr_tool_net_iron_tool_net_n",
+        "south": "spr_tool_net_iron_tool_net_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_net_iron_tool_effect_net_e",
+        "north": "spr_tool_net_iron_tool_effect_net_n",
+        "south": "spr_tool_net_iron_tool_effect_net_s"
+      }
+    }
+  },
+  "net_mistril": {
+    "net": {
+      "tool": {
+        "east": "spr_tool_net_mistril_tool_net_e",
+        "north": "spr_tool_net_mistril_tool_net_n",
+        "south": "spr_tool_net_mistril_tool_net_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_net_mistril_tool_effect_net_e",
+        "north": "spr_tool_net_mistril_tool_effect_net_n",
+        "south": "spr_tool_net_mistril_tool_effect_net_s"
+      }
+    }
+  },
+  "net_silver": {
+    "net": {
+      "tool": {
+        "east": "spr_tool_net_silver_tool_net_e",
+        "north": "spr_tool_net_silver_tool_net_n",
+        "south": "spr_tool_net_silver_tool_net_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_net_silver_tool_effect_net_e",
+        "north": "spr_tool_net_silver_tool_effect_net_n",
+        "south": "spr_tool_net_silver_tool_effect_net_s"
+      }
+    }
+  },
+  "net_worn": {
+    "net": {
+      "tool": {
+        "east": "spr_tool_net_worn_tool_net_e",
+        "north": "spr_tool_net_worn_tool_net_n",
+        "south": "spr_tool_net_worn_tool_net_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_net_worn_tool_effect_net_e",
+        "north": "spr_tool_net_worn_tool_effect_net_n",
+        "south": "spr_tool_net_worn_tool_effect_net_s"
+      }
+    }
+  },
+  "pick_axe_copper": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_pick_axe_copper_tool_axe_e",
+        "north": "spr_tool_pick_axe_copper_tool_axe_n",
+        "south": "spr_tool_pick_axe_copper_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_pick_axe_copper_tool_effect_axe_e",
+        "north": "spr_tool_pick_axe_copper_tool_effect_axe_n",
+        "south": "spr_tool_pick_axe_copper_tool_effect_axe_s"
+      }
+    }
+  },
+  "pick_axe_gold": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_pick_axe_gold_tool_axe_e",
+        "north": "spr_tool_pick_axe_gold_tool_axe_n",
+        "south": "spr_tool_pick_axe_gold_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_pick_axe_gold_tool_effect_axe_e",
+        "north": "spr_tool_pick_axe_gold_tool_effect_axe_n",
+        "south": "spr_tool_pick_axe_gold_tool_effect_axe_s"
+      }
+    }
+  },
+  "pick_axe_iron": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_pick_axe_iron_tool_axe_e",
+        "north": "spr_tool_pick_axe_iron_tool_axe_n",
+        "south": "spr_tool_pick_axe_iron_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_pick_axe_iron_tool_effect_axe_e",
+        "north": "spr_tool_pick_axe_iron_tool_effect_axe_n",
+        "south": "spr_tool_pick_axe_iron_tool_effect_axe_s"
+      }
+    }
+  },
+  "pick_axe_mistril": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_pick_axe_mistril_tool_axe_e",
+        "north": "spr_tool_pick_axe_mistril_tool_axe_n",
+        "south": "spr_tool_pick_axe_mistril_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_pick_axe_mistril_tool_effect_axe_e",
+        "north": "spr_tool_pick_axe_mistril_tool_effect_axe_n",
+        "south": "spr_tool_pick_axe_mistril_tool_effect_axe_s"
+      }
+    }
+  },
+  "pick_axe_silver": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_pick_axe_silver_tool_axe_e",
+        "north": "spr_tool_pick_axe_silver_tool_axe_n",
+        "south": "spr_tool_pick_axe_silver_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_pick_axe_silver_tool_effect_axe_e",
+        "north": "spr_tool_pick_axe_silver_tool_effect_axe_n",
+        "south": "spr_tool_pick_axe_silver_tool_effect_axe_s"
+      }
+    }
+  },
+  "pick_axe_worn": {
+    "axe": {
+      "tool": {
+        "east": "spr_tool_pick_axe_worn_tool_axe_e",
+        "north": "spr_tool_pick_axe_worn_tool_axe_n",
+        "south": "spr_tool_pick_axe_worn_tool_axe_s"
+      },
+      "tool_effect": {
+        "east": "spr_tool_pick_axe_worn_tool_effect_axe_e",
+        "north": "spr_tool_pick_axe_worn_tool_effect_axe_n",
+        "south": "spr_tool_pick_axe_worn_tool_effect_axe_s"
+      }
+    }
+  },
+  "shovel_copper": {
+    "shovel": {
+      "tool": {
+        "east": "spr_tool_shovel_copper_shovel_e",
+        "north": "spr_tool_shovel_copper_shovel_n",
+        "south": "spr_tool_shovel_copper_shovel_s"
+      }
+    }
+  },
+  "shovel_gold": {
+    "shovel": {
+      "tool": {
+        "east": "spr_tool_shovel_gold_shovel_e",
+        "north": "spr_tool_shovel_gold_shovel_n",
+        "south": "spr_tool_shovel_gold_shovel_s"
+      }
+    }
+  },
+  "shovel_iron": {
+    "shovel": {
+      "tool": {
+        "east": "spr_tool_shovel_iron_shovel_e",
+        "north": "spr_tool_shovel_iron_shovel_n",
+        "south": "spr_tool_shovel_iron_shovel_s"
+      }
+    }
+  },
+  "shovel_mistril": {
+    "shovel": {
+      "tool": {
+        "east": "spr_tool_shovel_mistril_shovel_e",
+        "north": "spr_tool_shovel_mistril_shovel_n",
+        "south": "spr_tool_shovel_mistril_shovel_s"
+      }
+    }
+  },
+  "shovel_silver": {
+    "shovel": {
+      "tool": {
+        "east": "spr_tool_shovel_silver_shovel_e",
+        "north": "spr_tool_shovel_silver_shovel_n",
+        "south": "spr_tool_shovel_silver_shovel_s"
+      }
+    }
+  },
+  "shovel_worn": {
+    "shovel": {
+      "tool": {
+        "east": "spr_tool_shovel_worn_shovel_e",
+        "north": "spr_tool_shovel_worn_shovel_n",
+        "south": "spr_tool_shovel_worn_shovel_s"
+      }
+    }
+  },
+  "sword_copper": {
+    "combo1": {
+      "tool": {
+        "east": "spr_weapon_sword_copper_tool_combo1_e",
+        "north": "spr_weapon_sword_copper_tool_combo1_n",
+        "south": "spr_weapon_sword_copper_tool_combo1_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_copper_tool_effect_combo1_e",
+        "north": "spr_weapon_sword_copper_tool_effect_combo1_n",
+        "south": "spr_weapon_sword_copper_tool_effect_combo1_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_copper_tool_effect_critical_combo1_e",
+        "north": "spr_weapon_sword_copper_tool_effect_critical_combo1_n",
+        "south": "spr_weapon_sword_copper_tool_effect_critical_combo1_s"
+      }
+    },
+    "combo2": {
+      "tool": {
+        "east": "spr_weapon_sword_copper_tool_combo2_e",
+        "north": "spr_weapon_sword_copper_tool_combo2_n",
+        "south": "spr_weapon_sword_copper_tool_combo2_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_copper_tool_effect_combo2_e",
+        "north": "spr_weapon_sword_copper_tool_effect_combo2_n",
+        "south": "spr_weapon_sword_copper_tool_effect_combo2_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_copper_tool_effect_critical_combo2_e",
+        "north": "spr_weapon_sword_copper_tool_effect_critical_combo2_n",
+        "south": "spr_weapon_sword_copper_tool_effect_critical_combo2_s"
+      }
+    },
+    "combo3": {
+      "tool": {
+        "east": "spr_weapon_sword_copper_tool_combo3_e",
+        "north": "spr_weapon_sword_copper_tool_combo3_n",
+        "south": "spr_weapon_sword_copper_tool_combo3_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_copper_tool_effect_combo3_e",
+        "north": "spr_weapon_sword_copper_tool_effect_combo3_n",
+        "south": "spr_weapon_sword_copper_tool_effect_combo3_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_copper_tool_effect_critical_combo3_e",
+        "north": "spr_weapon_sword_copper_tool_effect_critical_combo3_n",
+        "south": "spr_weapon_sword_copper_tool_effect_critical_combo3_s"
+      }
+    },
+    "down_attack": {
+      "tool": {
+        "east": "spr_weapon_sword_copper_tool_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_copper_tool_effect_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_copper_tool_effect_critical_down_attack_e",
+        "north": "",
+        "south": ""
+      }
+    }
+  },
+  "sword_crystal": {
+    "combo1": {
+      "tool": {
+        "east": "spr_weapon_sword_crystal_tool_combo1_e",
+        "north": "spr_weapon_sword_crystal_tool_combo1_n",
+        "south": "spr_weapon_sword_crystal_tool_combo1_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_crystal_tool_effect_combo1_e",
+        "north": "spr_weapon_sword_crystal_tool_effect_combo1_n",
+        "south": "spr_weapon_sword_crystal_tool_effect_combo1_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_crystal_tool_effect_critical_combo1_e",
+        "north": "spr_weapon_sword_crystal_tool_effect_critical_combo1_n",
+        "south": "spr_weapon_sword_crystal_tool_effect_critical_combo1_s"
+      }
+    },
+    "combo2": {
+      "tool": {
+        "east": "spr_weapon_sword_crystal_tool_combo2_e",
+        "north": "spr_weapon_sword_crystal_tool_combo2_n",
+        "south": "spr_weapon_sword_crystal_tool_combo2_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_crystal_tool_effect_combo2_e",
+        "north": "spr_weapon_sword_crystal_tool_effect_combo2_n",
+        "south": "spr_weapon_sword_crystal_tool_effect_combo2_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_crystal_tool_effect_critical_combo2_e",
+        "north": "spr_weapon_sword_crystal_tool_effect_critical_combo2_n",
+        "south": "spr_weapon_sword_crystal_tool_effect_critical_combo2_s"
+      }
+    },
+    "combo3": {
+      "tool": {
+        "east": "spr_weapon_sword_crystal_tool_combo3_e",
+        "north": "spr_weapon_sword_crystal_tool_combo3_n",
+        "south": "spr_weapon_sword_crystal_tool_combo3_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_crystal_tool_effect_combo3_e",
+        "north": "spr_weapon_sword_crystal_tool_effect_combo3_n",
+        "south": "spr_weapon_sword_crystal_tool_effect_combo3_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_crystal_tool_effect_critical_combo3_e",
+        "north": "spr_weapon_sword_crystal_tool_effect_critical_combo3_n",
+        "south": "spr_weapon_sword_crystal_tool_effect_critical_combo3_s"
+      }
+    },
+    "down_attack": {
+      "tool": {
+        "east": "spr_weapon_sword_crystal_tool_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_crystal_tool_effect_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_crystal_tool_effect_critical_down_attack_e",
+        "north": "",
+        "south": ""
+      }
+    }
+  },
+  "sword_gold": {
+    "combo1": {
+      "tool": {
+        "east": "spr_weapon_sword_gold_tool_combo1_e",
+        "north": "spr_weapon_sword_gold_tool_combo1_n",
+        "south": "spr_weapon_sword_gold_tool_combo1_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_gold_tool_effect_combo1_e",
+        "north": "spr_weapon_sword_gold_tool_effect_combo1_n",
+        "south": "spr_weapon_sword_gold_tool_effect_combo1_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_gold_tool_effect_critical_combo1_e",
+        "north": "spr_weapon_sword_gold_tool_effect_critical_combo1_n",
+        "south": "spr_weapon_sword_gold_tool_effect_critical_combo1_s"
+      }
+    },
+    "combo2": {
+      "tool": {
+        "east": "spr_weapon_sword_gold_tool_combo2_e",
+        "north": "spr_weapon_sword_gold_tool_combo2_n",
+        "south": "spr_weapon_sword_gold_tool_combo2_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_gold_tool_effect_combo2_e",
+        "north": "spr_weapon_sword_gold_tool_effect_combo2_n",
+        "south": "spr_weapon_sword_gold_tool_effect_combo2_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_gold_tool_effect_critical_combo2_e",
+        "north": "spr_weapon_sword_gold_tool_effect_critical_combo2_n",
+        "south": "spr_weapon_sword_gold_tool_effect_critical_combo2_s"
+      }
+    },
+    "combo3": {
+      "tool": {
+        "east": "spr_weapon_sword_gold_tool_combo3_e",
+        "north": "spr_weapon_sword_gold_tool_combo3_n",
+        "south": "spr_weapon_sword_gold_tool_combo3_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_gold_tool_effect_combo3_e",
+        "north": "spr_weapon_sword_gold_tool_effect_combo3_n",
+        "south": "spr_weapon_sword_gold_tool_effect_combo3_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_gold_tool_effect_critical_combo3_e",
+        "north": "spr_weapon_sword_gold_tool_effect_critical_combo3_n",
+        "south": "spr_weapon_sword_gold_tool_effect_critical_combo3_s"
+      }
+    },
+    "down_attack": {
+      "tool": {
+        "east": "spr_weapon_sword_gold_tool_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_gold_tool_effect_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_gold_tool_effect_critical_down_attack_e",
+        "north": "",
+        "south": ""
+      }
+    }
+  },
+  "sword_iron": {
+    "combo1": {
+      "tool": {
+        "east": "spr_weapon_sword_iron_tool_combo1_e",
+        "north": "spr_weapon_sword_iron_tool_combo1_n",
+        "south": "spr_weapon_sword_iron_tool_combo1_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_iron_tool_effect_combo1_e",
+        "north": "spr_weapon_sword_iron_tool_effect_combo1_n",
+        "south": "spr_weapon_sword_iron_tool_effect_combo1_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_iron_tool_effect_critical_combo1_e",
+        "north": "spr_weapon_sword_iron_tool_effect_critical_combo1_n",
+        "south": "spr_weapon_sword_iron_tool_effect_critical_combo1_s"
+      }
+    },
+    "combo2": {
+      "tool": {
+        "east": "spr_weapon_sword_iron_tool_combo2_e",
+        "north": "spr_weapon_sword_iron_tool_combo2_n",
+        "south": "spr_weapon_sword_iron_tool_combo2_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_iron_tool_effect_combo2_e",
+        "north": "spr_weapon_sword_iron_tool_effect_combo2_n",
+        "south": "spr_weapon_sword_iron_tool_effect_combo2_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_iron_tool_effect_critical_combo2_e",
+        "north": "spr_weapon_sword_iron_tool_effect_critical_combo2_n",
+        "south": "spr_weapon_sword_iron_tool_effect_critical_combo2_s"
+      }
+    },
+    "combo3": {
+      "tool": {
+        "east": "spr_weapon_sword_iron_tool_combo3_e",
+        "north": "spr_weapon_sword_iron_tool_combo3_n",
+        "south": "spr_weapon_sword_iron_tool_combo3_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_iron_tool_effect_combo3_e",
+        "north": "spr_weapon_sword_iron_tool_effect_combo3_n",
+        "south": "spr_weapon_sword_iron_tool_effect_combo3_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_iron_tool_effect_critical_combo3_e",
+        "north": "spr_weapon_sword_iron_tool_effect_critical_combo3_n",
+        "south": "spr_weapon_sword_iron_tool_effect_critical_combo3_s"
+      }
+    },
+    "down_attack": {
+      "tool": {
+        "east": "spr_weapon_sword_iron_tool_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_iron_tool_effect_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_iron_tool_effect_critical_down_attack_e",
+        "north": "",
+        "south": ""
+      }
+    }
+  },
+  "sword_mistril": {
+    "combo1": {
+      "tool": {
+        "east": "spr_weapon_sword_mistril_tool_combo1_e",
+        "north": "spr_weapon_sword_mistril_tool_combo1_n",
+        "south": "spr_weapon_sword_mistril_tool_combo1_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_mistril_tool_effect_combo1_e",
+        "north": "spr_weapon_sword_mistril_tool_effect_combo1_n",
+        "south": "spr_weapon_sword_mistril_tool_effect_combo1_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_mistril_tool_effect_critical_combo1_e",
+        "north": "spr_weapon_sword_mistril_tool_effect_critical_combo1_n",
+        "south": "spr_weapon_sword_mistril_tool_effect_critical_combo1_s"
+      }
+    },
+    "combo2": {
+      "tool": {
+        "east": "spr_weapon_sword_mistril_tool_combo2_e",
+        "north": "spr_weapon_sword_mistril_tool_combo2_n",
+        "south": "spr_weapon_sword_mistril_tool_combo2_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_mistril_tool_effect_combo2_e",
+        "north": "spr_weapon_sword_mistril_tool_effect_combo2_n",
+        "south": "spr_weapon_sword_mistril_tool_effect_combo2_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_mistril_tool_effect_critical_combo2_e",
+        "north": "spr_weapon_sword_mistril_tool_effect_critical_combo2_n",
+        "south": "spr_weapon_sword_mistril_tool_effect_critical_combo2_s"
+      }
+    },
+    "combo3": {
+      "tool": {
+        "east": "spr_weapon_sword_mistril_tool_combo3_e",
+        "north": "spr_weapon_sword_mistril_tool_combo3_n",
+        "south": "spr_weapon_sword_mistril_tool_combo3_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_mistril_tool_effect_combo3_e",
+        "north": "spr_weapon_sword_mistril_tool_effect_combo3_n",
+        "south": "spr_weapon_sword_mistril_tool_effect_combo3_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_mistril_tool_effect_critical_combo3_e",
+        "north": "spr_weapon_sword_mistril_tool_effect_critical_combo3_n",
+        "south": "spr_weapon_sword_mistril_tool_effect_critical_combo3_s"
+      }
+    },
+    "down_attack": {
+      "tool": {
+        "east": "spr_weapon_sword_mistril_tool_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_mistril_tool_effect_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_mistril_tool_effect_critical_down_attack_e",
+        "north": "",
+        "south": ""
+      }
+    }
+  },
+  "sword_scrap_metal": {
+    "combo1": {
+      "tool": {
+        "east": "spr_weapon_sword_scrap_metal_tool_combo1_e",
+        "north": "spr_weapon_sword_scrap_metal_tool_combo1_n",
+        "south": "spr_weapon_sword_scrap_metal_tool_combo1_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_scrap_metal_tool_effect_combo1_e",
+        "north": "spr_weapon_sword_scrap_metal_tool_effect_combo1_n",
+        "south": "spr_weapon_sword_scrap_metal_tool_effect_combo1_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_scrap_metal_tool_effect_critical_combo1_e",
+        "north": "spr_weapon_sword_scrap_metal_tool_effect_critical_combo1_n",
+        "south": "spr_weapon_sword_scrap_metal_tool_effect_critical_combo1_s"
+      }
+    },
+    "combo2": {
+      "tool": {
+        "east": "spr_weapon_sword_scrap_metal_tool_combo2_e",
+        "north": "spr_weapon_sword_scrap_metal_tool_combo2_n",
+        "south": "spr_weapon_sword_scrap_metal_tool_combo2_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_scrap_metal_tool_effect_combo2_e",
+        "north": "spr_weapon_sword_scrap_metal_tool_effect_combo2_n",
+        "south": "spr_weapon_sword_scrap_metal_tool_effect_combo2_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_scrap_metal_tool_effect_critical_combo2_e",
+        "north": "spr_weapon_sword_scrap_metal_tool_effect_critical_combo2_n",
+        "south": "spr_weapon_sword_scrap_metal_tool_effect_critical_combo2_s"
+      }
+    },
+    "combo3": {
+      "tool": {
+        "east": "spr_weapon_sword_scrap_metal_tool_combo3_e",
+        "north": "spr_weapon_sword_scrap_metal_tool_combo3_n",
+        "south": "spr_weapon_sword_scrap_metal_tool_combo3_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_scrap_metal_tool_effect_combo3_e",
+        "north": "spr_weapon_sword_scrap_metal_tool_effect_combo3_n",
+        "south": "spr_weapon_sword_scrap_metal_tool_effect_combo3_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_scrap_metal_tool_effect_critical_combo3_e",
+        "north": "spr_weapon_sword_scrap_metal_tool_effect_critical_combo3_n",
+        "south": "spr_weapon_sword_scrap_metal_tool_effect_critical_combo3_s"
+      }
+    },
+    "down_attack": {
+      "tool": {
+        "east": "spr_weapon_sword_scrap_metal_tool_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_scrap_metal_tool_effect_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_scrap_metal_tool_effect_critical_down_attack_e",
+        "north": "",
+        "south": ""
+      }
+    }
+  },
+  "sword_silver": {
+    "combo1": {
+      "tool": {
+        "east": "spr_weapon_sword_silver_tool_combo1_e",
+        "north": "spr_weapon_sword_silver_tool_combo1_n",
+        "south": "spr_weapon_sword_silver_tool_combo1_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_silver_tool_effect_combo1_e",
+        "north": "spr_weapon_sword_silver_tool_effect_combo1_n",
+        "south": "spr_weapon_sword_silver_tool_effect_combo1_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_silver_tool_effect_critical_combo1_e",
+        "north": "spr_weapon_sword_silver_tool_effect_critical_combo1_n",
+        "south": "spr_weapon_sword_silver_tool_effect_critical_combo1_s"
+      }
+    },
+    "combo2": {
+      "tool": {
+        "east": "spr_weapon_sword_silver_tool_combo2_e",
+        "north": "spr_weapon_sword_silver_tool_combo2_n",
+        "south": "spr_weapon_sword_silver_tool_combo2_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_silver_tool_effect_combo2_e",
+        "north": "spr_weapon_sword_silver_tool_effect_combo2_n",
+        "south": "spr_weapon_sword_silver_tool_effect_combo2_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_silver_tool_effect_critical_combo2_e",
+        "north": "spr_weapon_sword_silver_tool_effect_critical_combo2_n",
+        "south": "spr_weapon_sword_silver_tool_effect_critical_combo2_s"
+      }
+    },
+    "combo3": {
+      "tool": {
+        "east": "spr_weapon_sword_silver_tool_combo3_e",
+        "north": "spr_weapon_sword_silver_tool_combo3_n",
+        "south": "spr_weapon_sword_silver_tool_combo3_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_silver_tool_effect_combo3_e",
+        "north": "spr_weapon_sword_silver_tool_effect_combo3_n",
+        "south": "spr_weapon_sword_silver_tool_effect_combo3_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_silver_tool_effect_critical_combo3_e",
+        "north": "spr_weapon_sword_silver_tool_effect_critical_combo3_n",
+        "south": "spr_weapon_sword_silver_tool_effect_critical_combo3_s"
+      }
+    },
+    "down_attack": {
+      "tool": {
+        "east": "spr_weapon_sword_silver_tool_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_silver_tool_effect_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_silver_tool_effect_critical_down_attack_e",
+        "north": "",
+        "south": ""
+      }
+    }
+  },
+  "sword_verdigris": {
+    "combo1": {
+      "tool": {
+        "east": "spr_weapon_sword_verdigris_tool_combo1_e",
+        "north": "spr_weapon_sword_verdigris_tool_combo1_n",
+        "south": "spr_weapon_sword_verdigris_tool_combo1_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_verdigris_tool_effect_combo1_e",
+        "north": "spr_weapon_sword_verdigris_tool_effect_combo1_n",
+        "south": "spr_weapon_sword_verdigris_tool_effect_combo1_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_verdigris_tool_effect_critical_combo1_e",
+        "north": "spr_weapon_sword_verdigris_tool_effect_critical_combo1_n",
+        "south": "spr_weapon_sword_verdigris_tool_effect_critical_combo1_s"
+      }
+    },
+    "combo2": {
+      "tool": {
+        "east": "spr_weapon_sword_verdigris_tool_combo2_e",
+        "north": "spr_weapon_sword_verdigris_tool_combo2_n",
+        "south": "spr_weapon_sword_verdigris_tool_combo2_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_verdigris_tool_effect_combo2_e",
+        "north": "spr_weapon_sword_verdigris_tool_effect_combo2_n",
+        "south": "spr_weapon_sword_verdigris_tool_effect_combo2_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_verdigris_tool_effect_critical_combo2_e",
+        "north": "spr_weapon_sword_verdigris_tool_effect_critical_combo2_n",
+        "south": "spr_weapon_sword_verdigris_tool_effect_critical_combo2_s"
+      }
+    },
+    "combo3": {
+      "tool": {
+        "east": "spr_weapon_sword_verdigris_tool_combo3_e",
+        "north": "spr_weapon_sword_verdigris_tool_combo3_n",
+        "south": "spr_weapon_sword_verdigris_tool_combo3_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_verdigris_tool_effect_combo3_e",
+        "north": "spr_weapon_sword_verdigris_tool_effect_combo3_n",
+        "south": "spr_weapon_sword_verdigris_tool_effect_combo3_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_verdigris_tool_effect_critical_combo3_e",
+        "north": "spr_weapon_sword_verdigris_tool_effect_critical_combo3_n",
+        "south": "spr_weapon_sword_verdigris_tool_effect_critical_combo3_s"
+      }
+    },
+    "down_attack": {
+      "tool": {
+        "east": "spr_weapon_sword_verdigris_tool_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_verdigris_tool_effect_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_verdigris_tool_effect_critical_down_attack_e",
+        "north": "",
+        "south": ""
+      }
+    }
+  },
+  "sword_worn": {
+    "combo1": {
+      "tool": {
+        "east": "spr_weapon_sword_worn_tool_combo1_e",
+        "north": "spr_weapon_sword_worn_tool_combo1_n",
+        "south": "spr_weapon_sword_worn_tool_combo1_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_worn_tool_effect_combo1_e",
+        "north": "spr_weapon_sword_worn_tool_effect_combo1_n",
+        "south": "spr_weapon_sword_worn_tool_effect_combo1_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_worn_tool_effect_critical_combo1_e",
+        "north": "spr_weapon_sword_worn_tool_effect_critical_combo1_n",
+        "south": "spr_weapon_sword_worn_tool_effect_critical_combo1_s"
+      }
+    },
+    "combo2": {
+      "tool": {
+        "east": "spr_weapon_sword_worn_tool_combo2_e",
+        "north": "spr_weapon_sword_worn_tool_combo2_n",
+        "south": "spr_weapon_sword_worn_tool_combo2_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_worn_tool_effect_combo2_e",
+        "north": "spr_weapon_sword_worn_tool_effect_combo2_n",
+        "south": "spr_weapon_sword_worn_tool_effect_combo2_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_worn_tool_effect_critical_combo2_e",
+        "north": "spr_weapon_sword_worn_tool_effect_critical_combo2_n",
+        "south": "spr_weapon_sword_worn_tool_effect_critical_combo2_s"
+      }
+    },
+    "combo3": {
+      "tool": {
+        "east": "spr_weapon_sword_worn_tool_combo3_e",
+        "north": "spr_weapon_sword_worn_tool_combo3_n",
+        "south": "spr_weapon_sword_worn_tool_combo3_s"
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_worn_tool_effect_combo3_e",
+        "north": "spr_weapon_sword_worn_tool_effect_combo3_n",
+        "south": "spr_weapon_sword_worn_tool_effect_combo3_s"
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_worn_tool_effect_critical_combo3_e",
+        "north": "spr_weapon_sword_worn_tool_effect_critical_combo3_n",
+        "south": "spr_weapon_sword_worn_tool_effect_critical_combo3_s"
+      }
+    },
+    "down_attack": {
+      "tool": {
+        "east": "spr_weapon_sword_worn_tool_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect": {
+        "east": "spr_weapon_sword_worn_tool_effect_down_attack_e",
+        "north": "",
+        "south": ""
+      },
+      "tool_effect_critical": {
+        "east": "spr_weapon_sword_worn_tool_effect_critical_down_attack_e",
+        "north": "",
+        "south": ""
+      }
+    }
+  },
+  "watering_can_copper": {
+    "water": {
+      "tool": {
+        "east": "spr_tool_watering_can_copper_water_e",
+        "north": "spr_tool_watering_can_copper_water_n",
+        "south": "spr_tool_watering_can_copper_water_s"
+      }
+    }
+  },
+  "watering_can_gold": {
+    "water": {
+      "tool": {
+        "east": "spr_tool_watering_can_gold_water_e",
+        "north": "spr_tool_watering_can_gold_water_n",
+        "south": "spr_tool_watering_can_gold_water_s"
+      }
+    }
+  },
+  "watering_can_iron": {
+    "water": {
+      "tool": {
+        "east": "spr_tool_watering_can_iron_water_e",
+        "north": "spr_tool_watering_can_iron_water_n",
+        "south": "spr_tool_watering_can_iron_water_s"
+      }
+    }
+  },
+  "watering_can_mistril": {
+    "water": {
+      "tool": {
+        "east": "spr_tool_watering_can_mistril_water_e",
+        "north": "spr_tool_watering_can_mistril_water_n",
+        "south": "spr_tool_watering_can_mistril_water_s"
+      }
+    }
+  },
+  "watering_can_silver": {
+    "water": {
+      "tool": {
+        "east": "spr_tool_watering_can_silver_water_e",
+        "north": "spr_tool_watering_can_silver_water_n",
+        "south": "spr_tool_watering_can_silver_water_s"
+      }
+    }
+  },
+  "watering_can_worn": {
+    "water": {
+      "tool": {
+        "east": "spr_tool_watering_can_worn_water_e",
+        "north": "spr_tool_watering_can_worn_water_n",
+        "south": "spr_tool_watering_can_worn_water_s"
+      }
+    }
+  }
+}
