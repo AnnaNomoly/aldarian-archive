@@ -369,6 +369,24 @@ export default {
         // }
       },
 
+      convert_time: function(time) {
+        // Check correct time format and split into components
+        time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+        if (time.length > 1) { // If time format correct
+          time = time.slice (1);  // Remove full string match value
+          time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+          time[0] = +time[0] % 12 || 12; // Adjust hours
+        }
+        return time.join (''); // return adjusted time or original string
+      },
+
+      pad: function(num, size) {
+        num = num.toString();
+        while (num.length < size) num = "0" + num;
+        return num;
+      },
+
       /**
        * 
        * @param hours_array Array[int] of two numbers representing a time range (hours of the day) for something.
@@ -1592,13 +1610,34 @@ export default {
       },
 
       parse_itinerary: function(itinerary) {
-        // keys are time of day in seconds
-          // destination key at root holds where they are going
         let parsed_itinerary = [];
         for(let time in itinerary) {
-          let clock_time = new Date(time * 1000).toISOString().substring(11, 19); // TODO: Convert from 24hr to 12hr
+          let original_clock_time = new Date(time * 1000).toISOString().substring(11, 19); // TODO: Convert from 24hr to 12hr
+          let hours = Number(original_clock_time.split(":")[0]);
+          let minutes = Number(original_clock_time.split(":")[1]);
+          let seconds = original_clock_time.split(":")[2];
+
+          if(minutes % 10 >= 5) {
+            minutes = (Math.floor(minutes / 10) + 1) * 10;
+            if(minutes == 60) {
+              minutes = 0;
+              hours++;
+            }
+          }
+          else {
+            minutes -= minutes % 10;
+          }
+
+          // Make 0AM - 6AM read as 24:00 - 30:00 in 24h time, indicating "next day"
+          if(hours <= 2) {
+            hours += 24;
+          }
+
+          hours = this.pad(hours, 2);
+          let modified_clock_time = this.pad(hours, 2) + ":" + this.pad(minutes, 2) + ":" + seconds;
+
           parsed_itinerary.push({
-            "time": clock_time,
+            "time": modified_clock_time,
             "destination_location": itinerary[time]["destination"]["location_id"],
             "destination_point": itinerary[time]["destination"]["point_name"]
           })
