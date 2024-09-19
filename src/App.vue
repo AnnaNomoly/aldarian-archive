@@ -117,9 +117,10 @@
                   <v-expansion-panels v-model="character_panel">
                     <v-expansion-panel v-for="character_name in characters" :key="character_name">
                       <v-expansion-panel-header expand-icon="mdi-menu-down">
-                        <v-img v-if="character_name == 'Adeline'" src="spr_ui_generic_icon_npc_adeline_0.png" max-height="20" max-width="24" />
-                        <v-img v-if="character_name == 'Balor'" src="spr_ui_generic_icon_npc_balor_0.png" max-height="20" max-width="24" />
-                        <v-img v-if="character_name == 'Celine'" src="spr_ui_generic_icon_npc_celine_0.png" max-height="20" max-width="24" />
+                        <v-img :src="'sprites/icons/npc/spr_ui_generic_icon_npc_' + character_name.toLowerCase() + '_0.png'" max-height="20" max-width="24" />
+                        <!-- <v-img v-if="character_name == 'Adeline'" src="sprites/icons/npc/spr_ui_generic_icon_npc_adeline_0.png" max-height="20" max-width="24" /> -->
+                        <!-- <v-img v-if="character_name == 'Balor'" src="sprites/icons/npc/spr_ui_generic_icon_npc_balor_0.png" max-height="20" max-width="24" />
+                        <v-img v-if="character_name == 'Celine'" src="sprites/icons/npc/spr_ui_generic_icon_npc_celine_0.png" max-height="20" max-width="24" /> -->
                         &nbsp; {{ character_name }}
                       </v-expansion-panel-header>
                       <v-expansion-panel-content>
@@ -242,8 +243,7 @@ export default {
       bugs: [],
 
       // Characters
-      characters: ["Adeline","Balor","Celine"],
-      // characters: ["Adeline","Balor","Celine","Darcy","Dell","Dozy","Eiland","Elsie","Errol","Hayden","Hemlock","Henrietta","Holt","Juniper","Josephine","Landen","Louis","Luc","Maple","March","Merri","Nora","Olric","Reina","Ryis","stillwell","Terithia","Valen","Vera"],
+      characters: ["Adeline","Balor","Celine","Darcy","Dell","Eiland","Elsie","Errol","Hayden","Hemlock","Holt","Juniper","Josephine","Landen","Louis","Luc","Maple","March","Merri","Nora","Olric","Reina","Ryis","Terithia","Valen","Vera"],
       character_panel: null,
 
       // Cooking
