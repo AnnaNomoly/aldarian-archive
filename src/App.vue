@@ -111,6 +111,67 @@
                   </v-card-title>
                   <v-data-table dense class="text-pre-wrap" :headers="crops_headers" :items="crops" :search="crops_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
                 </v-card>
+                <!-- Schedules -->
+                <v-card v-if="tab == 'Schedules'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
+                  <!-- Characters -->
+                  <v-expansion-panels v-model="character_panel">
+                    <v-expansion-panel v-for="character_name in characters" :key="character_name">
+                      <v-expansion-panel-header expand-icon="mdi-menu-down">
+                        <v-img v-if="character_name == 'Adeline'" src="spr_ui_generic_icon_npc_adeline_0.png" max-height="20" max-width="24" />
+                        <v-img v-if="character_name == 'Balor'" src="spr_ui_generic_icon_npc_balor_0.png" max-height="20" max-width="24" />
+                        <v-img v-if="character_name == 'Celine'" src="spr_ui_generic_icon_npc_celine_0.png" max-height="20" max-width="24" />
+                        &nbsp; {{ character_name }}
+                      </v-expansion-panel-header>
+                      <v-expansion-panel-content>
+                        <!-- Seasons -->
+                        <v-expansion-panels v-model="season_panel">
+                          <v-expansion-panel v-for="season in seasons" :key="season">
+                            <v-expansion-panel-header expand-icon="mdi-menu-down">
+                              <v-img v-if="season == 'Rainy'" src="spr_ui_hud_info_backplate_weather_icon_rainy_0.png" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Spring'" src="spr_ui_hud_info_backplate_season_icon_spring_0.png" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Summer'" src="spr_ui_hud_info_backplate_season_icon_summer_0.png" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Fall'" src="spr_ui_hud_info_backplate_season_icon_autumn_0.png" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Winter'" src="spr_ui_hud_info_backplate_season_icon_winter_0.png" max-height="20" max-width="20" />
+                              &nbsp; {{ season }}
+                            </v-expansion-panel-header>
+                            <v-expansion-panel-content>
+                              <!-- Days -->
+                              <div v-if="season == 'Rainy'">
+                                <!-- Rainy Day -->
+                                <div v-for="x in schedules[character_name.toLowerCase()][season.toLowerCase()]" :key="x">
+                                  <span v-if="x['extra_conditions'] !== ''">
+                                    Extra Conditions: <br />
+                                    <span class="text-pre-wrap">{{ x["extra_conditions"] }}</span>
+                                  </span>
+                                  <v-data-table dense :headers="schedule_headers" :items="x['itinerary']" :search="schedule_search" :sort-by="['time']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                                </div>
+                              </div>
+                              <div v-else>
+                                <!-- Standard Days -->
+                                <v-expansion-panels v-model="day_panel">
+                                  <v-expansion-panel v-for="day in days" :key="day">
+                                    <v-expansion-panel-header expand-icon="mdi-menu-down">
+                                      {{ day }}
+                                    </v-expansion-panel-header>
+                                    <v-expansion-panel-content>
+                                      <div v-for="y in schedules[character_name.toLowerCase()][season.toLowerCase()][day.toLocaleLowerCase()]" :key="y">
+                                        <span v-if="y['extra_conditions'] !== ''">
+                                          Extra Conditions: <br />
+                                          <span class="text-pre-wrap">{{ y["extra_conditions"] }}</span>
+                                        </span>
+                                        <v-data-table dense :headers="schedule_headers" :items="y['itinerary']" :search="schedule_search" :sort-by="['time']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                                      </div>
+                                    </v-expansion-panel-content>
+                                  </v-expansion-panel>
+                                </v-expansion-panels>
+                              </div>
+                            </v-expansion-panel-content>
+                          </v-expansion-panel>
+                        </v-expansion-panels>
+                      </v-expansion-panel-content>
+                    </v-expansion-panel>
+                  </v-expansion-panels>
+                </v-card>
               </div>
             </v-tab-item>
           </v-tabs-items>
@@ -141,7 +202,7 @@ export default {
         //"Locations",
         //"NPCs",
         //"Quests",
-        // Schedules
+        "Schedules"
       ],
 
       // fish_panels: [
@@ -179,6 +240,11 @@ export default {
         { text: "Sell Price", value: "value" },
       ],
       bugs: [],
+
+      // Characters
+      characters: ["Adeline","Balor","Celine"],
+      // characters: ["Adeline","Balor","Celine","Darcy","Dell","Dozy","Eiland","Elsie","Errol","Hayden","Hemlock","Henrietta","Holt","Juniper","Josephine","Landen","Louis","Luc","Maple","March","Merri","Nora","Olric","Reina","Ryis","stillwell","Terithia","Valen","Vera"],
+      character_panel: null,
 
       // Cooking
       cooking_search: "",
@@ -236,6 +302,19 @@ export default {
         { text: "Purchase Price", value: "purchase_price" },
       ],
       forage: [],
+
+      // Schedules
+      day_panel: null,
+      season_panel: null,
+      seasons: ["Rainy", "Spring", "Summer", "Fall", "Winter"],
+      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      schedules: {},
+      schedule_search: "",
+      schedule_headers: [
+        { text: "Departure Time", value: "time" },
+        { text: "Destination (Location)", value: "destination_location" },
+        { text: "Destination (Point)", value: "destination_point" },
+      ],
     }),
 
     methods: {
@@ -271,12 +350,13 @@ export default {
         console.log("Loaded Data: " + version);
         if(version === 'v0.11.7') {
           this.parse_localization(require('@/assets/data/v0.11.7/localization.json'));
-          this.parse_fiddle(require('@/assets/data/v0.11.7/__fiddle__.json'));
-
+          // this.parse_fiddle(require('@/assets/data/v0.11.7/__fiddle__.json'));
+          this.parse_t2_output(require('@/assets/data/v0.11.7/t2_output.json'));
         }
         if(version === 'v0.11.5') {
-          this.parse_localization(require('@/assets/data/v0.11.5/localization.json'));
-          this.parse_fiddle(require('@/assets/data/v0.11.5/__fiddle__.json'));
+          // this.parse_localization(require('@/assets/data/v0.11.5/localization.json'));
+          // this.parse_fiddle(require('@/assets/data/v0.11.5/__fiddle__.json'));
+          // this.parse_t2_output(require('@/assets/data/v0.11.5/t2_output.json'));
         }
       },
 
@@ -1252,9 +1332,465 @@ export default {
           }
           this.forage.push(this.forage_dict[f]);
         }
+      },
 
-        
-        // Done loading data.
+      parse_costraint: function(constraint) {
+        if(typeof constraint === 'object' && constraint["WorldFactCheck"] !== undefined) {
+          let priority_value = constraint["WorldFactCheck"]["priority_value"]
+          let parameter_one = constraint["WorldFactCheck"]["name"][0]["Resolved"]["content"]
+          let parameter_two = constraint["WorldFactCheck"]["value"][0]["Resolved"]["content"]
+          let comparator = constraint["WorldFactCheck"]["comparator"].toUpperCase();
+
+          if(parameter_one === "weather") {
+            if(parameter_two === "pleasant") {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "sunny",
+                // "weather": "sunny",
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === "rainy") {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "rainy",
+                // "weather": "rainy",
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === "snowy") {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "snowy",
+                // "weather": "snowy",
+                "priority": priority_value
+              };
+            }            
+          }
+
+          if(parameter_one === "season") {
+            console.log("SEASON CONSTRAINT");
+            console.log("P2: " + parameter_two);
+            if(parameter_two === 0) {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "spring",
+                // "season": "spring",
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === 2419200) {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "summer",
+                // "season": "summer",
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === 4838400) {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "fall",
+                // "season": "fall",
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === 7257600) {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "winter",
+                // "season": "winter",
+                "priority": priority_value
+              };
+            }
+          }
+
+          if(parameter_one === "day_of_the_week") {
+            if(parameter_two === 0) {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "monday",
+                // "day_of_the_week": "monday",
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === 86400) {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "tuesday",
+                // "day_of_the_week": "tuesday",
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === 172800) {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "wednesday",
+                // "day_of_the_week": "wednesday",
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === 259200) {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "thursday",
+                // "day_of_the_week": "thursday",
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === 345600) {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "friday",
+                // "day_of_the_week": "friday",
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === 432000) {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "saturday",
+                // "day_of_the_week": "saturday",
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === 518400) {
+              return {
+                "comparator": comparator,
+                "parameter_one": parameter_one,
+                "parameter_two": "sunday",
+                // "day_of_the_week": "sunday",
+                "priority": priority_value
+              };
+            }
+          }
+
+          // Counter Constraints
+          if("summer_tuesday_progress" === parameter_one) {
+            return {
+              "comparator": comparator,
+              "counter": {
+                "parameter_one": "Summer Tuesday",
+                "parameter_two": parameter_two
+              },
+              "priority": priority_value
+            };
+          }
+          if("fnati" === parameter_one) {
+            return {
+              "comparator": comparator,
+              "counter": {
+                "parameter_one": "Friday Night At The Inn (Regular)",
+                "parameter_two": parameter_two
+              },
+              "priority": priority_value
+            };
+          }
+          if("drawing_fnati" === parameter_one) {
+            return {
+              "comparator": comparator,
+              "counter": {
+                "parameter_one": "Friday Night At The Inn (Drawing)",
+                "parameter_two": parameter_two
+              },
+              "priority": priority_value
+            };
+          }
+          if("dessert_fnati" === parameter_one) {
+            return {
+              "comparator": comparator,
+              "counter": {
+                "parameter_one": "Friday Night At The Inn (Dessert)",
+                "parameter_two": parameter_two
+              },
+              "priority": priority_value
+            };
+          }
+          if(parameter_one.indexOf("rain_counter") !== -1) {
+            return {
+              "comparator": comparator,
+              "counter": {
+                "parameter_one": "Rainy Day",
+                "parameter_two": parameter_two
+              },
+              "priority": priority_value
+            };
+          }
+
+          // Quest Constraints
+          if(parameter_one.indexOf("quest") !== -1) {
+            let quest_name = parameter_one.replace("quest_","").replace("_complete","");
+            if(parameter_two === 0.0) {
+              return {
+                "comparator": comparator,
+                "quest": {
+                  "parameter_one": quest_name,
+                  "parameter_two": "incomplete"
+                },
+                "priority": priority_value
+              };
+            }
+            if(parameter_two === 1.0) {
+              return {
+                "comparator": comparator,
+                "quest": {
+                  "parameter_one": quest_name,
+                  "parameter_two": "complete"
+                },
+                "priority": priority_value
+              };
+            }
+          }
+
+          // Festival Constraints
+          if(parameter_one.indexOf("festival_date") !== -1) {
+            return {
+              "comparator": comparator,
+              "festival_date": {
+                "parameter_one": parameter_one,
+                "parameter_two": parameter_two
+              },
+              "priority": priority_value
+            }
+          }
+        }
+
+        if(constraint["Any"] !== undefined) {
+          let compound_constraint = [];
+          for(let i in constraint["Any"][0]) {
+            compound_constraint.push(this.parse_costraint(constraint["Any"][0][i]));
+          }
+          return compound_constraint;
+        }
+
+        return false;
+      },
+
+      parse_itinerary: function(itinerary) {
+        // keys are time of day in seconds
+          // destination key at root holds where they are going
+        let parsed_itinerary = [];
+        for(let time in itinerary) {
+          let clock_time = new Date(time * 1000).toISOString().substring(11, 19); // TODO: Convert from 24hr to 12hr
+          parsed_itinerary.push({
+            "time": clock_time,
+            "destination_location": itinerary[time]["destination"]["location_id"],
+            "destination_point": itinerary[time]["destination"]["point_name"]
+          })
+        }
+        return parsed_itinerary;
+      },
+
+      parse_t2_output: async function(json) {
+        var data_schedules = json["schedules"];
+
+        // SCHEDULES
+        this.schedules = [];
+        this.schedules_dict = {};
+
+        var characters = [
+          "adeline",
+          "balor",
+          "caldarus",
+          "celine",
+          "darcy",
+          "dell",
+          "dozy",
+          "eiland",
+          "elsie",
+          "errol",
+          "hayden",
+          "hemlock",
+          "henrietta",
+          "holt",
+          "juniper",
+          "josephine",
+          "landen",
+          "louis",
+          "luc",
+          "maple",
+          "march",
+          "merri",
+          "nora",
+          "olric",
+          "reina",
+          "ryis",
+          "seridia",
+          "stillwell",
+          "taliferro",
+          "terithia",
+          "valen",
+          "vera",
+          "wheedle",
+          "zorel"
+        ]
+
+        // Schedules/Fall Schedules/fall_monday
+        // Schedules/Festivals/spring_festival
+        // Schedules/Friday Nights at the Inn/fnati_0
+        // Schedules/Friday Nights at the Inn/fnati_1/fnati_1_0
+        // Schedules/Rainy Schedules/rainy_0
+        // Schedules/Rainy Schedules/temp_snowy
+        // Schedules/Spring Schedules/spring_monday
+        // Schedules/Spring Schedules/spring_saturday
+        // Schedules/Spring Schedules/spring_saturday_no_market
+        // Schedules/Summer Schedules/summer_tuesday/summer_tuesday_0
+        // Schedules/Summer Schedules/summer_tuesday/summer_tuesday_1
+
+        for(let c in characters) {
+          await this.loadingPauseCheck();
+          this.schedules_dict[characters[c]] = {};
+          console.log("Character: " + characters[c]);
+          for(let s in data_schedules[characters[c]]) {
+            console.log("Schedule: " + s);
+            let parsed_constraints = {
+              "and": []
+            }
+            for(let i in data_schedules[characters[c]][s]["requires"]) {
+              let parsed_constraint = this.parse_costraint(data_schedules[characters[c]][s]["requires"][i]);
+              if(parsed_constraint !== false) {
+                if(Array.isArray(parsed_constraint)) {
+                  parsed_constraints["or"] = parsed_constraint;
+                }
+                else {
+                  parsed_constraints["and"].push(parsed_constraint);
+                }
+              }
+            }
+            
+            let season = null;
+            let weather = null;
+            let days_of_the_week = [];
+            let extra_conditions = [];
+            let extra_conditions_string = "";
+
+            if(parsed_constraints["and"] !== undefined) {
+              for(let i in parsed_constraints["and"]) {
+                // Day, Season, Weather
+                if(parsed_constraints["and"][i]["parameter_one"] !== undefined) {
+                  if(parsed_constraints["and"][i]["parameter_one"] === "day_of_the_week") {
+                    days_of_the_week.push(parsed_constraints["and"][i]["parameter_two"]);
+                  }
+                  if(parsed_constraints["and"][i]["parameter_one"] === "weather") {
+                    weather = parsed_constraints["and"][i]["parameter_two"];
+                  }
+                  if(parsed_constraints["and"][i]["parameter_one"] === "season") {
+                    season = parsed_constraints["and"][i]["parameter_two"];
+                  }
+                }
+                // Counters, Quests, Festivals
+                else {
+                  if(parsed_constraints["and"][i]["counter"] !== undefined) {
+                    let condition = parsed_constraints["and"][i];
+                    let condition_string = "counter(" + condition["counter"]["parameter_one"] + ") " + condition["comparator"] + " " + condition["counter"]["parameter_two"];
+                    extra_conditions.push(condition_string);
+                  }
+                  if(parsed_constraints["and"][i]["quest"] !== undefined) {
+                    let condition = parsed_constraints["and"][i];
+                    let condition_string = "quest(" + condition["quest"]["parameter_one"] + ") " + condition["comparator"] + " " + condition["quest"]["parameter_two"];
+                    extra_conditions.push(condition_string);
+                  }
+                  if(parsed_constraints["and"][i]["festival_date"] !== undefined) {
+                    let condition = parsed_constraints["and"][i];
+                    let condition_string = "festival(" + condition["festival_date"]["parameter_one"] + ") " + condition["comparator"] + " " + condition["festival_date"]["parameter_two"];
+                    extra_conditions.push(condition_string);
+                  }
+                }
+              }
+            }
+
+            for(let i in extra_conditions) {
+              if(i < extra_conditions.length - 1) {
+                extra_conditions_string += extra_conditions[i] + ".\n"
+              }
+              else {
+                extra_conditions_string += extra_conditions[i] + ".";
+              }
+            }
+
+            if(parsed_constraints["or"] !== undefined) {
+              for(let i in parsed_constraints["or"]) {
+                if(parsed_constraints["or"][i]["parameter_one"] === "day_of_the_week") {
+                  days_of_the_week.push(parsed_constraints["or"][i]["parameter_two"]);
+                }
+                else {
+                  console.log("======================================");
+                  console.log("Unhandled OR constraint in schedule!");
+                  console.log("Character: " + characters[c]);
+                  console.log("Schedule: " + s);
+                  console.log(parsed_constraints["and"][i]);
+                  console.log("======================================");
+                }
+              }
+            }
+
+            console.log("======================================");
+            console.log("Season: " + season);
+            console.log("Weather: " + weather);
+            console.log("Days: " + days_of_the_week);
+            console.log("Extra Conditions: " + extra_conditions);
+            console.log("======================================");
+
+            if(season === null || season === undefined) {
+              if(weather !== "rainy") {
+                season = "spring";
+              }
+              else {
+                season = "rainy";
+              }
+            }
+            if(this.schedules_dict[characters[c]][season] === undefined) {
+              if(season !== "rainy") {
+                this.schedules_dict[characters[c]][season] = {}; // keys are days of week that map to lists of objects (itinerary+extra_conditions)
+              }
+              else {
+                this.schedules_dict[characters[c]][season] = []; // lists of objects (itinerary+extra_conditions)
+              }
+            }
+            
+            if(weather !== "rainy") {
+              for(let i in days_of_the_week) {
+                if(this.schedules_dict[characters[c]][season][days_of_the_week[i]] === undefined) {
+                  this.schedules_dict[characters[c]][season][days_of_the_week[i]] = [];
+                }
+
+                this.schedules_dict[characters[c]][season][days_of_the_week[i]].push({
+                  "itinerary": this.parse_itinerary(data_schedules[characters[c]][s]["itinerary"]), // Put the parsed itinerary here.
+                  "extra_conditions": extra_conditions_string
+                });
+              }
+            }
+            else {
+              this.schedules_dict[characters[c]][season].push({
+                "itinerary": this.parse_itinerary(data_schedules[characters[c]][s]["itinerary"]), // Put the parsed itinerary here.
+                "extra_conditions": extra_conditions_string
+              })
+            }
+          }
+
+          // console.log(this.schedules_dict);
+          // break;
+        }
+        console.log(this.schedules_dict);
+        this.schedules = this.schedules_dict;
+
+
+
+
+        // Done loading.
         this.loading = false;
       }
     },
