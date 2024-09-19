@@ -114,7 +114,7 @@
                 <!-- Schedules -->
                 <v-card v-if="tab == 'Schedules'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
                   <!-- Characters -->
-                  <v-expansion-panels v-model="character_panel">
+                  <v-expansion-panels v-if="schedules !== undefined && schedules.length !== 0" v-model="character_panel">
                     <v-expansion-panel v-for="character_name in characters" :key="character_name">
                       <v-expansion-panel-header expand-icon="mdi-menu-down">
                         <v-img :src="'sprites/icons/npc/spr_ui_generic_icon_npc_' + character_name.toLowerCase() + '_0.png'" max-height="20" max-width="24" />
@@ -122,7 +122,7 @@
                       </v-expansion-panel-header>
                       <v-expansion-panel-content>
                         <!-- Seasons -->
-                        <v-expansion-panels v-model="season_panel">
+                        <v-expansion-panels v-if="schedules !== undefined && schedules.length !== 0" v-model="season_panel">
                           <v-expansion-panel v-for="season in seasons" :key="season">
                             <v-expansion-panel-header expand-icon="mdi-menu-down">
                               <v-img v-if="season == 'Rainy'" src="sprites/icons/weather/spr_ui_hud_info_backplate_weather_icon_rainy_0.png" max-height="20" max-width="20" />
@@ -141,12 +141,12 @@
                                     Extra Conditions: <br />
                                     <span class="text-pre-wrap">{{ x["extra_conditions"] }}</span>
                                   </span>
-                                  <v-data-table dense :headers="schedule_headers" :items="x['itinerary']" :search="schedule_search" :sort-by="['time']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                                  <v-data-table v-if="schedules !== undefined && schedules.length !== 0" dense :headers="schedule_headers" :items="x['itinerary']" :search="schedule_search" :sort-by="['time']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
                                 </div>
                               </div>
                               <div v-else>
                                 <!-- Standard Days -->
-                                <v-expansion-panels v-model="day_panel">
+                                <v-expansion-panels v-if="schedules !== undefined && schedules.length !== 0" v-model="day_panel">
                                   <v-expansion-panel v-for="day in days" :key="day">
                                     <v-expansion-panel-header expand-icon="mdi-menu-down">
                                       {{ day }}
@@ -157,7 +157,7 @@
                                           Extra Conditions: <br />
                                           <span class="text-pre-wrap">{{ y["extra_conditions"] }}</span>
                                         </span>
-                                        <v-data-table dense :headers="schedule_headers" :items="y['itinerary']" :search="schedule_search" :sort-by="['time']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                                        <v-data-table v-if="schedules !== undefined && schedules.length !== 0" dense :headers="schedule_headers" :items="y['itinerary']" :search="schedule_search" :sort-by="['time']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
                                       </div>
                                     </v-expansion-panel-content>
                                   </v-expansion-panel>
@@ -351,6 +351,8 @@ export default {
         this.fish = [];
         this.forage = [];
         this.forage_dict = {};
+        this.schedules = [];
+        this.schedules_dict = {};
       },
 
       load_data: function(version) {
@@ -360,9 +362,11 @@ export default {
         this.version_loaded = version;
         console.log("Loading Data: " + version);
 
-        this.parse_localization(this.load_file("data/" + version + "/localization.json"));
-        this.parse_fiddle(this.load_file("data/" + version + "/fiddle.json"));
-        this.parse_t2_output(this.load_file("data/" + version + "/t2_output.json"));
+        // if(version === "v0.11.7") {
+          this.parse_localization(this.load_file("data/" + version + "/localization.json"));
+          this.parse_fiddle(this.load_file("data/" + version + "/fiddle.json"));
+          this.parse_t2_output(this.load_file("data/" + version + "/t2_output.json"));
+        // }
       },
 
       /**
