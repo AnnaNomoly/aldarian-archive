@@ -59,7 +59,7 @@
         <br />
 
         <v-card style="opacity: 0.90" >
-          <v-progress-linear v-if="loading" indeterminate color="yellow darken-2"></v-progress-linear>
+          <v-progress-linear v-if="isLoading()" indeterminate color="yellow darken-2"></v-progress-linear>
           <v-tabs v-model="selected_tab" background-color="blue-grey darken-4" center-active dark>
             <v-tab v-for="tab in tabs" :key="tab">
               {{ tab }}
@@ -118,9 +118,6 @@
                     <v-expansion-panel v-for="character_name in characters" :key="character_name">
                       <v-expansion-panel-header expand-icon="mdi-menu-down">
                         <v-img :src="'sprites/icons/npc/spr_ui_generic_icon_npc_' + character_name.toLowerCase() + '_0.png'" max-height="20" max-width="24" />
-                        <!-- <v-img v-if="character_name == 'Adeline'" src="sprites/icons/npc/spr_ui_generic_icon_npc_adeline_0.png" max-height="20" max-width="24" /> -->
-                        <!-- <v-img v-if="character_name == 'Balor'" src="sprites/icons/npc/spr_ui_generic_icon_npc_balor_0.png" max-height="20" max-width="24" />
-                        <v-img v-if="character_name == 'Celine'" src="sprites/icons/npc/spr_ui_generic_icon_npc_celine_0.png" max-height="20" max-width="24" /> -->
                         &nbsp; {{ character_name }}
                       </v-expansion-panel-header>
                       <v-expansion-panel-content>
@@ -128,11 +125,11 @@
                         <v-expansion-panels v-model="season_panel">
                           <v-expansion-panel v-for="season in seasons" :key="season">
                             <v-expansion-panel-header expand-icon="mdi-menu-down">
-                              <v-img v-if="season == 'Rainy'" src="spr_ui_hud_info_backplate_weather_icon_rainy_0.png" max-height="20" max-width="20" />
-                              <v-img v-if="season == 'Spring'" src="spr_ui_hud_info_backplate_season_icon_spring_0.png" max-height="20" max-width="20" />
-                              <v-img v-if="season == 'Summer'" src="spr_ui_hud_info_backplate_season_icon_summer_0.png" max-height="20" max-width="20" />
-                              <v-img v-if="season == 'Fall'" src="spr_ui_hud_info_backplate_season_icon_autumn_0.png" max-height="20" max-width="20" />
-                              <v-img v-if="season == 'Winter'" src="spr_ui_hud_info_backplate_season_icon_winter_0.png" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Rainy'" src="sprites/icons/weather/spr_ui_hud_info_backplate_weather_icon_rainy_0.png" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Spring'" src="sprites/icons/season/spr_ui_hud_info_backplate_season_icon_spring_0.png" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Summer'" src="sprites/icons/season/spr_ui_hud_info_backplate_season_icon_summer_0.png" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Fall'" src="sprites/icons/season/spr_ui_hud_info_backplate_season_icon_autumn_0.png" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Winter'" src="sprites/icons/season/spr_ui_hud_info_backplate_season_icon_winter_0.png" max-height="20" max-width="20" />
                               &nbsp; {{ season }}
                             </v-expansion-panel-header>
                             <v-expansion-panel-content>
@@ -189,6 +186,8 @@ export default {
   data: () => ({
       lastLoadingPause: Date.now(),
       loading: true,
+      loading_fiddle: true,
+      loading_t2_output: true,
       version_loaded: "v0.11.7", // The version to load on startup
       selected_tab: null,
       tabs: [
@@ -318,6 +317,10 @@ export default {
     }),
 
     methods: {
+      isLoading: function() {
+        return this.loading_fiddle || this.loading_t2_output;
+      },
+
       pauseLoading: function() {
         return new Promise(r => setTimeout(r));
       },
@@ -327,6 +330,13 @@ export default {
           this.lastLoadingPause = Date.now();
           await this.pauseLoading();
         }
+      },
+
+      load_file: function(url) {
+        var request = new XMLHttpRequest();
+        request.open("GET", url, false);
+        request.send(null)
+        return JSON.parse(request.responseText);
       },
 
       clear_data: function() {
@@ -345,19 +355,14 @@ export default {
 
       load_data: function(version) {
         this.clear_data();
-        this.loading = true;
+        this.loading_fiddle = true;
+        this.loading_t2_output = true;
         this.version_loaded = version;
-        console.log("Loaded Data: " + version);
-        if(version === 'v0.11.7') {
-          this.parse_localization(require('@/assets/data/v0.11.7/localization.json'));
-          // this.parse_fiddle(require('@/assets/data/v0.11.7/__fiddle__.json'));
-          this.parse_t2_output(require('@/assets/data/v0.11.7/t2_output.json'));
-        }
-        if(version === 'v0.11.5') {
-          // this.parse_localization(require('@/assets/data/v0.11.5/localization.json'));
-          // this.parse_fiddle(require('@/assets/data/v0.11.5/__fiddle__.json'));
-          // this.parse_t2_output(require('@/assets/data/v0.11.5/t2_output.json'));
-        }
+        console.log("Loading Data: " + version);
+
+        this.parse_localization(this.load_file("data/" + version + "/localization.json"));
+        this.parse_fiddle(this.load_file("data/" + version + "/__fiddle__.json"));
+        this.parse_t2_output(this.load_file("data/" + version + "/t2_output.json"));
       },
 
       /**
@@ -1332,6 +1337,9 @@ export default {
           }
           this.forage.push(this.forage_dict[f]);
         }
+
+        // Done loading fiddle.
+        this.loading_fiddle = false;
       },
 
       parse_costraint: function(constraint) {
@@ -1787,11 +1795,8 @@ export default {
         console.log(this.schedules_dict);
         this.schedules = this.schedules_dict;
 
-
-
-
-        // Done loading.
-        this.loading = false;
+        // Done loading t2_output.
+        this.loading_t2_output = false;
       }
     },
 
