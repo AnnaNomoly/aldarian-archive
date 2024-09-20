@@ -1,6 +1,6 @@
 <template>
   <v-app style=
-      "background-image: url('./bg_dark.png');
+      "background-image: url('https://raw.githubusercontent.com/AnnaNomoly/aldarian-archive/refs/heads/assets/public/bg_dark.png');
       height: 100%;
       background-position: center;
       background-repeat: no-repeat;
@@ -30,21 +30,9 @@
         </template>
 
         <v-list>
-          <v-list-item @click="load_data('v0.11.7')">
-            <v-list-item-title>v0.11.7</v-list-item-title>
+          <v-list-item v-for="version in versions" :key="version" @click="load_data(version)">
+            <v-list-item-title>{{ version }}</v-list-item-title>
           </v-list-item>
-
-          <!-- <v-list-item @click="load_data('v.0.11.6')">
-            <v-list-item-title>v.0.11.6</v-list-item-title>
-          </v-list-item> -->
-
-          <v-list-item @click="load_data('v0.11.5')">
-            <v-list-item-title>v0.11.5</v-list-item-title>
-          </v-list-item>
-
-          <!-- <v-list-item @click="load_data('alpha')">
-            <v-list-item-title>Alpha</v-list-item-title>
-          </v-list-item> -->
         </v-list>
       </v-menu>
 
@@ -53,7 +41,7 @@
     <v-main>
       <v-container>
         <div class="d-flex justify-space-around">
-          <v-img src="title_logo.png" max-height="150" max-width="250"></v-img>
+          <v-img :src="assets_base_url + 'title_logo.png'" max-height="150" max-width="250"></v-img>
           <!--<h1 class="text-h2 font-weight-bold">Aldarian Archive</h1>-->
         </div>
         <br />
@@ -117,7 +105,7 @@
                   <v-expansion-panels v-if="schedules !== undefined && schedules.length !== 0" v-model="character_panel">
                     <v-expansion-panel v-for="character_name in characters" :key="character_name">
                       <v-expansion-panel-header expand-icon="mdi-menu-down">
-                        <v-img :src="'sprites/icons/npc/spr_ui_generic_icon_npc_' + character_name.toLowerCase() + '_0.png'" max-height="20" max-width="24" />
+                        <v-img :src="assets_base_url + 'sprites/icons/npc/spr_ui_generic_icon_npc_' + character_name.toLowerCase() + '_0.png'" max-height="20" max-width="24" />
                         &nbsp; {{ character_name }}
                       </v-expansion-panel-header>
                       <v-expansion-panel-content>
@@ -125,11 +113,11 @@
                         <v-expansion-panels v-if="schedules !== undefined && schedules.length !== 0" v-model="season_panel">
                           <v-expansion-panel v-for="season in seasons" :key="season">
                             <v-expansion-panel-header expand-icon="mdi-menu-down">
-                              <v-img v-if="season == 'Rainy'" src="sprites/icons/weather/spr_ui_hud_info_backplate_weather_icon_rainy_0.png" max-height="20" max-width="20" />
-                              <v-img v-if="season == 'Spring'" src="sprites/icons/season/spr_ui_hud_info_backplate_season_icon_spring_0.png" max-height="20" max-width="20" />
-                              <v-img v-if="season == 'Summer'" src="sprites/icons/season/spr_ui_hud_info_backplate_season_icon_summer_0.png" max-height="20" max-width="20" />
-                              <v-img v-if="season == 'Fall'" src="sprites/icons/season/spr_ui_hud_info_backplate_season_icon_autumn_0.png" max-height="20" max-width="20" />
-                              <v-img v-if="season == 'Winter'" src="sprites/icons/season/spr_ui_hud_info_backplate_season_icon_winter_0.png" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Rainy'" :src="assets_base_url + 'sprites/icons/weather/spr_ui_hud_info_backplate_weather_icon_rainy_0.png'" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Spring'" :src="assets_base_url + 'sprites/icons/season/spr_ui_hud_info_backplate_season_icon_spring_0.png'" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Summer'" :src="assets_base_url + 'sprites/icons/season/spr_ui_hud_info_backplate_season_icon_summer_0.png'" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Fall'" :src="assets_base_url + 'sprites/icons/season/spr_ui_hud_info_backplate_season_icon_autumn_0.png'" max-height="20" max-width="20" />
+                              <v-img v-if="season == 'Winter'" :src="assets_base_url + 'sprites/icons/season/spr_ui_hud_info_backplate_season_icon_winter_0.png'" max-height="20" max-width="20" />
                               &nbsp; {{ season }}
                             </v-expansion-panel-header>
                             <v-expansion-panel-content>
@@ -184,11 +172,14 @@ export default {
   name: 'App',
 
   data: () => ({
+      assets_base_url: "https://raw.githubusercontent.com/AnnaNomoly/aldarian-archive/refs/heads/assets/public/",
+      cache_id: "234c9e05-f0a5-4fb4-bba0-1397abfb9dfd",
       lastLoadingPause: Date.now(),
-      loading: true,
       loading_fiddle: true,
       loading_t2_output: true,
-      version_loaded: "v0.11.7", // The version to load on startup
+      versions: [],
+      version_loaded: "",
+      cache: {}, // Local Storage
       selected_tab: null,
       tabs: [
         "Artifacts",
@@ -317,6 +308,55 @@ export default {
     }),
 
     methods: {
+      load_manifest: function() {
+        console.log("Loading manifest...");
+        let manifest = this.load_file(this.assets_base_url + "data/manifest.json");
+        this.version_loaded = manifest["current"];
+        this.versions = manifest["versions"];
+        console.log(manifest);
+      },
+
+      load_from_local_storage: function(version) {
+        if(localStorage.getItem("cache_id") !== null && localStorage.getItem("cache_id") !== undefined) {
+          let local_cache_id = localStorage.getItem("cache_id");
+          if(this.cache_id === local_cache_id) {
+            if(localStorage.getItem(version) !== null && localStorage.getItem(version) !== undefined) {
+              console.log("Loading Local Storage: " + version);
+              let version_cache = JSON.parse(localStorage.getItem(version));
+              this.artifacts = version_cache["artifacts"];
+              this.bugs = version_cache["bugs"];
+              this.cooking = version_cache["cooking"];
+              this.crops = version_cache["crops"];
+              this.fish = version_cache["fish"];
+              this.forage = version_cache["forage"];
+              // this.localizations_eng = version_cache["localizations_eng"];
+              this.schedules = version_cache["schedules"];
+              return true;
+            }
+          }
+          else {
+            localStorage.removeItem("cache_id");
+            localStorage.removeItem(version);
+            console.log("The cache was built by an outdated app version!");
+          }
+        }
+        return false;
+      },
+
+      save_to_local_storage: function(version) {
+        localStorage.setItem("cache_id", this.cache_id);
+        localStorage.setItem(version, JSON.stringify({
+          "artifacts": this.artifacts,
+          "bugs": this.bugs,
+          "cooking": this.cooking,
+          "crops": this.crops,
+          "fish": this.fish,
+          "forage": this.forage,
+          // "localizations_eng": this.localizations_eng,
+          "schedules": this.schedules
+        }));
+      },
+
       isLoading: function() {
         return this.loading_fiddle || this.loading_t2_output;
       },
@@ -356,17 +396,24 @@ export default {
       },
 
       load_data: function(version) {
+        console.log("Loading Raw Data: " + version);
+
         this.clear_data();
         this.loading_fiddle = true;
         this.loading_t2_output = true;
         this.version_loaded = version;
-        console.log("Loading Data: " + version);
 
-        // if(version === "v0.11.7") {
-          this.parse_localization(this.load_file("data/" + version + "/localization.json"));
-          this.parse_fiddle(this.load_file("data/" + version + "/fiddle.json"));
-          this.parse_t2_output(this.load_file("data/" + version + "/t2_output.json"));
-        // }
+        let local_storage_loaded = this.load_from_local_storage(this.version_loaded);
+        if(local_storage_loaded === true) {
+          console.log("Successfully loaded from Local Storage!");
+          this.loading_fiddle = false;
+          this.loading_t2_output = false;
+        }
+        else {
+          this.parse_localization(this.load_file(this.assets_base_url + "data/" + version + "/localization.json"));
+          this.parse_fiddle(this.load_file(this.assets_base_url + "data/" + version + "/fiddle.json"));
+          this.parse_t2_output(this.load_file(this.assets_base_url + "data/" + version + "/t2_output.json"));
+        }
       },
 
       convert_time: function(time) {
@@ -443,6 +490,8 @@ export default {
       },
 
       parse_fiddle: async function(json) {
+        let _version = "" + this.version_loaded;
+
         // Artifact Data
         var data_artifacts = json["artifacts"];
 
@@ -635,7 +684,6 @@ export default {
           artifact_location_lookup_dict[data_artifacts["locations"][location]] = location;
         }
         artifact_location_lookup_dict["mine"] = "mines (Any Biome)";
-        console.log(artifact_location_lookup_dict); // TODO: Figure out how to look up perk requirements
 
         // Extract all artifacts from the items/mines dictionary.
         for(let mines_location in items_mines) {
@@ -1092,7 +1140,7 @@ export default {
 
           // Remove anything without a recipe.
           if(this.cooking_dict[x]["recipe"] === undefined) {
-            console.log("Missing recipe for: " + x);
+            //console.log("Missing recipe for: " + x); // TODO
             delete this.cooking_dict[x];
           }
           else {
@@ -1247,9 +1295,7 @@ export default {
         for(let b in object_prototypes["bush"]) {
           await this.loadingPauseCheck();
           if(b !== "default" && b !== "bush") {
-            console.log("Bush: " + b);
             let name = object_prototypes["bush"][b]["harvest"];
-            console.log("Name: " + name);
             this.forage_dict[name] = {
               "key": name,
               "source": b,
@@ -1262,9 +1308,7 @@ export default {
         for(let t in object_prototypes["tree"]) {
           await this.loadingPauseCheck();
           if(object_prototypes["tree"][t]["fruit_data"] !== undefined) {
-            console.log("Tree: " + t);
             let name = object_prototypes["tree"][t]["fruit_data"]["harvest"];
-            console.log("Name: " + name);
             this.forage_dict[name] = {
               "key": name,
               "source": t,
@@ -1345,7 +1389,6 @@ export default {
           // Inedible
           if(this.forage_dict[f]["restore"] === undefined) {
             this.forage_dict[f]["restore"] = "inedible";
-            console.log(this.forage_dict[f]);
           }
           // Restoration lookup/conversion.
           else if(this.forage_dict[f]["restore"] !== undefined) {
@@ -1362,6 +1405,7 @@ export default {
 
         // Done loading fiddle.
         this.loading_fiddle = false;
+        this.save_to_local_storage(_version);
       },
 
       parse_costraint: function(constraint) {
@@ -1402,8 +1446,6 @@ export default {
           }
 
           if(parameter_one === "season") {
-            console.log("SEASON CONSTRAINT");
-            console.log("P2: " + parameter_two);
             if(parameter_two === 0) {
               return {
                 "comparator": comparator,
@@ -1612,7 +1654,7 @@ export default {
       parse_itinerary: function(itinerary) {
         let parsed_itinerary = [];
         for(let time in itinerary) {
-          let original_clock_time = new Date(time * 1000).toISOString().substring(11, 19); // TODO: Convert from 24hr to 12hr
+          let original_clock_time = new Date(time * 1000).toISOString().substring(11, 19);
           let hours = Number(original_clock_time.split(":")[0]);
           let minutes = Number(original_clock_time.split(":")[1]);
           let seconds = original_clock_time.split(":")[2];
@@ -1689,24 +1731,10 @@ export default {
           "zorel"
         ]
 
-        // Schedules/Fall Schedules/fall_monday
-        // Schedules/Festivals/spring_festival
-        // Schedules/Friday Nights at the Inn/fnati_0
-        // Schedules/Friday Nights at the Inn/fnati_1/fnati_1_0
-        // Schedules/Rainy Schedules/rainy_0
-        // Schedules/Rainy Schedules/temp_snowy
-        // Schedules/Spring Schedules/spring_monday
-        // Schedules/Spring Schedules/spring_saturday
-        // Schedules/Spring Schedules/spring_saturday_no_market
-        // Schedules/Summer Schedules/summer_tuesday/summer_tuesday_0
-        // Schedules/Summer Schedules/summer_tuesday/summer_tuesday_1
-
         for(let c in characters) {
           await this.loadingPauseCheck();
           this.schedules_dict[characters[c]] = {};
-          console.log("Character: " + characters[c]);
           for(let s in data_schedules[characters[c]]) {
-            console.log("Schedule: " + s);
             let parsed_constraints = {
               "and": []
             }
@@ -1763,6 +1791,37 @@ export default {
               }
             }
 
+            if(parsed_constraints["or"] !== undefined) {
+              for(let i in parsed_constraints["or"]) {
+                if(parsed_constraints["or"][i]["parameter_one"] === "day_of_the_week") {
+                  days_of_the_week.push(parsed_constraints["or"][i]["parameter_two"]);
+                }
+                else {
+                  // Add to extra conditions.
+                  if(parsed_constraints["or"][i]["counter"] !== undefined) {
+                    let condition = parsed_constraints["or"][i];
+                    let condition_string = "counter(" + condition["counter"]["parameter_one"] + ") " + condition["comparator"] + " " + condition["counter"]["parameter_two"];
+                    extra_conditions.push(condition_string);
+                  }
+                  if(parsed_constraints["or"][i]["quest"] !== undefined) {
+                    let condition = parsed_constraints["or"][i];
+                    let condition_string = "quest(" + condition["quest"]["parameter_one"] + ") " + condition["comparator"] + " " + condition["quest"]["parameter_two"];
+                    extra_conditions.push(condition_string);
+                  }
+                  if(parsed_constraints["or"][i]["festival_date"] !== undefined) {
+                    let condition = parsed_constraints["or"][i];
+                    let condition_string = "festival(" + condition["festival_date"]["parameter_one"] + ") " + condition["comparator"] + " " + condition["festival_date"]["parameter_two"];
+                    extra_conditions.push(condition_string);
+                  }
+                }
+              }
+            }
+
+            if(weather === "snowy") {
+                extra_conditions.push("season EQUAL winter");
+            }
+
+            // Format the extra conditions.
             for(let i in extra_conditions) {
               if(i < extra_conditions.length - 1) {
                 extra_conditions_string += extra_conditions[i] + ".\n"
@@ -1771,29 +1830,6 @@ export default {
                 extra_conditions_string += extra_conditions[i] + ".";
               }
             }
-
-            if(parsed_constraints["or"] !== undefined) {
-              for(let i in parsed_constraints["or"]) {
-                if(parsed_constraints["or"][i]["parameter_one"] === "day_of_the_week") {
-                  days_of_the_week.push(parsed_constraints["or"][i]["parameter_two"]);
-                }
-                else {
-                  console.log("======================================");
-                  console.log("Unhandled OR constraint in schedule!");
-                  console.log("Character: " + characters[c]);
-                  console.log("Schedule: " + s);
-                  console.log(parsed_constraints["and"][i]);
-                  console.log("======================================");
-                }
-              }
-            }
-
-            console.log("======================================");
-            console.log("Season: " + season);
-            console.log("Weather: " + weather);
-            console.log("Days: " + days_of_the_week);
-            console.log("Extra Conditions: " + extra_conditions);
-            console.log("======================================");
 
             if(season === null || season === undefined) {
               if(weather !== "rainy") {
@@ -1812,7 +1848,7 @@ export default {
               }
             }
             
-            if(weather !== "rainy") {
+            if(weather !== "rainy" && weather !== "snowy") {
               for(let i in days_of_the_week) {
                 if(this.schedules_dict[characters[c]][season][days_of_the_week[i]] === undefined) {
                   this.schedules_dict[characters[c]][season][days_of_the_week[i]] = [];
@@ -1825,26 +1861,45 @@ export default {
               }
             }
             else {
-              this.schedules_dict[characters[c]][season].push({
+              this.schedules_dict[characters[c]]["rainy"].push({
                 "itinerary": this.parse_itinerary(data_schedules[characters[c]][s]["itinerary"]), // Put the parsed itinerary here.
                 "extra_conditions": extra_conditions_string
               })
             }
           }
-
-          // console.log(this.schedules_dict);
-          // break;
         }
-        console.log(this.schedules_dict);
-        this.schedules = this.schedules_dict;
 
+        // Duplicate everyone's (except market day vendors and unimplemented characters) Friday schedule.
+        let ignore_these_characters = ["caldarus", "darcy", "dozy", "henrietta", "louis", "merri", "seridia", "stillwell", "taliferro", "vera", "wheedle", "zorel"];
+        for(let character_name in this.schedules_dict) {
+          if(!ignore_these_characters.includes(character_name)) {
+            for(let i in this.seasons) {
+              let season = this.seasons[i].toLowerCase();
+              if(season !== "rainy" && season !== "spring") {
+                if(this.schedules_dict[character_name][season]["friday"] === undefined) {
+                  this.schedules_dict[character_name][season]["friday"] = this.schedules_dict[character_name]["spring"]["friday"];
+                }
+              }
+            }
+          }
+        }
+        
         // Done loading t2_output.
+        this.schedules = this.schedules_dict;
         this.loading_t2_output = false;
       }
     },
 
     mounted() {
-      this.load_data(this.version_loaded);
+      this.load_manifest();
+      let local_storage_loaded = this.load_from_local_storage(this.version_loaded);
+      if(!local_storage_loaded) {
+        this.load_data(this.version_loaded);
+      }
+      else {
+        this.loading_fiddle = false;
+        this.loading_t2_output = false;
+      }
     }
 };
 </script>
