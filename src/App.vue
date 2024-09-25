@@ -257,7 +257,7 @@ export default {
         { text: "Name", value: "name" },
         { text: "Season", value: "seasons" },
         { text: "Growth Time", value: "growth_time" },
-        { text: "Regrowth Time", value: "growth_time" },
+        { text: "Regrowth Time", value: "regrow_days" },
         { text: "Restoration", value: "restore" },
         { text: "Sell Price", value: "sell_price" },
         { text: "Purchase Price", value: "purchase_price" },
