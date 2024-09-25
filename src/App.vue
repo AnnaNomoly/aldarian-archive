@@ -76,7 +76,7 @@
                   <v-card-title>
                     <v-text-field v-model="cooking_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
                   </v-card-title>
-                  <v-data-table dense class="text-pre-wrap" :headers="cooking_headers" :items="cooking" :search="cooking_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                  <v-data-table dense class="text-pre-wrap" :headers="cooking_headers" :items="cooking" :search="cooking_search" :sort-by="['name']" :items-per-page="10" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
                 </v-card>
                 <!-- Fish -->
                 <v-card v-if="tab == 'Fish'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
