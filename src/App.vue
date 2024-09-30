@@ -59,45 +59,81 @@
               <div style="overflow-y: auto;">
                 <!-- Artifacts -->
                 <v-card v-if="tab == 'Artifacts'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
-                  <v-card-title>
-                    <v-text-field v-model="artifact_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
-                  </v-card-title>
-                  <v-data-table dense :headers="artifact_headers" :items="artifacts" :search="artifact_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                  <v-data-table dense hide-default-footer :headers="artifact_headers" :items="artifacts" :search="artifact_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}">
+                    <template v-slot:top="{ pagination, options, updateOptions }">
+                      <v-container>
+                        <v-row class="no-gutters">
+                          <v-text-field v-model="artifact_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
+                          <v-data-footer :pagination="pagination" :options="options" @update:options="updateOptions" :items-per-page-options="[10, 15, 20, 25, -1]" style="border-width: 0"/>
+                        </v-row>
+                      </v-container>
+                    </template>
+                  </v-data-table>
                 </v-card>
                 <!-- Bugs -->
                 <v-card v-if="tab == 'Bugs'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
-                  <v-card-title>
-                    <v-text-field v-model="bug_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
-                  </v-card-title>
-                  <v-data-table dense :headers="bug_headers" :items="bugs" :search="bug_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                  <v-data-table dense hide-default-footer :headers="bug_headers" :items="bugs" :search="bug_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}">
+                    <template v-slot:top="{ pagination, options, updateOptions }">
+                      <v-container>
+                        <v-row class="no-gutters">
+                          <v-text-field v-model="bug_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
+                          <v-data-footer :pagination="pagination" :options="options" @update:options="updateOptions" :items-per-page-options="[10, 15, 20, 25, -1]" style="border-width: 0"/>
+                        </v-row>
+                      </v-container>
+                    </template>
+                  </v-data-table>
                 </v-card>
                 <!-- Cooking -->
                 <v-card v-if="tab == 'Cooking'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
-                  <v-card-title>
-                    <v-text-field v-model="cooking_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
-                  </v-card-title>
-                  <v-data-table dense class="text-pre-wrap" :headers="cooking_headers" :items="cooking" :search="cooking_search" :sort-by="['name']" :items-per-page="10" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                  <v-data-table dense hide-default-footer class="text-pre-wrap" :headers="cooking_headers" :items="cooking" :search="cooking_search" :sort-by="['name']" :items-per-page="10" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}">
+                    <template v-slot:top="{ pagination, options, updateOptions }">
+                      <v-container>
+                        <v-row class="no-gutters">
+                          <v-text-field v-model="cooking_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
+                          <v-data-footer :pagination="pagination" :options="options" @update:options="updateOptions" :items-per-page-options="[10, 15, 20, 25, -1]" style="border-width: 0"/>
+                        </v-row>
+                      </v-container>
+                    </template>
+                  </v-data-table>
                 </v-card>
                 <!-- Fish -->
                 <v-card v-if="tab == 'Fish'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
-                  <v-card-title>
-                    <v-text-field v-model="fish_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
-                  </v-card-title>
-                <v-data-table dense :headers="fish_headers" :items="fish" :search="fish_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                  <v-data-table dense hide-default-footer :headers="fish_headers" :items="fish" :search="fish_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}">
+                    <template v-slot:top="{ pagination, options, updateOptions }">
+                      <v-container>
+                        <v-row class="no-gutters">
+                          <v-text-field v-model="fish_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
+                          <v-data-footer :pagination="pagination" :options="options" @update:options="updateOptions" :items-per-page-options="[10, 15, 20, 25, -1]" style="border-width: 0"/>
+                        </v-row>
+                      </v-container>
+                    </template>
+                  </v-data-table>
                 </v-card>
                 <!-- Forage -->
                 <v-card v-if="tab == 'Forage'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
-                  <v-card-title>
-                    <v-text-field v-model="forage_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
-                  </v-card-title>
-                <v-data-table dense :headers="forage_headers" :items="forage" :search="forage_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                  <v-data-table dense hide-default-footer :headers="forage_headers" :items="forage" :search="forage_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}">
+                    <template v-slot:top="{ pagination, options, updateOptions }">
+                      <v-container>
+                        <v-row class="no-gutters">
+                          <v-text-field v-model="forage_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
+                          <v-data-footer :pagination="pagination" :options="options" @update:options="updateOptions" :items-per-page-options="[10, 15, 20, 25, -1]" style="border-width: 0"/>
+                        </v-row>
+                      </v-container>
+                    </template>
+                  </v-data-table>
                 </v-card>
                 <!-- Harvest -->
                 <v-card v-if="tab == 'Harvest'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
-                  <v-card-title>
-                    <v-text-field v-model="crops_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
-                  </v-card-title>
-                  <v-data-table dense class="text-pre-wrap" :headers="crops_headers" :items="crops" :search="crops_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}"></v-data-table>
+                  <v-data-table dense hide-default-footer class="text-pre-wrap" :headers="crops_headers" :items="crops" :search="crops_search" :sort-by="['name']" :items-per-page="25" :footer-props="{'items-per-page-options': [10, 15, 20, 25, -1]}">
+                    <template v-slot:top="{ pagination, options, updateOptions }">
+                      <v-container>
+                        <v-row class="no-gutters">
+                          <v-text-field v-model="crops_search" append-icon="mdi-magnify" label="Search" single-line hide-details />
+                          <v-data-footer :pagination="pagination" :options="options" @update:options="updateOptions" :items-per-page-options="[10, 15, 20, 25, -1]" style="border-width: 0"/>
+                        </v-row>
+                      </v-container>
+                    </template>
+                  </v-data-table>
                 </v-card>
                 <!-- Schedules -->
                 <v-card v-if="tab == 'Schedules'" dark style="opacity: 0.85; overflow-y: auto; max-height: 80vh">
